@@ -1,8 +1,6 @@
-import Button from "./components/buttons/button";
+// import { BrowserRouter } from "react-router-dom";
 import "./reset.css";
 
-function App() {
-    
-}
+function App() {}
 
 export default App;
