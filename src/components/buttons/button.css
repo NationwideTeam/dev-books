@@ -3,23 +3,30 @@
 .button {
   border: none;
   cursor: pointer;
-  background: #f26e22;
+  background: #3e7c17;
   color: #ffffff;
 }
 
-.button:hover {
-  opacity: 0.5;
+.button:hover,
+:focus {
+  background: #125c13;
 }
 
 .disabled {
   cursor: default;
-  opacity: 0.5;
+  background: #e8e1d9;
+  pointer-events: none;
 }
 
 .active {
   background: #ffffff;
   color: #767676;
   border: 1px solid #dbdbdb;
+}
+
+.active:hover {
+  background-color: #ffffff;
+  color: #3e7c17;
 }
 
 /* Button 사이즈 */
