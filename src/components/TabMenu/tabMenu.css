@@ -1,0 +1,33 @@
+.tabMenuWrapper {
+  width: 390px;
+  box-sizing: border-box;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+.tabMenuWrapper li {
+  width: 84px;
+  text-align: center;
+  /* padding: 12px 0 9px; */
+}
+
+.tabMenuWrapper li .tabLink {
+  width: 100%;
+  display: inline-block;
+  padding: 12px 0 9px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  color: #767676;
+  text-decoration: none;
+}
+
+.tabMenuWrapper li .tabLink img {
+  display: block;
+  width: 24px;
+  margin: 0 auto 4px;
+}
+
+
