@@ -1,0 +1,38 @@
+.commentForm {
+  width: 390px;
+  margin: 0 auto;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border-top: 0.5px solid #DBDBDB;
+}
+
+.basicProfile {
+  width: 36px;
+  height: 36px;
+  vertical-align: middle;
+}
+
+.inputComment {
+  width: 264px;
+  margin: 0 10px 0 18px;
+  vertical-align: middle;
+}
+
+.inputComment::placeholder {
+  color: #C4C4C4;
+}
+
+.uploadButton {
+  background-color: transparent;
+  color: #C4C4C4;
+  margin-left: auto;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.uploadButton:hover {
+  color: #3E7C17;
+}
+
+
+
