@@ -1,6 +1,5 @@
 import React from 'react';
 import './textInput.css';
-import basicProfile from '../../assets/basic-profile-img.png';
 
 export const TextInput = () => {
     return (
