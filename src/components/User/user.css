@@ -1,0 +1,43 @@
+.userSearchList {
+    display: flex;
+    align-items: center;
+    width: 358px;
+    height: 50px;
+}
+
+.userSearchList img {
+    width: 50px;
+    height: 50px;
+    margin-right: 12px;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.userInfo .userName {
+    font-size: 14px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.userInfo .userName span {
+    color: #3E7C17;
+}
+
+.userInfo .userId {
+    font-size: 12px;
+    color: #767676;
+}
+
+.userFollowButton {
+    width: 58px;
+    height: 28px;
+    margin-left: auto;
+    border-radius: 26px;
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #3E7C17 ;
+}
+
