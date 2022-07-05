@@ -1,0 +1,57 @@
+/* 기본 button */
+
+.button {
+  border: none;
+  cursor: pointer;
+  background: #f26e22;
+  color: #ffffff;
+}
+
+.button:hover {
+  opacity: 0.5;
+}
+
+.disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.active {
+  background: #ffffff;
+  color: #767676;
+  border: 1px solid #dbdbdb;
+}
+
+/* Button 사이즈 */
+
+.sm {
+  height: 28px;
+  width: 56px;
+  border-radius: 26px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.ms {
+  height: 32px;
+  width: 90px;
+  border-radius: 32px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.md {
+  height: 34px;
+  width: 120px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.lg {
+  height: 44px;
+  width: 322px;
+  border-radius: 44px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}
