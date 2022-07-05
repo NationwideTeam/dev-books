@@ -1,5 +1,5 @@
 import "./comment.css"
-import basicProfile from "../../assets/basic-profile-img.png"
+import basicProfile from "../../assets/basic-profile-img.svg"
 
 export default function Comment() {
   return (
