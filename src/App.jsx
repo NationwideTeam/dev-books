@@ -1,8 +1,5 @@
-import Button from "./components/buttons/button";
 import "./reset.css";
 
-function App() {
-    
-}
+function App() {}
 
 export default App;
