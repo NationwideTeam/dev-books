@@ -38,7 +38,7 @@ export const UserFollow = (props) => {
 
 export const UserChatList = (props) => {
   return(
-    <li className='userChatList newChat'>
+    <li className='userChatList'>
       <img src={basicProfileChat} alt='유저 기본 프로필 이미지' />
       <div className='userChatInfo'>
         <strong className='userChatName'>
