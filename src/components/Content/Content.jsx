@@ -1,5 +1,4 @@
 import "./content.css"
-import iconMoreVertical from "../../assets/icon/icon-more-vertical.svg"
 
 export default function Content(props) {
 
@@ -17,7 +16,7 @@ export default function Content(props) {
               {userId}
           </strong>
         </div>
-        <img className="moreBtn" src={iconMoreVertical} alt="" />
+        <button className="moreBtn" type="button"></button>
       </h2>
       <div className="postMain">
         <p className="contenttxt">{posttext}</p>

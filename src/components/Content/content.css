@@ -30,11 +30,12 @@
   color: #767676;
 }
 .postUser .moreBtn {
+  background: url(../../assets/icon/icon-more-vertical.svg) transparent;
+  background-size: 18px;
   width: 18px;
   height: 18px;
   margin-left: auto;
   margin-bottom: 20px;
-  vertical-align: text-top;
 }
 
 .postMain {
