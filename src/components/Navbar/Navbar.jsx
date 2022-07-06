@@ -37,13 +37,13 @@ export const MainNav = (props) => {
   );
 };
 
-export const UploadNav = () => {
+export const UploadNav = (props) => {
   return (
     <div className="nav">
       <button className="arrowButton">
         <span className="a11yHidden">뒤로가기</span>
       </button>
-      <Button className="button ms disabled uploadButton">저장</Button>
+      <Button className="button ms disabled uploadButton">{props.title}</Button>
     </div>
   );
 };
