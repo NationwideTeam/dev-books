@@ -49,6 +49,8 @@
 }
 .postMain .contentImg {
   margin: 16px 0 12px;
+  width: 304px;
+  height: 228px;
 }
 
 .postBtnWrap {
