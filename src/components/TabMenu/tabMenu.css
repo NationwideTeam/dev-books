@@ -4,12 +4,12 @@
   display: flex;
   margin: 0 auto;
   justify-content: space-evenly;
+  border-top: 0.5px solid #DBDBDB;
 }
 
 .tabMenuWrapper li {
   width: 84px;
   text-align: center;
-  /* padding: 12px 0 9px; */
 }
 
 .tabMenuWrapper li .tabLink {
