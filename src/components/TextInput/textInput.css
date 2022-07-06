@@ -11,12 +11,19 @@
   color: #767676;
 }
 
-.emailInput {
+.inputText {
   font-size: 14px;
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 8px;
 }
 
-.emailInput:focus,
-.emailInput:active {
+.inputText::placeholder {
+  color: #dbdbdb;
+}
+
+.inputText:focus,
+.inputText:active {
   outline: none;
   border-bottom: 1px solid #3e7c17;
+  background-color: #ffffff;
 }

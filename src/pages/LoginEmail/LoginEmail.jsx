@@ -3,6 +3,7 @@ import "./loginEmail.css";
 import statusBar from "../../assets/status_bar.svg";
 import Button from "../../components/Buttons/Button";
 import { useNavigate } from "react-router-dom";
+import { TextInput } from "../../components/TextInput/TextInput";
 
 function LoginEmail() {
   let navigate = useNavigate();
@@ -14,33 +15,21 @@ function LoginEmail() {
       </div>
       <article className="loginEmail">
         <h1 id="loginTitle">로그인</h1>
-        <form id="loginForm" action="post">
-          <input
-            class="inputEmail"
-            placeholder="이메일"
-            type="email"
-            id="email"
-            required
-          />
-          <input
-            class="inputPw"
-            placeholder="비밀번호"
-            type="password"
-            id="password"
-            required
-          />
-          <div className="loginButton">
-            <Button className="button lg">로그인</Button>
-          </div>
-          <p
-            className="loginEmailText"
-            onClick={() => {
-              navigate("/joinMembership");
-            }}
-          >
-            이메일로 회원가입
-          </p>
-        </form>
+        <div className="emailAccount">
+          <TextInput type="email" label="이메일" />
+        </div>
+        <TextInput type="email" label="비밀번호" />
+        <div className="loginButton">
+          <Button className="button lg">로그인</Button>
+        </div>
+        <p
+          className="loginEmailText"
+          onClick={() => {
+            navigate("/joinMembership");
+          }}
+        >
+          이메일로 회원가입
+        </p>
       </article>
     </article>
   );

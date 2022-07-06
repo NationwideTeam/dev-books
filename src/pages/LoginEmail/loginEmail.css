@@ -14,33 +14,29 @@
 }
 
 .loginEmail {
-  text-align: center;
   margin: 24px;
+}
+
+.emailAccount {
+  margin: 15px 0;
 }
 
 #loginTitle {
   font-size: 24px;
   font-weight: 500;
   line-height: 30px;
-}
-
-#loginForm {
-  margin: 40px 0;
-}
-
-#loginForm > input {
-  width: 322px;
-  height: 46px;
-  border-bottom: 1px solid #ddd;
-  margin: 16px 0;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .loginButton {
-  margin: 14px 0;
+  margin: 30px 0 0 0;
+  text-align: center;
 }
 
 .loginEmailText {
   margin-top: 20px;
   cursor: pointer;
   font-size: 12px;
+  text-align: center;
 }
