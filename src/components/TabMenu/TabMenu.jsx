@@ -1,8 +1,8 @@
 import "./tabMenu.css";
 import homeButton from "../../assets/icon/icon-home.svg"
-import chatButton from "../../assets/icon/icon-message-circle.png"
-import editButton from "../../assets/icon/icon-edit.png"
-import profileButton from "../../assets/icon/icon-user.png"
+import chatButton from "../../assets/icon/icon-message-circle.svg"
+import editButton from "../../assets/icon/icon-edit.svg"
+import profileButton from "../../assets/icon/icon-user.svg"
 import { Link } from "react-router-dom";
 
 export default function TabMenu() {
