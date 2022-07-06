@@ -20,6 +20,21 @@
 .inputText::placeholder {
   color: #dbdbdb;
 }
+    font-size: 14px;
+    border-bottom: 1px solid #DBDBDB;
+    padding-bottom: 8px;
+}
+
+.inputText::placeholder {
+  color: #DBDBDB;
+}
+
+.inputText:focus,
+.inputText:active {
+    outline: none;
+    border-bottom: 1px solid #3E7C17;
+    background-color: #ffffff;
+} 
 
 .inputText:focus,
 .inputText:active {
