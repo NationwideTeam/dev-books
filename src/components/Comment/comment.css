@@ -22,10 +22,9 @@
   color: #C4C4C4;
 }
 
-.uploadButton {
+.uploadComment {
   background-color: transparent;
   color: #C4C4C4;
-  margin-left: auto;
   padding: 0;
   vertical-align: middle;
 }
