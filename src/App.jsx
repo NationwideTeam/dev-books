@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import LoginPage from "./pages/login/Login";
-import JoinMembership from "./pages/joinMembership/JoinMembership";
-import LoginEmail from "./pages/loginEmail/LoginEmail";
+import LoginPage from "./pages/Login/Login";
+import JoinMembership from "./pages/JoinMembership/JoinMembership";
+import LoginEmail from "./pages/LoginEmail/LoginEmail";
 import "./reset.css";
 
 function App() {

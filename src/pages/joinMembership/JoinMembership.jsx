@@ -1,7 +1,7 @@
 import React from "react";
 import "./joinMembership.css";
 import statusBar from "../../assets/status_bar.svg";
-import Button from "../../components/buttons/Button";
+import Button from "../../components/Buttons/Button";
 
 function JoinMembership() {
   return (

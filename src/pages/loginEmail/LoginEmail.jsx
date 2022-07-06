@@ -1,7 +1,7 @@
 import React from "react";
 import "./loginEmail.css";
 import statusBar from "../../assets/status_bar.svg";
-import Button from "../../components/buttons/Button";
+import Button from "../../components/Buttons/Button";
 import { useNavigate } from "react-router-dom";
 
 function LoginEmail() {
