@@ -1,13 +1,13 @@
 import React from 'react';
 import './textInput.css';
 
-export const TextInput = () => {
+export const TextInput = (props) => {
     return (
         <form className='inputForm'>
             <label className='inputLabel'>
-                이메일
+                {props.label}
             </label>
-            <input className='emailInput' type="email" />
+            <input className='inputText' type={props.type} placeholder={props.placeholder}/>
         </form>
     )
 }
