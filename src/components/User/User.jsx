@@ -1,6 +1,7 @@
 import React from 'react';
 import './user.css';
 import basicProfile from '../../assets/basic-profile-img.svg';
+import basicProfileChat from '../../assets/basic-profile.svg';
 
 export const UserSearch = (props) => {
     return (
@@ -33,4 +34,23 @@ export const UserFollow = (props) => {
             <button className='userFollowButton'>{props.follow}</button>
         </li>
     )
+}
+
+export const UserChatList = (props) => {
+  return(
+    <li className='userChatList'>
+      <img src={basicProfileChat} alt='유저 기본 프로필 이미지' />
+      <div className='userChatInfo'>
+        <strong className='userChatName'>
+          {props.name}
+        </strong>
+        <p className='userChatContent'>
+          {props.chat}
+        </p>
+      </div>
+      <span className='userChatDate'>
+        2020.10.25
+      </span>
+    </li>
+  )
 }
