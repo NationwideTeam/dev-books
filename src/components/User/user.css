@@ -41,3 +41,8 @@
     background-color: #3E7C17 ;
 }
 
+.userFollowButton.unfollow {
+  background-color: #ffffff;
+  outline: 1px solid #dbdbdb;
+  color: #767676;
+}

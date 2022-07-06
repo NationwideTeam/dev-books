@@ -2,35 +2,35 @@ import React from 'react';
 import './user.css';
 import basicProfile from '../../assets/basic-profile-img.svg';
 
-export const UserSearch = () => {
+export const UserSearch = (props) => {
     return (
         <li className='userSearchList'>
             <img src={basicProfile} alt="유저 기본 프로필 이미지" />
             <div className='userInfo'>
                 <strong className='userName'>
-                    <span>애월읍</span> 위니브 감귤농장
+                    {props.name}
                 </strong>
                 <strong className='userId'>
-                    @ weniv_Mandarin
+                    {props.id}
                 </strong>
             </div>
         </li>
     )
 }
 
-export const UserFollow = () => {
+export const UserFollow = (props) => {
     return (
         <li className='userSearchList'>
             <img src={basicProfile} alt="유저 기본 프로필 이미지" />
             <div className='userInfo'>
                 <strong className='userName'>
-                    애월읍 위니브 감귤농장
+                    {props.name}
                 </strong>
                 <strong className='userId'>
-                    @ weniv_Mandarin
+                    {props.id}
                 </strong>
             </div>
-            <button className='userFollowButton'>팔로우</button>
+            <button className='userFollowButton'>{props.follow}</button>
         </li>
     )
 }
