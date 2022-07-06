@@ -13,6 +13,8 @@
 
 .inputText {
     font-size: 14px;
+    border-bottom: 1px solid #DBDBDB;
+    padding-bottom: 8px;
 }
 
 .inputText::placeholder {
