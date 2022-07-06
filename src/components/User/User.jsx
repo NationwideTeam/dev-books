@@ -1,6 +1,6 @@
 import React from 'react';
 import './user.css';
-import basicProfile from '../../assets/basic-profile-img.png';
+import basicProfile from '../../assets/basic-profile-img.svg';
 
 export const UserSearch = () => {
     return (
