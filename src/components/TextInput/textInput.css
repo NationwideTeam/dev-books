@@ -1,23 +1,22 @@
 .inputForm {
-    display: flex;
-    flex-direction: column;
-    width: 322px;
-    background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 322px;
+  background-color: white;
 }
 
 .inputLabel {
-    margin-bottom: 10px;
-    font-size: 12px;
-    color: #767676;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #767676;
 }
 
 .emailInput {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .emailInput:focus,
 .emailInput:active {
-    outline: none;
-    border-bottom: 1px solid #3E7C17 ;
-} 
-
+  outline: none;
+  border-bottom: 1px solid #3e7c17;
+}

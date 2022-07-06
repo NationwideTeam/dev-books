@@ -1,0 +1,45 @@
+.loginEmailMobileScreen {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.statusBar {
+  width: 390px;
+  height: 24px;
+  background-color: #ddd;
+}
+
+.loginEmail {
+  text-align: center;
+  margin: 24px;
+}
+
+#loginTitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+#loginForm {
+  margin: 40px 0;
+}
+
+#loginForm > input {
+  width: 322px;
+  height: 46px;
+  border-bottom: 1px solid #ddd;
+  margin: 16px 0;
+}
+
+.loginButton {
+  margin: 14px 0;
+}
+
+.loginEmailText {
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 12px;
+}
