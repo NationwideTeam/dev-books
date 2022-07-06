@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../buttons/button";
+import Button from "../buttons/Button";
 import "./navbar.css";
 
 export const BasicNav = () => {
@@ -21,10 +21,10 @@ export const SearchNav = () => {
       <button className="arrowButton">
         <span className="a11yHidden">뒤로가기</span>
       </button>
-      <input className="searchInput" type="text" value="계정 검색"/>
+      <input className="searchInput" type="text" value="계정 검색" />
     </div>
   );
-}; 
+};
 
 export const MainNav = (props) => {
   return (
@@ -35,7 +35,7 @@ export const MainNav = (props) => {
       </button>
     </div>
   );
-}; 
+};
 
 export const UploadNav = () => {
   return (
