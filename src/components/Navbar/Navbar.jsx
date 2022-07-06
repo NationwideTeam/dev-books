@@ -48,13 +48,13 @@ export const UploadNav = (props) => {
   );
 };
 
-export const ChatNav = () => {
+export const ChatNav = (props) => {
   return (
     <div className="nav">
       <button className="arrowButton">
         <span className="a11yHidden">뒤로가기</span>
       </button>
-      <p className="chatTitle">애월읍 위니브 감귤농장</p>
+      <p className="chatTitle">{props.title}</p>
       <button className="moreButton">
         <span className="a11yHidden">더보기</span>
       </button>
