@@ -7,7 +7,7 @@
 .chatMain {
   height: 711px;
   background-color: #f8f8f8;;
-  padding: 11px 16px;
+  padding: 20px 16px;
 }
 
 .chatMain ul {
@@ -44,6 +44,7 @@
   font-size: 10px;
   line-height: 13px;
   color: #767676;
+  border-radius: 0 10px;
 }
 
 .myChat {
