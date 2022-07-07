@@ -1,0 +1,44 @@
+.Products {
+  width: 390px;
+  height: 208px;
+  padding: 20px 16px;
+}
+
+.productsWrapper {
+  background-color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+  display: flex;
+}
+
+#productsTitle {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.productImageWrapper {
+  display: flex;
+}
+
+.productText {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-top: 6px;
+}
+
+.productPrice {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  margin-top: 4px;
+  color: #f26e22;
+}
+
+.product > img {
+  height: 90px;
+  width: 140px;
+  border-radius: 8px;
+  border: 0.5px solid #dbdbdb;
+  margin: 16px 10px 0 0;
+}
