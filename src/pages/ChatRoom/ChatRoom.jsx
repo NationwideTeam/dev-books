@@ -7,10 +7,8 @@ export default function ChatRoom() {
   return (
     <div className="chatRoomWrap">
       <Topbar/>
-      <header className="chatNavBar">
-        <ChatNav title="애월읍 위니브 감귤농장"/>
-      </header>
-      <main className="chatMain">
+      <ChatNav title="애월읍 위니브 감귤농장"/>
+      <section className="chatMain">
         <ul>
           <li className="userChat">
             <img className="userChatImg" src={userProfile} alt="" />
@@ -31,8 +29,8 @@ export default function ChatRoom() {
             <div className="myMessage myMessageImg"></div>
           </li>
         </ul>
-      </main>
-      <footer className="chatInputWrap">
+      </section>
+      <section className="chatInputWrap">
         <form className="chatInputForm">
           <label for="chatUploadFile" className="chatUploadBtn"></label>
           <input className="chatUpload" id="chatUploadFile" type="file"></input>
@@ -40,7 +38,7 @@ export default function ChatRoom() {
           <input type="text" placeholder="메시지 입력하기..." className="chatInput" id="chatRoomInput" />
           <button className="chatSubmit" type="button">전송</button>
         </form>
-      </footer>
+      </section>
     </div>
   )
 }
