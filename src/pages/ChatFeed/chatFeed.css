@@ -1,0 +1,19 @@
+.chatFeed {
+  width: 390px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.chatFeedMain {
+  box-sizing: border-box;
+  height: 772px;
+}
+
+.chatFeedLists {
+  margin-top: 20px;
+}
+
+
+.chatFeedLists li+li {
+  margin-top: 20px;
+}
