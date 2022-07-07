@@ -17,7 +17,12 @@ function LoginEmail() {
           <TextInput type="email" label="이메일" />
         </div>
         <TextInput type="password" label="비밀번호" />
-        <div className="loginButton">
+        <div
+          className="loginButton"
+          onClick={() => {
+            navigate("/HomeFeedData");
+          }}
+        >
           <Button className="button lg">로그인</Button>
         </div>
         <p
