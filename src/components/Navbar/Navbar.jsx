@@ -21,7 +21,7 @@ export const SearchNav = () => {
       <button className="arrowButton">
         <span className="a11yHidden">뒤로가기</span>
       </button>
-      <input className="searchInput" type="text" value="계정 검색" />
+      <input className="searchInput" type="text" placeholder="계정 검색" />
     </div>
   );
 };
