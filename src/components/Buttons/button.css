@@ -24,7 +24,8 @@
   border: 1px solid #dbdbdb;
 }
 
-.active:hover {
+.active:hover,
+.active:focus {
   background-color: #ffffff;
   color: #3e7c17;
 }
