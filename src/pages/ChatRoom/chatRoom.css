@@ -1,0 +1,132 @@
+.chatRoomWrap {
+  width: 390px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.chatMain {
+  height: 711px;
+  background-color: #f8f8f8;;
+  padding: 11px 16px;
+}
+
+.chatMain ul {
+  padding-top: 215px;
+}
+
+.userChat {
+  display: flex;
+  align-items: flex-end;
+  margin: 9px 0;
+  padding-left: 42px;
+  position: relative;
+}
+.userChat .userChatImg {
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.userChat .userMessage {
+  width: 240px;
+  background-color: #fff;
+  border: 1px solid #C4C4C4;
+  border-radius: 0 10px;
+  padding: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0 6px 0 12px;
+}
+.userChat .userChatTime {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 13px;
+  color: #767676;
+}
+
+.myChat {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin: 9px 0;
+  padding-left: 42px;
+  position: relative;
+}
+.myChat .myMessage {
+  width: 110px;
+  background-color: #3E7C17;
+  color: #fff;
+  border-radius: 10px 0;
+  padding: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin-left: 6px;
+}
+.myChat .myMessage.myMessageImg {
+  background: url(../../assets/chat-exapmle.png);
+  width: 240px;
+  height: 240px;
+}
+
+.myChat .myChatTime {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 13px;
+  color: #767676;
+}
+
+
+
+.chatInputWrap {
+  width: 100%;
+}
+.chatInputForm {
+  width: 390px;
+  margin: 0 auto;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border-top: 0.5px solid #DBDBDB;
+  display: flex;
+  align-items: center;
+}
+.chatUploadBtn {
+  display: inline-block;
+  background: url(../../assets/img-button.svg);
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+.chatUpload[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+} 
+
+
+
+.chatInput {
+  width: 264px;
+  margin: 0 10px 0 18px;
+  vertical-align: middle;
+}
+
+.chatInput::placeholder {
+  color: #C4C4C4;
+}
+
+.chatSubmit {
+  background-color: transparent;
+  color: #C4C4C4;
+  padding: 0;
+  vertical-align: middle;
+}
+
+
+
+
