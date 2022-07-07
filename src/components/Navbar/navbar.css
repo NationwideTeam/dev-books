@@ -5,6 +5,7 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  background-color: #fff;
 }
 
 .arrowButton {
@@ -31,6 +32,10 @@
   font-size: 14px;
   font-weight: 400;
   color: #C4C4C4;
+}
+
+.searchInput::placeholder {
+  color:#C4C4C4
 }
 
 .mainTitle {
