@@ -1,0 +1,22 @@
+.searchFeed {
+  width: 390px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.searchFeedMain {
+  height: 712px;
+}
+
+.searchLists {
+  margin-top: 20px;
+}
+
+.searchLists li {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searchLists li+li {
+  margin-top: 16px;
+}
