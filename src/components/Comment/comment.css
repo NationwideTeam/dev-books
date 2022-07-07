@@ -17,9 +17,11 @@
   margin: 0 10px 0 18px;
   vertical-align: middle;
 }
-
 .inputComment::placeholder {
   color: #C4C4C4;
+}
+.inputComment:focus {
+  outline: none;
 }
 
 .uploadComment {
