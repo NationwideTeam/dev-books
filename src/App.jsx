@@ -28,20 +28,20 @@ function App() {
           <Link to={"/login"}>로그인 / </Link>
           <Link to={"/joinMembership"}>회원가입 /</Link>
           <Link to={"/loginEmail"}>이메일로 로그인 / </Link>
-          <Link to={"/JoinProfile"}>Join Profile /</Link>
-          <Link to={"/HomeFeed"}>HomeFeed /</Link>
-          <Link to={"/HomeFeedData"}>HomeFeedData /</Link>
-          <Link to={"/SearchFeed"}>SearchFeed /</Link>
+          <Link to={"/JoinProfile"}>프로필 설정 /</Link>
+          <Link to={"/HomeFeed"}>홈피드 /</Link>
+          <Link to={"/HomeFeedData"}>홈피드 데이터 /</Link>
+          <Link to={"/SearchFeed"}>계정 검색 /</Link>
           <Link to={"/yourProfile"}>OO님의 프로필 /</Link>
-          <Link to={"/myProfile"}> 마이 프 로필 /</Link>
+          <Link to={"/myProfile"}> 마이 프로필 /</Link>
           <Link to={"/profileUpdate"}> 프로필 수정 /</Link>
           <Link to={"/productUpload"}> 상품등록 /</Link>
-          <Link to={"/singliPost"}> 게시물 /</Link>
-          <Link to={"/PostUpload"}>PostUpload /</Link>
-          <Link to={"/PostUploadContent"}>PostUploadContent /</Link>
-          <Link to={"/chatFeed"}>chatFeed /</Link>
-          <Link to={"/chatRoom"}>ChatRoom /</Link>
-          <Link to={"/NotFound"}>NotFound /</Link>
+          <Link to={"/singliPost"}> 포스트 /</Link>
+          <Link to={"/PostUpload"}>포스트 업로드 /</Link>
+          <Link to={"/PostUploadContent"}>포스트 업로드_내용 /</Link>
+          <Link to={"/chatFeed"}>채팅 피드 /</Link>
+          <Link to={"/chatRoom"}>채팅방 /</Link>
+          <Link to={"/NotFound"}>404페이지 /</Link>
         </nav>
         <Routes>
           <Route path="/" element={<Splash />}></Route>

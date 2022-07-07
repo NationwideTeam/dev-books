@@ -3,8 +3,10 @@ import "./joinMembership.css";
 import Button from "../../components/Buttons/Button";
 import { TextInput } from "../../components/TextInput/TextInput";
 import Topbar from "../../components/Topbar/Topbar";
+import { useNavigate } from "react-router-dom";
 
 function JoinMembership() {
+  let navigate = useNavigate();
   return (
     <article className="JoinMembershipMobileScreen">
       <Topbar />
@@ -22,7 +24,12 @@ function JoinMembership() {
           placeholder="비밀번호를 입력해주세요."
           type="password"
         />
-        <div className="loginButton">
+        <div
+          className="loginButton"
+          onClick={() => {
+            navigate("/JoinProfile");
+          }}
+        >
           <Button className="button lg">다음</Button>
         </div>
       </article>
