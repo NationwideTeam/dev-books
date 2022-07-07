@@ -1,5 +1,6 @@
 .chatRoomWrap {
   width: 390px;
+  height: 844px;
   margin: 0 auto;
   background-color: #fff;
 }
@@ -7,11 +8,10 @@
 .chatMain {
   height: 711px;
   background-color: #f8f8f8;;
-  padding: 20px 16px;
+  padding: 215px 16px 11px 16px;
 }
 
 .chatMain ul {
-  padding-top: 215px;
 }
 
 .userChat {
