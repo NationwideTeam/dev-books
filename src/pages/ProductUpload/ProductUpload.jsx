@@ -1,5 +1,6 @@
 import { UploadNav } from '../../components/Navbar/Navbar';
 import { TextInput } from '../../components/TextInput/TextInput';
+import Topbar from "../../components/Topbar/Topbar";
 import './productUpload.css';
 
 export const ProductImgUpload = () => {
@@ -17,7 +18,8 @@ export const ProductImgUpload = () => {
 export const ProductUpload = () => {
   return (
     <div className="productUpload">
-      <UploadNav />
+      <Topbar/>
+      <UploadNav title="저장" />
       <ProductImgUpload />
       <div className="textInput">
         <TextInput 

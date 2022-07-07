@@ -1,12 +1,14 @@
 import { UploadNav } from '../../components/Navbar/Navbar';
 import { TextInput } from '../../components/TextInput/TextInput';
 import ProfileImgUpload from '../../components/ProfileImgUpload/ProfileImgUpload';
+import Topbar from "../../components/Topbar/Topbar";
 import './profileUpdate.css';
 
 export const ProfileUpdate = () => {
   return (
     <div className="profileUpdate">
-      <UploadNav />
+      <Topbar />
+      <UploadNav title="저장"/>
       <ProfileImgUpload />
       <div className="textInput">
         <TextInput 
