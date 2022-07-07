@@ -1,12 +1,10 @@
 import React from 'react';
 import './user.css';
-import basicProfile from '../../assets/basic-profile-img.svg';
-import basicProfileChat from '../../assets/basic-profile.svg';
 
 export const UserSearch = (props) => {
     return (
         <li className='userSearchList'>
-            <img src={basicProfile} alt="유저 기본 프로필 이미지" />
+            <img src={props.picture} alt="유저 프로필 이미지" />
             <div className='userInfo'>
                 <strong className='userName'>
                     {props.name}
@@ -22,7 +20,7 @@ export const UserSearch = (props) => {
 export const UserFollow = (props) => {
     return (
         <li className='userSearchList'>
-            <img src={basicProfile} alt="유저 기본 프로필 이미지" />
+            <img src={props.picture} alt="유저 프로필 이미지" />
             <div className='userInfo'>
                 <strong className='userName'>
                     {props.name}
@@ -39,7 +37,7 @@ export const UserFollow = (props) => {
 export const UserChatList = (props) => {
   return(
     <li className='userChatList'>
-      <img src={basicProfileChat} alt='유저 기본 프로필 이미지' />
+      <img src={props.picture} alt='유저 프로필 이미지' />
       <div className='userChatInfo'>
         <strong className='userChatName'>
           {props.name}
