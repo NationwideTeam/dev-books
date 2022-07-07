@@ -115,9 +115,11 @@
   margin: 0 10px 0 18px;
   vertical-align: middle;
 }
-
 .chatInput::placeholder {
   color: #C4C4C4;
+}
+.chatInput:focus {
+  outline: none;
 }
 
 .chatSubmit {
