@@ -38,6 +38,10 @@
   color:#C4C4C4
 }
 
+.searchInput:focus {
+  outline: none;
+}
+
 .mainTitle {
   margin-left: 16px;
   font-size: 18px;
