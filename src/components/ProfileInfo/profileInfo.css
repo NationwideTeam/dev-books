@@ -1,0 +1,52 @@
+.profileInfo {
+  text-align: center;
+  margin: 30px 0 24px 0;
+}
+
+.profileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.follower,
+.followings {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.followings {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.followText {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+}
+
+.profileName {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.profileId {
+  margin-top: 5px;
+  font-family: Spoqa Han Sans Neo;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.profileDecript {
+  margin-top: 15px;
+  font-family: Spoqa Han Sans Neo;
+  font-size: 14px;
+  font-weight: 400;
+}

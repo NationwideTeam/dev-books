@@ -1,0 +1,23 @@
+.postbar {
+  width: 400px;
+  height: 44px;
+  background-color: #fff;
+  border-top: 0.5px solid #dbdbdb;
+  border-bottom: 0.5px solid #dbdbdb;
+}
+
+.postList {
+  width: 26px;
+  height: 26px;
+  float: right;
+  margin: 8px 10px 0 0;
+  background: url(../../assets/icon/icon-post-list-on.svg) no-repeat;
+}
+
+.postAlbum {
+  width: 26px;
+  height: 26px;
+  float: right;
+  margin: 8px 20px 0 0;
+  background: url(../../assets/icon/icon-post-album-off.svg) no-repeat;
+}
