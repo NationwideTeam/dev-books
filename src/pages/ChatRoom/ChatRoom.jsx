@@ -32,9 +32,9 @@ export default function ChatRoom() {
       </section>
       <section className="chatInputWrap">
         <form className="chatInputForm">
-          <label for="chatUploadFile" className="chatUploadBtn"></label>
+          <label htmlFor="chatUploadFile" className="chatUploadBtn"></label>
           <input className="chatUpload" id="chatUploadFile" type="file"></input>
-          <label for="chatRoomInput" className="a11yHidden">메시지 입력창 입니다.</label>
+          <label htmlFor="chatRoomInput" className="a11yHidden">메시지 입력창 입니다.</label>
           <input type="text" placeholder="메시지 입력하기..." className="chatInput" id="chatRoomInput" />
           <button className="chatSubmit" type="button">전송</button>
         </form>
