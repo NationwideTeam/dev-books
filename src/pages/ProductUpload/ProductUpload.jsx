@@ -7,7 +7,7 @@ export const ProductImgUpload = () => {
   return (
     <div className="productImgUpload">
       <span className="imgUploadText">이미지 등록</span>
-      <label for="productImg" className="productImg">
+      <label htmlFor="productImg" className="productImg">
         <img src="" alt="" />
       </label>
       <input type="file" id="productImg" name="productImg" accept="image/*" className="a11yHidden" />
