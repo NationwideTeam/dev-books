@@ -1,13 +1,26 @@
 import React from "react";
 import Button from "../Buttons/Button";
 import "./navbar.css";
+import { useNavigate } from "react-router-dom";
+
+export const ArrowButton = () => {
+  const navigate = useNavigate();
+  return (
+    <button
+      onClick={() => {
+        navigate(-1);
+      }}
+      className="arrowButton"
+    >
+      <span className="a11yHidden">뒤로가기</span>
+    </button>
+  );
+};
 
 export const BasicNav = () => {
   return (
     <div className="nav">
-      <button className="arrowButton">
-        <span className="a11yHidden">뒤로가기</span>
-      </button>
+      <ArrowButton />
       <button className="moreButton">
         <span className="a11yHidden">더보기</span>
       </button>
@@ -18,9 +31,7 @@ export const BasicNav = () => {
 export const SearchNav = () => {
   return (
     <div className="nav">
-      <button className="arrowButton">
-        <span className="a11yHidden">뒤로가기</span>
-      </button>
+      <ArrowButton />
       <input className="searchInput" type="text" placeholder="계정 검색" />
     </div>
   );
@@ -40,9 +51,7 @@ export const MainNav = (props) => {
 export const UploadNav = (props) => {
   return (
     <div className="nav">
-      <button className="arrowButton">
-        <span className="a11yHidden">뒤로가기</span>
-      </button>
+      <ArrowButton />
       <Button className="button ms disabled uploadButton">{props.title}</Button>
     </div>
   );
@@ -51,9 +60,7 @@ export const UploadNav = (props) => {
 export const ChatNav = (props) => {
   return (
     <div className="nav">
-      <button className="arrowButton">
-        <span className="a11yHidden">뒤로가기</span>
-      </button>
+      <ArrowButton />
       <p className="chatTitle">{props.title}</p>
       <button className="moreButton">
         <span className="a11yHidden">더보기</span>
