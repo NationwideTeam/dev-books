@@ -38,7 +38,7 @@ function App() {
           <Link to={"/followers"}> 팔로워 /</Link>
           <Link to={"/profileUpdate"}> 프로필 수정 /</Link>
           <Link to={"/productUpload"}> 상품등록 /</Link>
-          <Link to={"/singliPost"}> 포스트 /</Link>
+          <Link to={"/singlePost"}> 포스트 /</Link>
           <Link to={"/PostUpload"}>포스트 업로드 /</Link>
           <Link to={"/PostUploadContent"}>포스트 업로드_내용 /</Link>
           <Link to={"/chatFeed"}>채팅 피드 /</Link>
@@ -52,7 +52,7 @@ function App() {
           <Route path="/joinMembership" element={<JoinMembership />}></Route>
           <Route path="/productUpload" element={<ProductUpload />}></Route>
           <Route path="/profileUpdate" element={<ProfileUpdate />}></Route>
-          <Route path="/singliPost" element={<SinglePost />}></Route>
+          <Route path="/singlePost" element={<SinglePost />}></Route>
           <Route path="/myProfile" element={<MyProfile />}></Route>
           <Route path="/followers" element={<Followers />}></Route>
           <Route path="/yourProfile" element={<YourProfile />}></Route>
