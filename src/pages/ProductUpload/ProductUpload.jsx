@@ -26,6 +26,8 @@ export const ProductUpload = () => {
           label="상품명"
           type="text"
           placeholder="2~15자 이내여야 합니다."
+          for={'productName'}
+          id={'productName'}
         />
       </div>
       <div className="textInput">
@@ -33,6 +35,8 @@ export const ProductUpload = () => {
           label="가격"
           type="number"
           placeholder="숫자만 입력 가능합니다."
+          for={'price'}
+          id={'price'}
         />
       </div>
       <div className="textInput">
@@ -40,6 +44,9 @@ export const ProductUpload = () => {
           label="판매 링크"
           type="text"
           placeholder="URL을 입력해 주세요."
+          for={'link'}
+          id={'link'}
+
         />
       </div>
     </div>

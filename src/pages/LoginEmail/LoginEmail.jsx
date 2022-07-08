@@ -14,9 +14,9 @@ function LoginEmail() {
       <article className="loginEmail">
         <h1 id="loginTitle">로그인</h1>
         <div className="emailAccount">
-          <TextInput type="email" label="이메일" />
+          <TextInput type="email" label="이메일" for={'email'} id={'email'} />
         </div>
-        <TextInput type="password" label="비밀번호" />
+        <TextInput type="password" label="비밀번호" for={'password'} id={'password'} />
         <div
           className="loginButton"
           onClick={() => {

@@ -15,6 +15,8 @@ export const ProfileUpdate = () => {
           label="사용자 이름"
           type="text"
           placeholder="2~10자 이내여야 합니다."
+          for={'userName'}
+          id={'userName'}
         />
       </div>
       <div className="textInput">
@@ -22,6 +24,8 @@ export const ProfileUpdate = () => {
           label="계정 ID"
           type="text"
           placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
+          for={'userId'}
+          id={'userId'}
         />
       </div>
       <div className="textInput">
@@ -29,6 +33,8 @@ export const ProfileUpdate = () => {
           label="소개"
           type="text"
           placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
+          for={'introduce'}
+          id={'introduce'}
         />
       </div>
     </div>
