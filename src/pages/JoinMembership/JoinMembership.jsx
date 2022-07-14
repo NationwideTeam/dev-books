@@ -1,30 +1,30 @@
-import React from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './joinMembership.css';
-import Topbar from '../../components/Topbar/Topbar';
-import Button from '../../components/Buttons/Button';
-import { TextInput } from '../../components/TextInput/TextInput';
+import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./joinMembership.css";
+import Topbar from "../../components/Topbar/Topbar";
+import Button from "../../components/Buttons/Button";
+import { TextInput } from "../../components/TextInput/TextInput";
 
 function JoinMembership() {
-  const [userEmail, setUserEmail] = useState('');
-  const [userPw, setUserPw] = useState('');
+  const [userEmail, setUserEmail] = useState("");
+  const [userPw, setUserPw] = useState("");
 
-  const [emailError, setEmailError] = useState('');
-  const [pwError, setPwError] = useState('');
+  const [emailError, setEmailError] = useState("");
+  const [pwError, setPwError] = useState("");
 
   let navigate = useNavigate();
 
   const handleCheckEmail = async () => {
-    const url = 'https://mandarin.api.weniv.co.kr';
-    const emailValidReqPath = '/user/emailvalid';
+    const url = "https://mandarin.api.weniv.co.kr";
+    const emailValidReqPath = "/user/emailvalid";
 
     const regExp =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     const resultEmail = regExp.test(userEmail);
 
     const next = () => {
-      navigate('/joinProfile', {
+      navigate("/joinProfile", {
         state: {
           userEmail: userEmail,
           userPW: userPw,
@@ -34,9 +34,9 @@ function JoinMembership() {
 
     try {
       const res = await fetch(url + emailValidReqPath, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
         body: JSON.stringify({
           user: {
@@ -47,13 +47,13 @@ function JoinMembership() {
       const json = await res.json();
       console.log(json);
 
-      if (userEmail === '') {
-        setUserEmail('이메일을 입력해주세요.');
+      if (userEmail === "") {
+        setUserEmail("이메일을 입력해주세요.");
       } else if (userPw.length <= 5) {
-        setPwError('비밀번호는 6자 이상이어야 합니다.');
+        setPwError("비밀번호는 6자 이상이어야 합니다.");
       } else if (resultEmail === false) {
-        setEmailError('잘못된 이메일 형식입니다.');
-      } else if (json.message === '이미 가입된 이메일 주소 입니다.') {
+        setEmailError("잘못된 이메일 형식입니다.");
+      } else if (json.message === "이미 가입된 이메일 주소 입니다.") {
         setEmailError(json.message);
       } else {
         next();
@@ -78,7 +78,7 @@ function JoinMembership() {
             value={userEmail}
             onChange={(e) => {
               setUserEmail(e.target.value);
-              setEmailError('');
+              setEmailError("");
             }}
           />
           <span className="errorMessage">{emailError}</span>
@@ -92,7 +92,7 @@ function JoinMembership() {
           value={userPw}
           onChange={(e) => {
             setUserPw(e.target.value);
-            setPwError('');
+            setPwError("");
           }}
         />
         <span className="errorMessage">{pwError}</span>

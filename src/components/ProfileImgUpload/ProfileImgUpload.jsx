@@ -1,15 +1,21 @@
-import ProfileImg from '../../assets/basic-profile-img.svg';
-import './profileImgUpload.css';
+import "./profileImgUpload.css";
 
-export const ProfileImgUpload = () => {
+export const ProfileImgUpload = (props) => {
   return (
     <div>
       <label htmlFor="profileImg" className="profileImgUpload">
-        <img src={ProfileImg} alt="" />
+        <img src={props.src} alt="" />
       </label>
-      <input type="file" id="profileImg" name="profileImg" accept="image/*" className="a11yHidden" />
+      <input
+        type="file"
+        id="profileImg"
+        name="profileImg"
+        accept="image/*"
+        className="a11yHidden"
+        onChange={props.onChange}
+      />
     </div>
-  )
-} 
+  );
+};
 
 export default ProfileImgUpload;
