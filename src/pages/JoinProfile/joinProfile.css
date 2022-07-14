@@ -31,3 +31,9 @@
   margin: 30px auto;
   display: block;
 }
+
+.errorMessage {
+  font-size: 12px;
+  font-weight: 400;
+  color: #eb5757;
+}
