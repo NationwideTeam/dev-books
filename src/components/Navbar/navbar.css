@@ -55,7 +55,7 @@
   background: url(../../assets/icon/icon-search.svg) no-repeat;
 }
 
-.chatTitle {
+.commonTitle, .chatTitle {
   margin-left: 10px;
   font-size: 14px;
   font-weight: 500;

@@ -1,5 +1,5 @@
 import Topbar from "../../components/Topbar/Topbar";
-import { ChatNav } from "../../components/Navbar/Navbar"
+import { CommonNav } from "../../components/Navbar/Navbar"
 import { UserFollow } from "../../components/User/User"
 import TabMenu from "../../components/TabMenu/TabMenu";
 
@@ -12,7 +12,7 @@ export const Followers = () => {
   return (
     <div className="followers">
       <Topbar/>
-      <ChatNav title="Followers"/>
+      <CommonNav title="Followers"/>
       <ul className="followerUser">
         <UserFollow 
           picture={UserImg1}
