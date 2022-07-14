@@ -10,3 +10,9 @@
 .nextButton {
   margin-top: 14px;
 }
+
+.errorMessage {
+  font-size: 12px;
+  font-weight: 400;
+  color: #EB5757;
+}
