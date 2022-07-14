@@ -17,6 +17,15 @@ export const ArrowButton = () => {
   );
 };
 
+export const CommonNav = (props) => {
+  return (
+    <div className="nav">
+      <ArrowButton />
+      <p className="commonTitle">{props.title}</p>
+    </div>
+  );
+};
+
 export const BasicNav = () => {
   return (
     <div className="nav">
