@@ -45,10 +45,13 @@ function LoginEmail() {
       const resLogin = await fetch(url + loginPath, init);
       const resLoginJson = await resLogin.json();
       console.log(resLoginJson);
-      if (userEmail === "") {
+      if (userEmail === "" && userPw === "") {
         setEmailError("이메일을 입력해주세요.");
+        setPwError("비밀번호를 입력해주세요.");
       } else if (userPw === "") {
         setPwError("비밀번호를 입력해주세요.");
+      } else if (userEmail === "") {
+        setEmailError("이메일을 입력해주세요.");
       } else if (resLoginJson.status === 422) {
         setPwError("이메일 또는 비밀번호가 일치하지 않습니다.");
       } else if (resLoginJson.status !== 422) {
@@ -94,7 +97,14 @@ function LoginEmail() {
           />
           <span className="errorMessage">{pwError}</span>
           <div className="loginButton" onClick={login}>
-            <Button className="button lg" type="submit">
+            <Button
+              className={
+                !emailError && !pwError && userEmail !== "" && userPw !== ""
+                  ? "button lg"
+                  : "button lg disabled"
+              }
+              type="submit"
+            >
               로그인
             </Button>
           </div>

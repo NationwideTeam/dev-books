@@ -1,3 +1,5 @@
+/** @format */
+
 .joinProfile {
   width: 390px;
   height: 844px;
@@ -28,6 +30,7 @@
 }
 
 .joinButton {
+  width: 322px;
   margin: 30px auto;
   display: block;
 }
@@ -36,4 +39,10 @@
   font-size: 12px;
   font-weight: 400;
   color: #eb5757;
+}
+
+.imgErrorMsg {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }

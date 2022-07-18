@@ -3,7 +3,7 @@ import "./textInput.css";
 
 export const TextInput = (props) => {
   return (
-    <form className="inputForm">
+    <div className="inputForm">
       <label htmlFor={props.for} className="inputLabel">{props.label}</label>
       <input
         id={props.id}
@@ -11,8 +11,9 @@ export const TextInput = (props) => {
         type={props.type}
         placeholder={props.placeholder}
         onChange={props.onChange}
+        onBlur={props.onBlur}
         value={props.value}
       />
-    </form>
+    </div>
   );
 };

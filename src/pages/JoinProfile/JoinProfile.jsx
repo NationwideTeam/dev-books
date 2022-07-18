@@ -16,6 +16,7 @@ export const JoinProfile = () => {
 
   const [userNameError, setUserNameError] = useState("");
   const [userIdError, setUserIdError] = useState("");
+  const [userImgErr, setUserImgErr] = useState("");
 
   const location = useLocation();
   const userEmail = location.state.userEmail;
@@ -125,10 +126,17 @@ export const JoinProfile = () => {
   };
 
   const handleGetImg = async (e) => {
-    console.log(e.target.files[0]);
+    console.log(e.target.files);
     const file = e.target.files[0];
-    const imgSrc = await imgUpload(file);
-    setUserImg(imgSrc);
+    const imgSize = e.target.files[0].size;
+    const maxSize = 1024 * 1024; // 1MB
+    if (imgSize > maxSize) {
+      setUserImgErr("이미지 용량은 1MB 이내로 등록 가능합니다.");
+    } else {
+      setUserImgErr("");
+      const imgSrc = await imgUpload(file);
+      setUserImg(imgSrc);
+    }
   };
 
   return (
@@ -137,6 +145,9 @@ export const JoinProfile = () => {
       <h1 className="joinProfileTitle">프로필 설정</h1>
       <p className="joinProfileText">나중에 언제든지 변경할 수 있습니다.</p>
       <ProfileImgUpload src={userImg} onChange={handleGetImg} />
+      <div className="imgErrorMsg errorMessage">
+        <span>{userImgErr}</span>
+      </div>
       <div className="textInput">
         <TextInput
           label="사용자 이름"
@@ -180,8 +191,14 @@ export const JoinProfile = () => {
           }}
         />
       </div>
-      <div onClick={checkIdValid}>
-        <Button className="button lg disabled joinButton">
+      <div onClick={checkIdValid} className="joinButton">
+      <Button
+          className={
+            !userNameError && !userIdError && userName !== "" && userId !== ""
+              ? "button lg"
+              : "button lg disabled"
+          }
+        >
           데브북스 시작하기
         </Button>
       </div>
