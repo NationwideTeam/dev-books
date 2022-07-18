@@ -15,6 +15,27 @@ function JoinMembership() {
 
   let navigate = useNavigate();
 
+  const next = () => {
+    navigate("/joinProfile", {
+      state: {
+        userEmail: userEmail,
+        userPW: userPw,
+      },
+    });
+  };
+
+  // 비밀번호 유효성 체크
+  const handleCheckPw = () => {
+    if (userPw === "") {
+      setPwError("비밀번호를 입력해주세요");
+    } else if (userPw.length <= 5 && userPw !== "") {
+      setPwError("비밀번호는 6자 이상이어야 합니다.");
+    } else {
+      setPwError("");
+    }
+  };
+
+  // 이메일 유효성 체크
   const handleCheckEmail = async () => {
     const url = "https://mandarin.api.weniv.co.kr";
     const emailValidReqPath = "/user/emailvalid";
@@ -22,15 +43,6 @@ function JoinMembership() {
     const regExp =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     const resultEmail = regExp.test(userEmail);
-
-    const next = () => {
-      navigate("/joinProfile", {
-        state: {
-          userEmail: userEmail,
-          userPW: userPw,
-        },
-      });
-    };
 
     try {
       const res = await fetch(url + emailValidReqPath, {
@@ -48,15 +60,13 @@ function JoinMembership() {
       console.log(json);
 
       if (userEmail === "") {
-        setUserEmail("이메일을 입력해주세요.");
-      } else if (userPw.length <= 5) {
-        setPwError("비밀번호는 6자 이상이어야 합니다.");
+        setEmailError("이메일을 입력해주세요.");
       } else if (resultEmail === false) {
         setEmailError("잘못된 이메일 형식입니다.");
       } else if (json.message === "이미 가입된 이메일 주소 입니다.") {
         setEmailError(json.message);
       } else {
-        next();
+        setEmailError("");
       }
     } catch (err) {
       console.log(err);
@@ -80,6 +90,7 @@ function JoinMembership() {
               setUserEmail(e.target.value);
               setEmailError("");
             }}
+            onBlur={handleCheckEmail}
           />
           <span className="errorMessage">{emailError}</span>
         </div>
@@ -94,10 +105,21 @@ function JoinMembership() {
             setUserPw(e.target.value);
             setPwError("");
           }}
+          onBlur={handleCheckPw}
         />
         <span className="errorMessage">{pwError}</span>
         <div className="loginButton" onClick={handleCheckEmail}>
-          <Button className="button lg">다음</Button>
+        <Button
+            className={
+              !emailError && !pwError && userEmail !== "" && userPw !== ""
+                ? "button lg"
+                : "disabled button lg"
+            }
+            onClick={next}
+            type="submit"
+          >
+            다음
+          </Button>
         </div>
       </article>
     </article>
