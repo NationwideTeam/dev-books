@@ -1,17 +1,18 @@
 import React from "react";
 import "./profileInfo.css";
+import { Link } from "react-router-dom";
 
 function ProfileInfo(props) {
   return (
     <div className="profileInfo">
       <div className="profileWrapper">
         <div className="follower">
-          <p>{props.follower}</p>
+          <Link to="/followers">{props.follower}</Link>
           <p className="followText">followers</p>
         </div>
         <img src={props.ProfileImg} className="profileImg" alt="" />
         <div className="followings">
-          <p>{props.followings}</p>
+          <Link to="/followings">{props.followings}</Link>
           <p className="followText">followings</p>
         </div>
       </div>
