@@ -3,15 +3,29 @@ import Topbar from "../../components/Topbar/Topbar";
 import { ChatNav } from "../../components/Navbar/Navbar";
 import userProfile from "../../assets/basic-profile-img.svg";
 import { useState } from "react";
+import Modal from "../../components/Modal/Modal";
+import ModalContent from "../../components/ModalContent/ModalContent";
+import { useNavigate } from "react-router-dom";
 
 export default function ChatRoom() {
   const [chatInp, setChatInp] = useState("");
   const [chatImg, setChatImg] = useState("");
+  const [modal, setModal] = useState(false);
+
+  let navigate = useNavigate();
+  const next = () => {
+    navigate("/chatFeed");
+  };
 
   return (
     <div className="chatRoomWrap">
       <Topbar />
-      <ChatNav title="애월읍 위니브 감귤농장" />
+      <ChatNav
+        title="애월읍 위니브 감귤농장"
+        onClickBtn={() => {
+          setModal(true);
+        }}
+      />
       <section className="chatMain">
         <ul>
           <li className="userChat">
@@ -73,6 +87,16 @@ export default function ChatRoom() {
           </button>
         </form>
       </section>
+      <div
+        className={modal ? "chatModal" : "disabledChatModal"}
+        onClick={() => {
+          setModal(false);
+        }}
+      >
+        <Modal>
+          <ModalContent txt="채팅방 나가기" onClick={next} />
+        </Modal>
+      </div>
     </div>
   );
 }

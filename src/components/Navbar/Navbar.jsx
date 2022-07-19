@@ -71,7 +71,7 @@ export const ChatNav = (props) => {
     <div className="nav">
       <ArrowButton />
       <p className="chatTitle">{props.title}</p>
-      <button className="moreButton">
+      <button className="moreButton" onClick={props.onClickBtn}>
         <span className="a11yHidden">더보기</span>
       </button>
     </div>
