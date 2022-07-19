@@ -2,16 +2,28 @@ import "./chatRoom.css";
 import Topbar from "../../components/Topbar/Topbar";
 import { ChatNav } from "../../components/Navbar/Navbar";
 import userProfile from "../../assets/basic-profile-img.svg";
+import Modal from "../../components/Modal/Modal";
+import ModalContent from "../../components/ModalContent/ModalContent";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ChatRoom() {
-  const [chatInp, setChatInp] = useState("");
-  const [chatImg, setChatImg] = useState("");
+  const [modal, setModal] = useState(false);
+
+  let navigate = useNavigate();
+  const next = () => {
+    navigate("/HomeFeed");
+  };
 
   return (
     <div className="chatRoomWrap">
       <Topbar />
-      <ChatNav title="애월읍 위니브 감귤농장" />
+      <ChatNav
+        title="애월읍 위니브 감귤농장"
+        onClickBtn={() => {
+          setModal(true);
+        }}
+      />
       <section className="chatMain">
         <ul>
           <li className="userChat">
@@ -43,12 +55,7 @@ export default function ChatRoom() {
       <section className="chatInputWrap">
         <form className="chatInputForm">
           <label htmlFor="chatUploadFile" className="chatUploadBtn"></label>
-          <input
-            className="chatUpload"
-            id="chatUploadFile"
-            type="file"
-            onChange={(e) => setChatImg(e.target.files[0].name)}
-          ></input>
+          <input className="chatUpload" id="chatUploadFile" type="file"></input>
           <label htmlFor="chatRoomInput" className="a11yHidden">
             메시지 입력창 입니다.
           </label>
@@ -57,22 +64,22 @@ export default function ChatRoom() {
             placeholder="메시지 입력하기..."
             className="chatInput"
             id="chatRoomInput"
-            onChange={(e) => {
-              setChatInp(e.target.value);
-            }}
           />
-          <button
-            className={
-              chatImg === "" && chatInp === ""
-                ? "chatSubmit submitDisabled"
-                : "chatSubmit"
-            }
-            type="button"
-          >
+          <button className="chatSubmit" type="button">
             전송
           </button>
         </form>
       </section>
+      <div
+        className={modal ? "chatModal" : "disabledChatModal"}
+        onClick={() => {
+          setModal(false);
+        }}
+      >
+        <Modal>
+          <ModalContent txt="채팅방 나가기" onClick={next} />
+        </Modal>
+      </div>
     </div>
   );
 }
