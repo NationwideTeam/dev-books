@@ -7,6 +7,7 @@ import ProfileUpdate from "./pages/ProfileUpdate/ProfileUpdate";
 import SinglePost from "./pages/SinglePost/SinglePost";
 import MyProfile from "./pages/MyProfile/MyProfile";
 import Followers from "./pages/Followers/Followers";
+import Followings from "./pages/Followings/Followings";
 import YourProfile from "./pages/YourProfile/YourProfile";
 import ChatFeed from "./pages/ChatFeed/ChatFeed";
 import ChatRoom from "./pages/ChatRoom/ChatRoom";
@@ -36,6 +37,7 @@ function App() {
           <Link to={"/yourProfile"}>OO님의 프로필 /</Link>
           <Link to={"/myProfile"}> 마이 프로필 /</Link>
           <Link to={"/followers"}> 팔로워 /</Link>
+          <Link to={"/followings"}> 팔로잉 /</Link>
           <Link to={"/profileUpdate"}> 프로필 수정 /</Link>
           <Link to={"/productUpload"}> 상품등록 /</Link>
           <Link to={"/singlePost"}> 포스트 /</Link>
@@ -55,6 +57,7 @@ function App() {
           <Route path="/singlePost" element={<SinglePost />}></Route>
           <Route path="/myProfile" element={<MyProfile />}></Route>
           <Route path="/followers" element={<Followers />}></Route>
+          <Route path="/followings" element={<Followings />}></Route>
           <Route path="/yourProfile" element={<YourProfile />}></Route>
           <Route path="/chatFeed" element={<ChatFeed />}></Route>
           <Route path="/chatRoom" element={<ChatRoom />}></Route>
