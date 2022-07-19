@@ -10,8 +10,10 @@ import TabMenu from "../../components/TabMenu/TabMenu";
 import Button from "../../components/Buttons/Button";
 import basicProfile from "../../assets/basic-profile.svg";
 import postImg from "../../assets/post-img-example.png";
+import { useNavigate } from "react-router-dom";
 
 function MyProfile() {
+  let navigate = useNavigate();
   return (
     <div className="MyProfileMobileScreen">
       <Topbar />
@@ -25,7 +27,14 @@ function MyProfile() {
       />
       <div className="MyProfileButtonWrapper">
         <Button className="button md active">프로필 수정</Button>
-        <Button className="button md active">상품 등록</Button>
+        <Button
+          className="button md active"
+          onClick={() => {
+            navigate("/productUpload");
+          }}
+        >
+          상품 등록
+        </Button>
       </div>
       <Products />
 

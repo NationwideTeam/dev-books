@@ -63,6 +63,7 @@ function App() {
           <Route path="/JoinProfile" element={<JoinProfile />}></Route>
           <Route path="/NotFound" element={<NotFound />}></Route>
           <Route path="/PostUpload" element={<PostUpload />}></Route>
+
           <Route
             path="/PostUploadContent"
             element={<PostUploadContent />}
