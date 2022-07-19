@@ -10,3 +10,9 @@
   margin: 0 auto;
   margin-bottom: 16px;
 }
+
+.errorMessage {
+  font-size: 12px;
+  font-weight: 400;
+  color: #eb5757;
+}
