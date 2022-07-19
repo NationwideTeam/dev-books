@@ -1,6 +1,5 @@
 import React from "react";
 import "./profileInfo.css";
-import ProfileImg from "../../assets/basic-profile-img.svg";
 
 function ProfileInfo(props) {
   return (
@@ -10,7 +9,7 @@ function ProfileInfo(props) {
           <p>{props.follower}</p>
           <p className="followText">followers</p>
         </div>
-        <img src={ProfileImg} alt="" />
+        <img src={props.ProfileImg} className="profileImg" alt="" />
         <div className="followings">
           <p>{props.followings}</p>
           <p className="followText">followings</p>
