@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./yourProfile.css";
 import Topbar from "../../components/Topbar/Topbar";
 import { BasicNav } from "../../components/Navbar/Navbar";
@@ -15,6 +15,12 @@ import message from "../../assets/icon/icon-message-circle.svg";
 import share from "../../assets/icon/icon-share.svg";
 
 function MyProfile() {
+  const [isFollow, setIsFollow] = useState(true);
+
+  const handleClick = () => {
+    setIsFollow((isFollow) => !isFollow);
+  };
+
   return (
     <div className="MyProfileMobileScreen">
       <Topbar />
@@ -30,7 +36,12 @@ function MyProfile() {
         <div id="circle">
           <img src={message} alt="" />
         </div>
-        <Button className="button md">팔로우</Button>
+        <Button
+          className={isFollow ? "button md" : "button md active"}
+          onClick={handleClick}
+        >
+          {isFollow ? "팔로우" : "언팔로우"}
+        </Button>
         <div id="circle">
           <img src={share} alt="" />
         </div>
@@ -41,7 +52,6 @@ function MyProfile() {
       <div className="tabmenu">
         <TabMenu />
       </div>
-      <div className="blank"></div>
     </div>
   );
 }

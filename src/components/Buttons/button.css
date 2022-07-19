@@ -7,8 +7,7 @@
   color: #ffffff;
 }
 
-.button:hover,
-.button:focus {
+.button:hover {
   background: #125c13;
 }
 
@@ -24,8 +23,7 @@
   border: 1px solid #dbdbdb;
 }
 
-.active:hover,
-.active:focus {
+.active:hover {
   background-color: #ffffff;
   color: #3e7c17;
 }
