@@ -4,8 +4,11 @@ import ProfileImgUpload from "../../components/ProfileImgUpload/ProfileImgUpload
 import Topbar from "../../components/Topbar/Topbar";
 import "./profileUpdate.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ProfileUpdate = () => {
+  let navigate = useNavigate();
+
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
   const [intro, setIntro] = useState("");
@@ -22,6 +25,10 @@ export const ProfileUpdate = () => {
   useEffect(() => {
     profileGet();
   }, []);
+
+  const next = () => {
+    navigate("/myProfile");
+  };
 
   // 1. 프로필 정보 가져오기
   const profileGet = async () => {
@@ -129,11 +136,35 @@ export const ProfileUpdate = () => {
     }
   };
 
+  // 3. 프로필 수정 완료
+  const profileSave = async () => {
+    const res = await fetch(url + "/user", {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username: userName,
+          accountname: userId,
+          intro: intro,
+          image: userImg,
+        },
+      }),
+    });
+    const json = await res.json();
+    localStorage.removeItem("accountname");
+    localStorage.setItem("accountname", json.user.accountname);
+    next();
+  };
+
   return (
     <div className="profileUpdate">
       <Topbar />
       <UploadNav
         title="저장"
+        onClick={profileSave}
         className={
           !userNameError && !userIdError && userName !== "" && userId !== ""
             ? "button ms uploadButton"
