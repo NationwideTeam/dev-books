@@ -46,7 +46,19 @@ export const ProfileUpdate = () => {
   };
 
   // 2. 프로필 정보 변경
-  const profileChange = async () => {
+  // 사용자 이름 유효성 검사
+  const handleCheckUserName = () => {
+    if (userName.length < 1) {
+      setUserNameError("사용자 이름을 입력해주세요.");
+    } else if (userName.length > 10 || userName.length < 2) {
+      setUserNameError("사용자 이름은 2~10자 이내여야 합니다.");
+    } else {
+      setUserNameError("");
+    }
+  };
+
+  // 계정 ID 유효성 검사
+  const handleCheckUserId = async () => {
     const IdPath = "/user/accountnamevalid";
     const IdInput = {
       user: {
@@ -68,17 +80,14 @@ export const ProfileUpdate = () => {
       const regExp = /^[_A-Za-z0-9+.]*$/;
       let resultUserId = regExp.test(userId);
 
-      if (userName.length < 1) {
-        setUserNameError("사용자 이름을 입력해주세요.");
-      } else if (userName.length > 10 || userName.length < 2) {
-        setUserNameError("사용자 이름은 2~10자 이내여야 합니다.");
-      } else if (userId === "") {
+      if (userId === "") {
         setUserIdError("계정 ID를 입력해주세요.");
       } else if (resIdNameValidJson.message === "이미 가입된 계정ID 입니다.") {
         setUserIdError("이미 가입된 계정ID 입니다.");
       } else if (resultUserId === false) {
         setUserIdError("영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.");
       } else {
+        setUserIdError("");
       }
     } catch (err) {
       console.error(err);
@@ -88,7 +97,14 @@ export const ProfileUpdate = () => {
   return (
     <div className="profileUpdate">
       <Topbar />
-      <UploadNav title="저장" onClick={profileChange} />
+      <UploadNav
+        title="저장"
+        className={
+          !userNameError && !userIdError && userName !== "" && userId !== ""
+            ? "button ms uploadButton"
+            : "button ms disabled uploadButton"
+        }
+      />
       <ProfileImgUpload src={userImg} />
       <div className="textInput">
         <TextInput
@@ -102,6 +118,7 @@ export const ProfileUpdate = () => {
             setUserName(e.target.value);
             setUserNameError("");
           }}
+          onBlur={handleCheckUserName}
         />
         <span className="errorMessage">{userNameError}</span>
       </div>
@@ -117,6 +134,7 @@ export const ProfileUpdate = () => {
             setUserId(e.target.value);
             setUserIdError("");
           }}
+          onBlur={handleCheckUserId}
         />
         <span className="errorMessage">{userIdError}</span>
       </div>
