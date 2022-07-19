@@ -4,7 +4,7 @@
   display: flex;
   margin: 0 auto;
   justify-content: space-evenly;
-  border-top: 0.5px solid #DBDBDB;
+  border-top: 0.5px solid #dbdbdb;
 }
 
 .tabMenuWrapper li {
@@ -30,4 +30,6 @@
   margin: 0 auto 4px;
 }
 
-
+.tabMenuWrapper li .activatedBtnTxt {
+  color: #3e7c17;
+}

@@ -18,7 +18,7 @@ export default function TabMenu() {
         <li className="tabMenuHome">
           <Link
             to="/HomeFeed"
-            className="tabLink"
+            className={activate === 1 ? "tabLink activatedBtnTxt" : "tabLink"}
             onClick={() => {
               setActivate(1);
             }}
@@ -29,7 +29,7 @@ export default function TabMenu() {
         <li className="tabMenuChat">
           <Link
             to="/chatFeed"
-            className="tabLink"
+            className={activate === 2 ? "tabLink activatedBtnTxt" : "tabLink"}
             onClick={() => {
               setActivate(2);
             }}
@@ -41,7 +41,7 @@ export default function TabMenu() {
         <li className="tabMenuEdit">
           <Link
             to="/PostUpload"
-            className="tabLink"
+            className={activate === 3 ? "tabLink activatedBtnTxt" : "tabLink"}
             onClick={() => {
               setActivate(3);
             }}
@@ -53,7 +53,7 @@ export default function TabMenu() {
         <li className="tabMenuProfile">
           <Link
             to="/myProfile"
-            className="tabLink"
+            className={activate === 4 ? "tabLink activatedBtnTxt" : "tabLink"}
             onClick={() => {
               setActivate(4);
             }}
