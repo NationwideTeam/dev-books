@@ -12,7 +12,7 @@ export default function ChatRoom() {
 
   let navigate = useNavigate();
   const next = () => {
-    navigate("/HomeFeed");
+    navigate("/chatFeed");
   };
 
   return (
