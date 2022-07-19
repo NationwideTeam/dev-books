@@ -166,7 +166,7 @@ export const ProfileUpdate = () => {
         title="저장"
         onClick={profileSave}
         className={
-          !userNameError && !userIdError && userName !== "" && userId !== ""
+          !userNameError && !userIdError && !userImgErr && userName !== "" && userId !== ""
             ? "button ms uploadButton"
             : "button ms disabled uploadButton"
         }
