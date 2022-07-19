@@ -1,0 +1,24 @@
+.following {
+  width: 390px;
+  height: 844px;
+  margin: 0 auto;
+  background-color: #fff;
+  position: relative;
+}
+
+.followingUser {
+  margin-top: 24px;
+}
+
+.followingUser li {
+  margin: 0 auto;
+}
+
+.followingUser li + li {
+  margin-top: 16px;
+}
+
+.tabMenu {
+  position: absolute;
+  bottom: 0;
+}
