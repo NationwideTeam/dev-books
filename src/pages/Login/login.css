@@ -1,3 +1,12 @@
+@keyframes 나타나기 {
+  from {
+    transform: translateY(300px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
 .loginMobileScreen {
   position: relative;
   width: 390px;
@@ -12,7 +21,7 @@
   background-color: #ddd;
 }
 
-.loginLogoImage {
+.loginLogoImage2 {
   margin: 20px;
 }
 
@@ -37,6 +46,8 @@
   background-color: #fff;
   font-size: 14px;
   font-family: "Noto Sans KR", sans-serif;
+  animation: 나타나기 1s;
+  overflow: hidden;
 }
 
 .loginLink [class^="login"] {

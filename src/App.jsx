@@ -16,7 +16,6 @@ import NotFound from "./pages/NotFound/NotFound";
 import PostUpload from "./pages/PostUpload/PostUpload";
 import PostUploadContent from "./pages/PostUploadContent/PostUploadContent";
 import SearchFeed from "./pages/SearchFeed/SearchFeed";
-import Splash from "./pages/Splash/Splash";
 
 import "./reset.css";
 
@@ -25,7 +24,6 @@ function App() {
     <>
       <BrowserRouter>
         <nav>
-          <Link to={"/"}>스플래쉬 / </Link>
           <Link to={"/login"}>로그인 / </Link>
           <Link to={"/joinMembership"}>회원가입 /</Link>
           <Link to={"/loginEmail"}>이메일로 로그인 / </Link>
@@ -46,7 +44,6 @@ function App() {
           <Link to={"/NotFound"}>404페이지 /</Link>
         </nav>
         <Routes>
-          <Route path="/" element={<Splash />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/loginEmail" element={<LoginEmail />}></Route>
           <Route path="/joinMembership" element={<JoinMembership />}></Route>

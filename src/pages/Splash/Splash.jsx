@@ -3,6 +3,7 @@ import logoImage from "../../assets/logo.svg";
 import logoNameKorean from "../../assets/logoNameKorean.svg";
 import logoNameEnglish from "../../assets/logoNameEnglish.svg";
 import Topbar from "../../components/Topbar/Topbar";
+import "./splash.css";
 
 function Splash() {
   return (
