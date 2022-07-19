@@ -16,3 +16,9 @@
   font-weight: 400;
   color: #eb5757;
 }
+
+.imgErrorMsg {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}

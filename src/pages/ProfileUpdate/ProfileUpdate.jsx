@@ -13,6 +13,7 @@ export const ProfileUpdate = () => {
 
   const [userNameError, setUserNameError] = useState("");
   const [userIdError, setUserIdError] = useState("");
+  const [userImgErr, setUserImgErr] = useState("");
 
   const url = "https://mandarin.api.weniv.co.kr";
   const token = window.localStorage.getItem("token");
@@ -94,6 +95,40 @@ export const ProfileUpdate = () => {
     }
   };
 
+  // 프로필 이미지 업로드
+  const imgUpload = async (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    const url = "https://mandarin.api.weniv.co.kr";
+    const imgUploadReqPath = "/image/uploadfile";
+
+    try {
+      const res = await fetch(url + imgUploadReqPath, {
+        method: "POST",
+        body: formData,
+      });
+      const json = await res.json();
+
+      return url + "/" + json.filename;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleGetImg = async (e) => {
+    const file = e.target.files[0];
+    const imgSize = e.target.files[0].size;
+    const maxSize = 1024 * 1024; // 1MB
+    if (imgSize > maxSize) {
+      setUserImgErr("이미지 용량은 1MB 이내로 등록 가능합니다.");
+    } else {
+      setUserImgErr("");
+      const imgSrc = await imgUpload(file);
+      setUserImg(imgSrc);
+    }
+  };
+
   return (
     <div className="profileUpdate">
       <Topbar />
@@ -105,7 +140,10 @@ export const ProfileUpdate = () => {
             : "button ms disabled uploadButton"
         }
       />
-      <ProfileImgUpload src={userImg} />
+      <ProfileImgUpload src={userImg} onChange={handleGetImg} />
+      <div className="imgErrorMsg errorMessage">
+        <span>{userImgErr}</span>
+      </div>
       <div className="textInput">
         <TextInput
           label="사용자 이름"
