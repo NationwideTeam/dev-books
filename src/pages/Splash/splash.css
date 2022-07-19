@@ -1,0 +1,13 @@
+@keyframes 점프 {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.loginLogoImage {
+  animation: 점프 1s alternate infinite;
+  margin: 20px;
+}
