@@ -57,6 +57,15 @@ export const MainNav = (props) => {
   );
 };
 
+export const UploadNav = (props) => {
+  return (
+    <div className="nav">
+      <ArrowButton />
+      <Button className="button ms disabled uploadButton">{props.title}</Button>
+    </div>
+  );
+};
+
 export const ChatNav = (props) => {
   return (
     <div className="nav">
