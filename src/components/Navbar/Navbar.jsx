@@ -57,16 +57,16 @@ export const MainNav = (props) => {
   );
 };
 
-export const UploadNav = (props) => {
-  return (
-    <div className="nav">
-      <ArrowButton />
-      <Button className={props.className} onClick={props.onClick}>
-        {props.title}
-      </Button>
-    </div>
-  );
-};
+// export const UploadNav = (props) => {
+//   return (
+//     <div className="nav">
+//       <ArrowButton />
+//       <Button className={props.className} onClick={props.onClick}>
+//         {props.title}
+//       </Button>
+//     </div>
+//   );
+// };
 
 export const ChatNav = (props) => {
   return (
