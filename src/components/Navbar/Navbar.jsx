@@ -61,7 +61,7 @@ export const UploadNav = (props) => {
   return (
     <div className="nav">
       <ArrowButton />
-      <Button className={props.className} onClick={props.onClick}>
+      <Button onClick={props.onClick} className={props.className}>
         {props.title}
       </Button>
     </div>
