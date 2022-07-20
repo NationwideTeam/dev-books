@@ -15,6 +15,7 @@
   margin-right: 13px;
   width: 42px;
   height: 42px;
+  border-radius: 50%;
 }
 
 .postUploadContent .postUploadTxt {
@@ -52,4 +53,38 @@
   padding: 0;
   overflow: hidden;
   border: 0;
+}
+
+.postImgLists {
+  display: flex;
+  height: 171px;
+  margin: 0 16px 0 70px;
+  overflow-x: scroll;
+}
+
+.postImgLists .postImgList {
+  display: block;
+  position: relative;
+  width: 304px;
+  height: 171px;
+  border-radius: 10px;
+}
+
+.postImgList .postImg {
+  display: block;
+  width: 304px;
+  height: 171px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.postImgList button {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  background-color: transparent;
+}
+
+.postImgLists div + div {
+  margin-left: 8px;
 }
