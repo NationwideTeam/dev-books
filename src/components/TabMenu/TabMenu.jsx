@@ -1,69 +1,30 @@
+import React from "react";
 import "./tabMenu.css";
-import homeButton from "../../assets/icon/icon-home.svg";
-import homeButtonFill from "../../assets/icon/icon-home-fill.svg";
-import chatButton from "../../assets/icon/icon-message-circle.svg";
-import chatButtonFill from "../../assets/icon/icon-message-circle-fill.svg";
-import editButton from "../../assets/icon/icon-edit.svg";
-import profileButton from "../../assets/icon/icon-user.svg";
-import profileButtonFill from "../../assets/icon/icon-user-fill.svg";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function TabMenu() {
-  const [activate, setActivate] = useState(1);
-
   return (
     <>
       <ul className="tabMenuWrapper">
         <li className="tabMenuHome">
-          <Link
-            to="/HomeFeed"
-            className={activate === 1 ? "tabLink activatedBtnTxt" : "tabLink"}
-            onClick={() => {
-              setActivate(1);
-            }}
-          >
-            <img src={activate === 1 ? homeButtonFill : homeButton} alt="" />홈
-          </Link>
+          <NavLink to="/HomeFeed" className="tabLink homeFeed">
+            홈
+          </NavLink>
         </li>
         <li className="tabMenuChat">
-          <Link
-            to="/chatFeed"
-            className={activate === 2 ? "tabLink activatedBtnTxt" : "tabLink"}
-            onClick={() => {
-              setActivate(2);
-            }}
-          >
-            <img src={activate === 2 ? chatButtonFill : chatButton} alt="" />
+          <NavLink to="/chatFeed" className="tabLink chatFeed">
             채팅
-          </Link>
+          </NavLink>
         </li>
         <li className="tabMenuEdit">
-          <Link
-            to="/PostUpload"
-            className={activate === 3 ? "tabLink activatedBtnTxt" : "tabLink"}
-            onClick={() => {
-              setActivate(3);
-            }}
-          >
-            <img src={editButton} alt="" />
+          <NavLink to="/PostUpload" className="tabLink postUpload">
             게시물 작성
-          </Link>
+          </NavLink>
         </li>
         <li className="tabMenuProfile">
-          <Link
-            to="/myProfile"
-            className={activate === 4 ? "tabLink activatedBtnTxt" : "tabLink"}
-            onClick={() => {
-              setActivate(4);
-            }}
-          >
-            <img
-              src={activate === 4 ? profileButtonFill : profileButton}
-              alt=""
-            />
+          <NavLink to="/myProfile" className="tabLink myProfile">
             프로필
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </>
