@@ -44,3 +44,7 @@
   margin: 16px 10px 0 0;
   object-fit: cover;
 }
+
+.disabledProdPopup {
+  display: none;
+}
