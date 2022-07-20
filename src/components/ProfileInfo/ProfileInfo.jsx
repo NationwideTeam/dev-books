@@ -1,6 +1,6 @@
 import React from "react";
 import "./profileInfo.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function ProfileInfo() {
@@ -11,9 +11,11 @@ function ProfileInfo() {
   const [following, setFollowing] = useState("");
   const [follower, setFollower] = useState("");
 
+  const location = useLocation();
   const url = "https://mandarin.api.weniv.co.kr";
   const token = window.localStorage.getItem("token");
-  const accountName = window.localStorage.getItem("accountname");
+  // const accountName = window.localStorage.getItem("accountname");
+  const accountName = checkAccountName();
 
   const init = {
     method: "GET",
@@ -69,6 +71,14 @@ function ProfileInfo() {
     } catch (err) {
       console.error(err);
     }
+  };
+
+  // accountName 체크
+  const checkAccountName = () => {
+    const accountName = location.search.split("id=")[1]
+      ? location.search.split("id=")[1]
+      : localStorage.getItem("accountname");
+    return accountName;
   };
 
   return (
