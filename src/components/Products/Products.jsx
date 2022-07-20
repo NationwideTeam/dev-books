@@ -31,7 +31,7 @@ function Products() {
 
       try {
         // userProduct
-        console.log(accountName);
+        // console.log(accountName);
         const resUserProduct = await fetch(
           `${url}/product/${accountName}`,
           init

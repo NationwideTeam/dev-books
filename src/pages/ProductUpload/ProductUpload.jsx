@@ -5,6 +5,7 @@ import { TextInput } from "../../components/TextInput/TextInput";
 import Topbar from "../../components/Topbar/Topbar";
 import "./productUpload.css";
 import Button from "../../components/Buttons/Button";
+import { ArrowButton } from "../../components/Navbar/Navbar";
 
 // 1. 상품등록 이미지 컴포넌트
 export const ProductImgUpload = (props) => {
@@ -56,7 +57,6 @@ const ProductUpload = () => {
         body: formData,
       });
       const json = await res.json();
-      console.log(json);
       return url + "/" + json.filename;
     } catch (err) {
       console.error(err);
@@ -65,7 +65,6 @@ const ProductUpload = () => {
 
   // 2.2.2 예외처리 함수: 이미지 용량 초과
   const handleGetImg = async (e) => {
-    console.log(e.target.files);
     const file = e.target.files[0];
     const imgSize = e.target.files[0].size;
     const maxSize = 10 * 1024 * 1024; // 10MB
@@ -125,8 +124,6 @@ const ProductUpload = () => {
     try {
       const res = await fetch(url + productPath, init);
       const json = await res.json();
-      console.log(json);
-      console.log(uploadData);
       //=== 3개로 하면 안된다. string으로 바뀌는 문제가 있는듯.
       if (json.status == 422 || json.status == 401) {
         errorPage();
@@ -150,27 +147,26 @@ const ProductUpload = () => {
   return (
     <div className="productUpload">
       <Topbar />
-      {/* <UploadNav
-        title="저장"
-        onClick={upload}
-        className="button ms disabled uploadButton"
-      /> */}
-      <Button
-        onClick={upload}
-        className={
-          !productNameErr &&
-          !productPriceErr &&
-          !productImgErr &&
-          !productUrlErr &&
-          productName !== "" &&
-          productPrice !== ""
-            ? "button ms"
-            : "button ms disabled"
-        }
-      >
-        업로드
-      </Button>
-      {/* <Button onClick={upload} className="button ms"> */}
+      <div className="uploadNav">
+        <ArrowButton />
+        <div className="uploadButton">
+          <Button
+            onClick={upload}
+            className={
+              !productNameErr &&
+              !productPriceErr &&
+              !productImgErr &&
+              !productUrlErr &&
+              productName !== "" &&
+              productPrice !== ""
+                ? "button ms"
+                : "button ms disabled"
+            }
+          >
+            업로드
+          </Button>
+        </div>
+      </div>
 
       <ProductImgUpload src={productImg} onChange={handleGetImg} />
       <div className="imgErrorMsg errorMessage">

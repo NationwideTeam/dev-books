@@ -62,3 +62,14 @@
   font-weight: 400;
   color: #eb5757;
 }
+
+.uploadNav {
+  width: 390px;
+  height: 48px;
+  border-bottom: 0.5px solid #dbdbdb;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
