@@ -1,9 +1,9 @@
 import React from "react";
 import "./profileInfo.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function ProfileInfo() {
+function ProfileInfo(props) {
   const [username, setUsername] = useState("");
   const [accountname, setAccountname] = useState("");
   const [intro, setIntro] = useState("");
@@ -11,11 +11,9 @@ function ProfileInfo() {
   const [following, setFollowing] = useState("");
   const [follower, setFollower] = useState("");
 
-  const location = useLocation();
   const url = "https://mandarin.api.weniv.co.kr";
   const token = window.localStorage.getItem("token");
-  // const accountName = window.localStorage.getItem("accountname");
-  const accountName = checkAccountName();
+  const accountName = props.accountName;
 
   const init = {
     method: "GET",
@@ -31,8 +29,8 @@ function ProfileInfo() {
     followerCount();
   }, []);
 
-   // 프로필
-   const profile = async () => {
+  // 프로필
+  const profile = async () => {
     const profilePath = `/profile/${accountName}`;
 
     try {
@@ -71,14 +69,6 @@ function ProfileInfo() {
     } catch (err) {
       console.error(err);
     }
-  };
-
-  // accountName 체크
-  const checkAccountName = () => {
-    const accountName = location.search.split("id=")[1]
-      ? location.search.split("id=")[1]
-      : localStorage.getItem("accountname");
-    return accountName;
   };
 
   return (
