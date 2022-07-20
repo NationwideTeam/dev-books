@@ -12,7 +12,7 @@ function Content(props) {
     commentNum,
     postDate,
   } = props;
-
+  
   return (
     <section className="postContent">
       <h2 className="postUser">
@@ -41,7 +41,7 @@ function Content(props) {
           <strong className="postMessageNum">{commentNum}</strong>
         </span>
       </div>
-      <div className="postDate">{postDate}</div>
+      <div className="postDate">{postDate.split("T")[0]}</div>
     </section>
   );
 }
