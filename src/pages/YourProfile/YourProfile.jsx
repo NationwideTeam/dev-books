@@ -5,7 +5,7 @@ import { BasicNav } from "../../components/Navbar/Navbar";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import Products from "../../components/Products/Products";
 import Postbar from "../../components/Postbar/Postbar";
-import Content from "../../components/Content/Content";
+import { Content } from "../../components/Content/Content";
 import Album from "../../components/Album/Album";
 import TabMenu from "../../components/TabMenu/TabMenu";
 import Button from "../../components/Buttons/Button";
