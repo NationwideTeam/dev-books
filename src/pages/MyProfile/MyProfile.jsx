@@ -5,7 +5,7 @@ import { BasicNav } from "../../components/Navbar/Navbar";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import Products from "../../components/Products/Products";
 import Postbar from "../../components/Postbar/Postbar";
-import { Content } from "../../components/Content/Content";
+import { Contents } from "../../components/Content/Content";
 import TabMenu from "../../components/TabMenu/TabMenu";
 import Button from "../../components/Buttons/Button";
 import basicProfile from "../../assets/basic-profile.svg";
@@ -84,7 +84,7 @@ function MyProfile() {
       <Products onClick={prodDelete} />
 
       <Postbar />
-      <Content accountName={accountName} />
+      <Contents accountName={accountName} />
       <div className="blank"></div>
       <div
         className={navModal ? "myProfileNavModal" : "disabledMyProfilePopup"}
