@@ -8,6 +8,7 @@
   align-items: center;
   width: 358px;
   margin-bottom: 12px;
+  border-radius: 50%;
 }
 .postUser .postUserImg {
   width: 42px;
