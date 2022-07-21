@@ -1,15 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "./products.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import ModalContent from "../ModalContent/ModalContent";
 import Alert from "../Alert/Alert";
 
 function Product(props) {
-  const { value, text, price, image, onClick } = props;
+  const { value, text, price, image, link, onClick } = props;
 
   const [prodModal, setProdModal] = useState(false);
   const [prodAlert, setProdAlert] = useState(false);
+
+  let navigate = useNavigate();
+
+  const prodUpdate = () => {
+    navigate(`/ProductEdit?productId=${value}`, {
+      state: {
+        productId: value,
+        productTxt: text,
+        productPrice: price,
+        productImg: image,
+        productLink: link,
+      },
+    });
+  };
+
+  const prodLink = () => {
+    window.open(link);
+  };
 
   return (
     <>
@@ -37,8 +55,8 @@ function Product(props) {
               setProdModal(false);
             }}
           />
-          <ModalContent txt="수정" />
-          <ModalContent txt="웹사이트에서 상품 보기" />
+          <ModalContent txt="수정" onClick={prodUpdate} />
+          <ModalContent txt="웹사이트에서 상품 보기" onClick={prodLink} />
         </Modal>
       </div>
       <div className={prodAlert ? "prodModal" : "disabledProdPopup"}>
@@ -100,6 +118,7 @@ function Products(props) {
               image={item.itemImage}
               text={item.itemName}
               price={item.price}
+              link={item.link}
               onClick={props.onClick}
             />
           );

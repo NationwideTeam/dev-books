@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import PostUpload from "./pages/PostUpload/PostUpload";
 import PostUploadContent from "./pages/PostUploadContent/PostUploadContent";
 import SearchFeed from "./pages/SearchFeed/SearchFeed";
+import ProductEdit from "./pages/ProductEdit/ProductEdit";
 
 import "./reset.css";
 
@@ -69,6 +70,7 @@ function App() {
             element={<PostUploadContent />}
           ></Route>
           <Route path="/SearchFeed" element={<SearchFeed />}></Route>
+          <Route path="/ProductEdit" element={<ProductEdit />}></Route>
         </Routes>
       </BrowserRouter>
     </>
