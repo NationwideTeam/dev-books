@@ -1,7 +1,7 @@
 import './singlePost.css';
 import { BasicNav } from '../../components/Navbar/Navbar';
 import Comment from '../../components/Comment/Comment';
-import Content from '../../components/Content/Content';
+import { Content } from '../../components/Content/Content';
 import PostComment from '../../components/PostComment/PostComment';
 import commentImgFirst from '../../assets/comment-img1.png';
 import commentImgSecond from '../../assets/comment-img2.png';
@@ -24,7 +24,7 @@ export default function SinglePost() {
   const [likeCount, setLikeCount] = useState('');
   // 댓글 개수 상태
   const [commentCount, setCommentCount] = useState('');
-  // 포스트 업로드 날짜 
+  // 포스트 업로드 날짜
   const [uploadDate, setUploadDate] = useState('');
 
   // 포스트 고유 아이디
@@ -36,18 +36,18 @@ export default function SinglePost() {
   const token = window.localStorage.getItem('token');
   const accountname = window.localStorage.getItem('accountname');
 
-  // 게시글 정보 
+  // 게시글 정보
   const getPostInfo = async () => {
-    const postInfoPath = `/post/${postUniqueId}`
+    const postInfoPath = `/post/${postUniqueId}`;
 
     try {
       const res = await fetch(url + postInfoPath, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-type': 'application/json'
-        }
-      })
+          Authorization: `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
+      });
       const json = await res.json();
       console.log(json);
       setUserProfileImg(json.post.author.image);
@@ -57,14 +57,16 @@ export default function SinglePost() {
       setContentImg(json.post.image);
       setLikeCount(json.post.heartCount);
       setCommentCount(json.post.commentCount);
-      setUploadDate(json.post.createdAt.slice(0,11).replace('-','년 ').replace('-', '월 ').replace('T', '일'));
-    } catch (error) {
-      
-    }
-  }
+      setUploadDate(
+        json.post.createdAt
+          .slice(0, 11)
+          .replace('-', '년 ')
+          .replace('-', '월 ')
+          .replace('T', '일')
+      );
+    } catch (error) {}
+  };
   getPostInfo();
-
-
 
   return (
     <div className="singlePostWrap">
