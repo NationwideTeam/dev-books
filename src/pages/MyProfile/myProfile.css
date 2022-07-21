@@ -5,6 +5,7 @@
   background-color: #fff;
   margin: 0 auto;
   overflow: auto;
+  overflow-x: hidden;
   font-family: "Noto Sans KR", sans-serif;
 }
 
