@@ -9,14 +9,32 @@ import Content from "../../components/Content/Content";
 import Album from "../../components/Album/Album";
 import TabMenu from "../../components/TabMenu/TabMenu";
 import Button from "../../components/Buttons/Button";
-import basicProfile from "../../assets/basic-profile.svg";
-import postImg from "../../assets/post-img-example.png";
 import message from "../../assets/icon/icon-message-circle.svg";
 import share from "../../assets/icon/icon-share.svg";
+import { useLocation } from "react-router-dom";
 
 function MyProfile() {
+  const location = useLocation();
   const [isFollow, setIsFollow] = useState(true);
 
+  // accountName 체크 (사용자 프로필 or 마이 프로필 확인)
+  const checkAccountName = () => {
+    if (location.pathname.split("/")[1] === "yourProfile") {
+      const accountName = location.search.split("id=")[1];
+      return accountName;
+    }
+  };
+
+  const accountName = checkAccountName();
+
+  const checkUserOther = () => {
+    if (location.search.split("id=")[1]) {
+      location.href = `/yourProfile?id=${accountName}`;
+    }
+  };
+  checkUserOther();
+
+  // 팔로우 or 언팔로우
   const handleClick = () => {
     setIsFollow((isFollow) => !isFollow);
   };
@@ -25,13 +43,7 @@ function MyProfile() {
     <div className="MyProfileMobileScreen">
       <Topbar />
       <BasicNav />
-      <ProfileInfo
-        follower="2950"
-        followings="128"
-        name="애월읍 위니브 감귤농장"
-        id="@ weniv_Mandarin"
-        description="애월읍 감귤 전국 배송, 귤따기 체험, 감귤 농장"
-      />
+      <ProfileInfo accountName={accountName} />
       <div className="MyProfileButtonWrapper">
         <div id="circle">
           <img src={message} alt="" />
@@ -47,7 +59,8 @@ function MyProfile() {
         </div>
       </div>
       {/* <Products /> */}
-      <Album />
+      {/* <Album /> */}
+      <Content accountName={accountName}/>
 
       <div className="tabmenu">
         <TabMenu />
