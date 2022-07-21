@@ -29,7 +29,9 @@ export function Content(props) {
       </h2>
       <div className="postMain">
         <p className="contenttxt">{posttext}</p>
-        <img className="contentImg" src={postImg} alt="" />
+        {postImg.map((file, index) => {
+          return <img className="contentImg" src={file} alt="" key={index}/>;
+        })}
       </div>
       <div className="postBtnWrap">
         <span className="heartIcon">
@@ -82,7 +84,7 @@ export function Contents(props) {
         userName={item.author.username}
         userId={item.author.accountname}
         posttext={item.content}
-        postImg={item.image}
+        postImg={item.image.split(',')}
         heartNum={item.heartCount}
         commentNum={item.commentCount}
         postDate={item.createdAt}
