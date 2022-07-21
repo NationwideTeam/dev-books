@@ -125,6 +125,7 @@ function MyProfile() {
       </div>
       <Products
         onClick={prodDelete}
+        accountName={accountName}
         className={products.length !== 0 ? "Products" : "Products hidden"}
       />
 
