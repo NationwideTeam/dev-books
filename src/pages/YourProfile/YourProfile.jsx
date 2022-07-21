@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./yourProfile.css";
 import Topbar from "../../components/Topbar/Topbar";
 import { BasicNav } from "../../components/Navbar/Navbar";
@@ -16,6 +16,7 @@ import { useLocation } from "react-router-dom";
 function MyProfile() {
   const location = useLocation();
   const [isFollow, setIsFollow] = useState(true);
+  const [products, setProducts] = useState([]);
 
   // accountName 체크 (사용자 프로필 or 마이 프로필 확인)
   const checkAccountName = () => {
@@ -39,6 +40,34 @@ function MyProfile() {
     setIsFollow((isFollow) => !isFollow);
   };
 
+  // 유저 데이터에 등록한 상품이 있는지 체크
+  useEffect(() => {
+    const getUserProduct = async () => {
+      const url = "https://mandarin.api.weniv.co.kr";
+      const token = localStorage.getItem("token");
+      const init = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      };
+
+      try {
+        const resUserProduct = await fetch(
+          `${url}/product/${accountName}`,
+          init
+        );
+        const resUserProductJson = await resUserProduct.json();
+        const userProduct = resUserProductJson.product;
+        setProducts(userProduct);
+      } catch (err) {
+        console.error("err", err);
+      }
+    };
+    getUserProduct();
+  }, []);
+
   return (
     <div className="MyProfileMobileScreen">
       <Topbar />
@@ -58,7 +87,10 @@ function MyProfile() {
           <img src={share} alt="" />
         </div>
       </div>
-      {/* <Products /> */}
+      <Products
+        accountName={accountName}
+        className={products.length !== 0 ? "Products" : "Products hidden"}
+      />
       {/* <Album /> */}
       <Contents accountName={accountName}/>
 

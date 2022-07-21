@@ -8,3 +8,7 @@
   border: 1px solid #dbdbdb;
   cursor: pointer;
 }
+
+.hidden {
+  display: none;
+} 
