@@ -24,12 +24,6 @@
   margin-bottom: 20px;
 }
 
-.blank {
-  width: 390px;
-  height: 60px;
-  background-color: #fff;
-}
-
 .disabledMyProfilePopup {
   display: none;
 }

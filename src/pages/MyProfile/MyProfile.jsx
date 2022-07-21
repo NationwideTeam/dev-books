@@ -8,8 +8,6 @@ import Postbar from "../../components/Postbar/Postbar";
 import { Contents } from "../../components/Content/Content";
 import TabMenu from "../../components/TabMenu/TabMenu";
 import Button from "../../components/Buttons/Button";
-import basicProfile from "../../assets/basic-profile.svg";
-import postImg from "../../assets/post-img-example.png";
 import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import ModalContent from "../../components/ModalContent/ModalContent";
@@ -100,7 +98,6 @@ function MyProfile() {
 
       <Postbar />
       <Contents accountName={accountName} />
-      <div className="blank"></div>
       <div
         className={navModal ? "myProfileNavModal" : "disabledMyProfilePopup"}
         onClick={() => {
