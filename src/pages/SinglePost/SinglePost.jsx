@@ -6,7 +6,7 @@ import PostComment from '../../components/PostComment/PostComment';
 import commentImgFirst from '../../assets/comment-img1.png';
 import commentImgSecond from '../../assets/comment-img2.png';
 import Topbar from '../../components/Topbar/Topbar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export default function SinglePost() {
@@ -19,7 +19,7 @@ export default function SinglePost() {
   // 게시글 내용 상태
   const [contentText, setContentText] = useState('');
   // 게시글 이미지 상태
-  const [contentImg, setContentImg] = useState('');
+  const [contentImg, setContentImg] = useState([]);
   // 좋아요 count 상태
   const [likeCount, setLikeCount] = useState('');
   // 댓글 개수 상태
@@ -49,12 +49,11 @@ export default function SinglePost() {
         },
       });
       const json = await res.json();
-      console.log(json);
       setUserProfileImg(json.post.author.image);
       setUserName(json.post.author.username);
       setUserId(json.post.author.accountname);
       setContentText(json.post.content);
-      setContentImg(json.post.image);
+      setContentImg(json.post.image.split(','));
       setLikeCount(json.post.heartCount);
       setCommentCount(json.post.commentCount);
       setUploadDate(
@@ -66,7 +65,10 @@ export default function SinglePost() {
       );
     } catch (error) {}
   };
-  getPostInfo();
+  
+  useEffect(() => {
+    getPostInfo();
+  }, [])
 
   return (
     <div className="singlePostWrap">
