@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom';
 // 업로드 할 이미지가 담기는 배열 전역변수로 선언
 let fileUrls = [];
 
+// 포스트 고유 아이디 담는 전역변수 선언
+let postUniqueId = '';
+
 export default function PostUpload() {
   // 유저 프로필 이미지 상태
   const [profileImg, setProfileImg] = useState('');
@@ -27,7 +30,11 @@ export default function PostUpload() {
   let navigate = useNavigate();
 
   const next = () => {
-    navigate('/singlePost')
+    navigate('/singlePost', {
+      state: {
+        postId: postUniqueId
+      }
+    })
   }
 
   // 유저 프로필 이미지 동적으로 받아오기
@@ -145,6 +152,7 @@ export default function PostUpload() {
         });
         const json = await res.json();
         console.log(json);
+        postUniqueId = json.post.id;
         fileUrls = [];
         next();
       }
