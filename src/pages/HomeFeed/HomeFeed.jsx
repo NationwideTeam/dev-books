@@ -1,16 +1,16 @@
-import React from "react";
-import { MainNav } from "../../components/Navbar/Navbar";
-import Button from "../../components/Buttons/Button";
-import symbolLogo from "../../assets/logo.svg";
-import Content from "../../components/Content/Content";
-import Topbar from "../../components/Topbar/Topbar";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { MainNav } from '../../components/Navbar/Navbar';
+import Button from '../../components/Buttons/Button';
+import symbolLogo from '../../assets/logo.svg';
+import { Content } from '../../components/Content/Content';
+import Topbar from '../../components/Topbar/Topbar';
+import { useNavigate } from 'react-router-dom';
 
-import basicProfile from "../../assets/basic-profile.svg";
-import postImg from "../../assets/post-img-example.png";
-import postImg2 from "../../assets/post-img-example2.png";
+import basicProfile from '../../assets/basic-profile.svg';
+import postImg from '../../assets/post-img-example.png';
+import postImg2 from '../../assets/post-img-example2.png';
 
-import "./homeFeed.css";
+import './homeFeed.css';
 
 export const HomeFeed = () => {
   let navigate = useNavigate();
@@ -18,7 +18,7 @@ export const HomeFeed = () => {
     <section className="homeFeed">
       <Topbar />
       <nav className="homeFeedNav">
-        <MainNav title={"데브북스 피드"} />
+        <MainNav title={'데브북스 피드'} />
       </nav>
       <main className="homeFeedMain">
         <img className="homeFeedLogo" src={symbolLogo} alt="데브북스 로고" />
@@ -27,10 +27,10 @@ export const HomeFeed = () => {
         </strong>
         <div
           onClick={() => {
-            navigate("/SearchFeed");
+            navigate('/SearchFeed');
           }}
         >
-          <Button className={"lg button"} children={"검색하기"} />
+          <Button className={'lg button'} children={'검색하기'} />
         </div>
       </main>
     </section>
@@ -42,7 +42,7 @@ export const HomeFeedData = () => {
     <section className="homeFeedData">
       <Topbar />
       <nav className="homeFeedNav">
-        <MainNav title={"데브북스 피드"} />
+        <MainNav title={'데브북스 피드'} />
       </nav>
       <main className="homeFeedDataMain">
         <Content
