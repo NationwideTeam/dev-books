@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./myProfile.css";
 import Topbar from "../../components/Topbar/Topbar";
 import { BasicNav } from "../../components/Navbar/Navbar";
@@ -16,6 +16,7 @@ import Alert from "../../components/Alert/Alert";
 function MyProfile() {
   const [navModal, setNavModal] = useState(false);
   const [alert, setAlert] = useState(false);
+  const [products, setProducts] = useState([]);
 
   let navigate = useNavigate();
   const location = useLocation();
@@ -29,6 +30,34 @@ function MyProfile() {
   };
 
   const accountName = checkAccountName();
+
+  // 유저 데이터에 등록한 상품이 있는지 체크
+  useEffect(() => {
+    const getUserProduct = async () => {
+      const url = "https://mandarin.api.weniv.co.kr";
+      const token = localStorage.getItem("token");
+      const init = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      };
+
+      try {
+        const resUserProduct = await fetch(
+          `${url}/product/${accountName}`,
+          init
+        );
+        const resUserProductJson = await resUserProduct.json();
+        const userProduct = resUserProductJson.product;
+        setProducts(userProduct);
+      } catch (err) {
+        console.error("err", err);
+      }
+    };
+    getUserProduct();
+  }, []);
 
   // 상품 삭제
   const prodDelete = async (e) => {
@@ -94,7 +123,10 @@ function MyProfile() {
           상품 등록
         </Button>
       </div>
-      <Products onClick={prodDelete} />
+      <Products
+        onClick={prodDelete}
+        className={products.length !== 0 ? "Products" : "Products hidden"}
+      />
 
       <Postbar />
       <Contents accountName={accountName} />
