@@ -1,44 +1,38 @@
 .userSearchList {
-    display: flex;
-    align-items: center;
-    width: 358px;
-    height: 50px;
+  display: flex;
+  align-items: center;
+  width: 358px;
+  height: 50px;
 }
 
 .userSearchList img {
-    width: 50px;
-    height: 50px;
-    margin-right: 12px;
+  width: 50px;
+  height: 50px;
+  margin-right: 12px;
 }
 
 .userInfo {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .userInfo .userName {
-    font-size: 14px;
-    margin-bottom: 6px;
-    font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 500;
 }
 
 .userInfo .userName span {
-    color: #3E7C17;
+  color: #3e7c17;
 }
 
 .userInfo .userId {
-    font-size: 12px;
-    color: #767676;
+  font-size: 12px;
+  color: #767676;
 }
 
 .userFollowButton {
-    width: 58px;
-    height: 28px;
-    margin-left: auto;
-    border-radius: 26px;
-    font-size: 12px;
-    color: #ffffff;
-    background-color: #3E7C17 ;
+  margin-left: auto;
 }
 
 .userFollowButton.unfollow {
@@ -70,14 +64,14 @@
 }
 
 .newChat::before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 12px;
   height: 12px;
   top: 0;
   border-radius: 50%;
-  background-color: #3E7C17;
+  background-color: #3e7c17;
   z-index: 10;
 }
 
@@ -89,7 +83,7 @@
 .userChatContent {
   font-size: 12px;
   color: #767676;
-} 
+}
 
 .userChatDate {
   display: inline-block;
@@ -97,5 +91,5 @@
   margin-bottom: 3px;
   margin-left: auto;
   font-size: 10px;
-  color: #DBDBDB;
+  color: #dbdbdb;
 }
