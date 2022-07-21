@@ -95,3 +95,7 @@
   font-size: 10px;
   color: #767676;
 }
+
+.disabledPostPopup {
+  display: none;
+}

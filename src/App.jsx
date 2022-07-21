@@ -18,6 +18,7 @@ import PostUpload from "./pages/PostUpload/PostUpload";
 import PostUploadContent from "./pages/PostUploadContent/PostUploadContent";
 import SearchFeed from "./pages/SearchFeed/SearchFeed";
 import ProductEdit from "./pages/ProductEdit/ProductEdit";
+import PostEdit from "./pages/PostEdit/PostEdit";
 
 import "./reset.css";
 
@@ -71,6 +72,7 @@ function App() {
           ></Route>
           <Route path="/SearchFeed" element={<SearchFeed />}></Route>
           <Route path="/ProductEdit" element={<ProductEdit />}></Route>
+          <Route path="/PostEdit" element={<PostEdit />}></Route>
         </Routes>
       </BrowserRouter>
     </>

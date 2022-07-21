@@ -1,0 +1,90 @@
+.postUploadWrap {
+  width: 390px;
+  height: 844px;
+  margin: 0 auto; 
+  background-color: #fff;
+  position: relative;
+}
+
+.postUploadContent {
+  padding: 20px 16px;
+  display: flex;
+}
+
+.postUploadContent .postUploadUserImg {
+  margin-right: 13px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.postUploadContent .postUploadTxt {
+  width: 100%;
+  border: none;
+  resize: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 12px 0;
+}
+.postUploadContent .postUploadTxt::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #C4C4C4;
+}
+.postUploadContent .postUploadTxt:focus {
+  outline: none;
+}
+
+.postUploadBtn {
+  background: url(../../assets/upload-file.svg);
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+.postUploadInput[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+.postImgLists {
+  display: flex;
+  height: 171px;
+  margin: 0 16px 0 70px;
+  overflow-x: scroll;
+}
+
+.postImgLists .postImgList {
+  display: block;
+  position: relative;
+  width: 304px;
+  height: 171px;
+  border-radius: 10px;
+}
+
+.postImgList .postImg {
+  display: block;
+  width: 304px;
+  height: 171px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.postImgList button {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  background-color: transparent;
+}
+
+.postImgLists div + div {
+  margin-left: 8px;
+}
