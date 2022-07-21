@@ -6,26 +6,39 @@ import PostComment from '../../components/PostComment/PostComment';
 import commentImgFirst from '../../assets/comment-img1.png';
 import commentImgSecond from '../../assets/comment-img2.png';
 import Topbar from '../../components/Topbar/Topbar';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export default function SinglePost() {
   // 유저 프로필 상태
   const [userProfileImg, setUserProfileImg] = useState('');
+
   // 유저 닉네임 상태
   const [userName, setUserName] = useState('');
+
   // 유저 id 상태
   const [userId, setUserId] = useState('');
+
   // 게시글 내용 상태
   const [contentText, setContentText] = useState('');
+
   // 게시글 이미지 상태
   const [contentImg, setContentImg] = useState([]);
+
   // 좋아요 count 상태
   const [likeCount, setLikeCount] = useState('');
+
   // 댓글 개수 상태
   const [commentCount, setCommentCount] = useState('');
+
   // 포스트 업로드 날짜
   const [uploadDate, setUploadDate] = useState('');
+
+  // 댓글 내용 상태 useRef
+  const commentText = useRef();
+
+  // 댓글 작성 유저 프로필 이미지
+  const [commentProfile, setCommentProfile] = useState('');
 
   // 포스트 고유 아이디
   const location = useLocation();
@@ -34,7 +47,6 @@ export default function SinglePost() {
   // 사용할 url, token, accountname
   const url = 'https://mandarin.api.weniv.co.kr';
   const token = window.localStorage.getItem('token');
-  const accountname = window.localStorage.getItem('accountname');
 
   // 게시글 정보
   const getPostInfo = async () => {
@@ -50,6 +62,7 @@ export default function SinglePost() {
       });
       const json = await res.json();
       setUserProfileImg(json.post.author.image);
+      setCommentProfile(json.post.author.image);
       setUserName(json.post.author.username);
       setUserId(json.post.author.accountname);
       setContentText(json.post.content);
@@ -65,10 +78,38 @@ export default function SinglePost() {
       );
     } catch (error) {}
   };
-  
+
   useEffect(() => {
     getPostInfo();
-  }, [])
+  }, []);
+
+  // 댓글 작성
+  const createComment = async () => {
+    const commentReqPath = `/post/${postUniqueId}/comments`;
+
+    try {
+      if (commentText.current.value === '') {
+        alert('댓글을 입력해주세요.');
+      } else {
+        const res = await fetch(url + commentReqPath, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            comment: {
+              content: commentText.current.value,
+            },
+          }),
+        });
+        const json = await res.json();
+        commentText.current.value = '';
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="singlePostWrap">
@@ -102,7 +143,11 @@ export default function SinglePost() {
           />
         </ul>
       </section>
-      <Comment />
+      <Comment
+        ref={commentText}
+        click={createComment}
+        profile={commentProfile}
+      />
     </div>
   );
 }
