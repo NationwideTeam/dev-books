@@ -64,7 +64,14 @@ function MyProfile() {
       />
       <ProfileInfo accountName={accountName} />
       <div className="MyProfileButtonWrapper">
-        <Button className="button md active">프로필 수정</Button>
+        <Button
+          className="button md active"
+          onClick={() => {
+            navigate("/profileUpdate");
+          }}
+        >
+          프로필 수정
+        </Button>
         <Button
           className="button md active"
           onClick={() => {
