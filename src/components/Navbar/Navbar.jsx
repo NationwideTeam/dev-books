@@ -26,11 +26,11 @@ export const CommonNav = (props) => {
   );
 };
 
-export const BasicNav = () => {
+export const BasicNav = (props) => {
   return (
     <div className="nav">
       <ArrowButton />
-      <button className="moreButton">
+      <button className="moreButton" onClick={props.onClick}>
         <span className="a11yHidden">더보기</span>
       </button>
     </div>
@@ -61,10 +61,7 @@ export const UploadNav = (props) => {
   return (
     <div className="nav">
       <ArrowButton />
-      <Button
-        className={props.className}
-        onClick={props.onClick}
-      >
+      <Button className={props.className} onClick={props.onClick}>
         {props.title}
       </Button>
     </div>

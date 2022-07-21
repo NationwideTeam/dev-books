@@ -4,8 +4,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.3);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 50;
 }
 
@@ -31,7 +31,7 @@
 
 .alertBtnWrap {
   width: 100%;
-  border-top: 0.5px solid #DBDBDB;
+  border-top: 0.5px solid #dbdbdb;
 }
 
 .alertBtnWrap button {
@@ -43,13 +43,10 @@
 }
 
 .alertBtnWrap .cancelBtn {
-  border-right: 0.5px solid #DBDBDB;
+  border-right: 0.5px solid #dbdbdb;
 }
 
 .alertBtnWrap .deleteBtn {
   font-weight: 500;
-  color: #3E7C17;
+  color: #3e7c17;
 }
-
-
-

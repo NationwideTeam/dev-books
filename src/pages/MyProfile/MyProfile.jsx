@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./myProfile.css";
 import Topbar from "../../components/Topbar/Topbar";
 import { BasicNav } from "../../components/Navbar/Navbar";
@@ -11,13 +11,46 @@ import Button from "../../components/Buttons/Button";
 import basicProfile from "../../assets/basic-profile.svg";
 import postImg from "../../assets/post-img-example.png";
 import { useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
+import ModalContent from "../../components/ModalContent/ModalContent";
 
 function MyProfile() {
+  const [navModal, setNavModal] = useState(false);
+
   let navigate = useNavigate();
+
+  const prodDelete = async (e) => {
+    const url = "https://mandarin.api.weniv.co.kr";
+    const token = window.localStorage.getItem("token");
+    const prodId = e.target.value;
+
+    try {
+      const res = await fetch(`${url}/product/${prodId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      });
+      const json = await res.json();
+      console.log("삭제성공");
+      window.location.href = "./MyProfile";
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="MyProfileMobileScreen">
+      <div className="tabmenu">
+        <TabMenu />
+      </div>
       <Topbar />
-      <BasicNav />
+      <BasicNav
+        onClick={() => {
+          setNavModal(true);
+        }}
+      />
       <ProfileInfo
         follower="2950"
         followings="128"
@@ -36,7 +69,7 @@ function MyProfile() {
           상품 등록
         </Button>
       </div>
-      <Products />
+      <Products onClick={prodDelete} />
 
       <Postbar />
       <Content
@@ -49,10 +82,19 @@ function MyProfile() {
         commentNum="12"
         postDate="2020년 10월 21일"
       />
-      <div className="tabmenu">
-        <TabMenu />
-      </div>
+
       <div className="blank"></div>
+      <div
+        className={navModal ? "myProfileNavModal" : "disabledMyProfilePopup"}
+        onClick={() => {
+          setNavModal(false);
+        }}
+      >
+        <Modal>
+          <ModalContent txt="설정 및 개인정보" />
+          <ModalContent txt="로그아웃" />
+        </Modal>
+      </div>
     </div>
   );
 }
