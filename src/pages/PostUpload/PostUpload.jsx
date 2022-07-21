@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react';
 import ImgPreview from '../../components/ImgPreview/ImgPreveiw';
 import { useNavigate } from 'react-router-dom';
 
+// 업로드 할 이미지가 담기는 배열 전역변수로 선언
+let fileUrls = [];
+
 export default function PostUpload() {
   // 유저 프로필 이미지 상태
   const [profileImg, setProfileImg] = useState('');
@@ -75,7 +78,7 @@ export default function PostUpload() {
         method: 'POST',
         body: formData,
       });
-      const data = await res.join();
+      const data = await res.json();
       const postImgName = data[0].filename;
       return postImgName;
     } catch (error) {
@@ -83,20 +86,22 @@ export default function PostUpload() {
     }
   };
 
-  // 업로드 할 이미지가 담기는 배열 전역변수로 선언
-  let fileUrls = [];
 
   // 이미지 프리뷰 보기
   const viewPostImg = (e) => {
-    let fileArray = e.target.files;
+    let files = e.target.files;
+    let fileArray = [...files];
+    fileArray.forEach(file => fileUrls.push(file));
 
-    if (fileArray.length <= 3) {
-      for (let i = 0; i < fileArray.length; i++) {
-        let file = fileArray[i];
+    let previewUrl = [];
+
+    if (files.length <= 3) {
+      for (let i = 0; i < files.length; i++) {
+        let file = files[i];
         let reader = new FileReader();
         reader.onload = () => {
-          fileUrls[i] = reader.result;
-          setPostImgUrl([...fileUrls]);
+          previewUrl[i] = reader.result;
+          setPostImgUrl([...previewUrl]);
         };
         reader.readAsDataURL(file);
       }
@@ -140,6 +145,7 @@ export default function PostUpload() {
         });
         const json = await res.json();
         console.log(json);
+        fileUrls = [];
         next();
       }
     } catch (error) {
