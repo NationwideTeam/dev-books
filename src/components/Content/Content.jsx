@@ -1,7 +1,7 @@
 import "./content.css";
 import React, { useState, useEffect } from "react";
 
-function Content(props) {
+export function Content(props) {
   const {
     userImg,
     userName,
@@ -46,7 +46,7 @@ function Content(props) {
   );
 }
 
-function Contents(props) {
+export function Contents(props) {
   const [content, setContent] = useState([]);
   const url = "https://mandarin.api.weniv.co.kr";
   const token = window.localStorage.getItem("token");
@@ -90,4 +90,3 @@ function Contents(props) {
     );
   });
 }
-export default Contents;
