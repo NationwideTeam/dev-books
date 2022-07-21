@@ -13,9 +13,11 @@ import postImg from "../../assets/post-img-example.png";
 import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import ModalContent from "../../components/ModalContent/ModalContent";
+import Alert from "../../components/Alert/Alert";
 
 function MyProfile() {
   const [navModal, setNavModal] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   let navigate = useNavigate();
   const location = useLocation();
@@ -30,6 +32,7 @@ function MyProfile() {
 
   const accountName = checkAccountName();
 
+  // 상품 삭제
   const prodDelete = async (e) => {
     const url = "https://mandarin.api.weniv.co.kr";
     const token = window.localStorage.getItem("token");
@@ -49,6 +52,18 @@ function MyProfile() {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  // 로그아웃
+  const handleLogout = () => {
+    window.localStorage.removeItem("accountname");
+    window.localStorage.removeItem("token");
+    navigate("/login");
+  };
+
+  // 설정 및 개인정보 버튼 누르면 myProfile로 이동
+  const nextMyProfile = () => {
+    navigate("/myProfile");
   };
 
   return (
@@ -93,9 +108,26 @@ function MyProfile() {
         }}
       >
         <Modal>
-          <ModalContent txt="설정 및 개인정보" />
-          <ModalContent txt="로그아웃" />
+          <ModalContent txt="설정 및 개인정보" onClick={nextMyProfile} />
+          <ModalContent
+            txt="로그아웃"
+            onClick={() => {
+              setAlert(true);
+              setNavModal(false);
+            }}
+          />
         </Modal>
+      </div>
+      <div className={alert ? "yourProfileAlert" : "disabledMyProfilePopup"}>
+        <Alert
+          message="로그아웃하시겠어요?"
+          cancel="취소"
+          confirm="로그아웃"
+          onClickCancel={() => {
+            setAlert(false);
+          }}
+          onClickConfirm={handleLogout}
+        />
       </div>
     </div>
   );
