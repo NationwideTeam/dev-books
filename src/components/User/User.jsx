@@ -1,5 +1,7 @@
 import React from "react";
 import "./user.css";
+import Button from "../Buttons/Button";
+import { useState } from "react";
 
 export const UserSearch = (props) => {
   return (
@@ -14,6 +16,11 @@ export const UserSearch = (props) => {
 };
 
 export const UserFollow = (props) => {
+  const [isFollow, setIsFollow] = useState(true);
+
+  const handleClick = () => {
+    setIsFollow((isFollow) => !isFollow);
+  };
   return (
     <li className="userSearchList">
       <img src={props.picture} alt="유저 프로필 이미지" />
@@ -21,7 +28,14 @@ export const UserFollow = (props) => {
         <strong className="userName">{props.name}</strong>
         <strong className="userId">{props.id}</strong>
       </div>
-      <button className="userFollowButton">{props.follow}</button>
+      <div className="userFollowButton">
+        <Button
+          className={isFollow ? "button sm" : "button sm active"}
+          onClick={handleClick}
+        >
+          {isFollow ? "팔로우" : "취소"}
+        </Button>
+      </div>
     </li>
   );
 };
