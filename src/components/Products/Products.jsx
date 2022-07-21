@@ -78,7 +78,7 @@ function Products(props) {
   useEffect(function () {
     async function getUserProduct() {
       const url = "https://mandarin.api.weniv.co.kr";
-      const accountName = localStorage.getItem("accountname");
+      const accountName = props.accountName;
       const token = localStorage.getItem("token");
       const init = {
         method: "GET",
