@@ -98,7 +98,7 @@ function Products(props) {
         const resUserProductJson = await resUserProduct.json();
         const userProduct = resUserProductJson.product;
         setProducts(userProduct);
-        console.log(userProduct);
+        // console.log(userProduct);
       } catch (err) {
         console.error("err", err);
       }
@@ -107,7 +107,7 @@ function Products(props) {
   }, []);
 
   return (
-    <div className="Products">
+    <div className={props.className}>
       <h2 id="productsTitle">판매 중인 상품</h2>
       <div className="productsWrapper">
         {products.map(function (item, index) {

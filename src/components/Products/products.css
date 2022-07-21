@@ -48,3 +48,7 @@
 .disabledProdPopup {
   display: none;
 }
+
+.hidden {
+  display: none;
+} 
