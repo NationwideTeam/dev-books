@@ -1,3 +1,7 @@
+.homeFeedData {
+  position: relative;
+}
+
 .homeFeed {
   width: 390px;
   margin: 0 auto;
@@ -41,7 +45,12 @@
   overflow-y: scroll;
 }
 
-.homeFeedDataMain::-webkit-scrollbar{
-  display:none;
+.homeFeedDataMain::-webkit-scrollbar {
+  display: none;
 }
 
+.tabmenuHome {
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+}
