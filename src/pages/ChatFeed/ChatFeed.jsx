@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import BasicProfile from "../../assets/basic-profile.svg";
 
 import "./chatFeed.css";
+import TabMenu from "../../components/TabMenu/TabMenu";
 
 const ChatFeed = () => {
   let navigate = useNavigate();
@@ -39,6 +40,7 @@ const ChatFeed = () => {
           />
         </ul>
       </main>
+      <TabMenu />
     </section>
   );
 };
