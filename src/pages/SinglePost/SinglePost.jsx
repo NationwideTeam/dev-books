@@ -25,6 +25,9 @@ export default function SinglePost() {
   // 유저 id 상태
   const [userId, setUserId] = useState("");
 
+  // 게시글 id
+  const [postId, setPostId] = useState("");
+
   // 게시글 내용 상태
   const [contentText, setContentText] = useState("");
 
@@ -70,16 +73,18 @@ export default function SinglePost() {
         },
       });
       const json = await res.json();
+
+      setPostId(json.post.id);
       setUserProfileImg(json.post.author.image);
       setCommentProfile(json.post.author.image);
       setUserName(json.post.author.username);
       setUserId(json.post.author.accountname);
       setContentText(json.post.content);
-      
-      if (json.post.image.split(',')[0] === '') {
+
+      if (json.post.image.split(",")[0] === "") {
         setContentImg([]);
       } else {
-        setContentImg(json.post.image.split(','));
+        setContentImg(json.post.image.split(","));
       }
 
       setLikeCount(json.post.heartCount);
@@ -97,6 +102,27 @@ export default function SinglePost() {
   useEffect(() => {
     getPostInfo();
   }, []);
+
+  // 게시글 삭제
+  const postDelete = async (e) => {
+    const url = "https://mandarin.api.weniv.co.kr";
+    const token = window.localStorage.getItem("token");
+    const postId = e.target.value;
+
+    try {
+      const res = await fetch(`${url}/post/${postId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      });
+      const json = await res.json();
+      window.location.href = "./myProfile";
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // 댓글 작성
   const createComment = async () => {
@@ -177,6 +203,8 @@ export default function SinglePost() {
             heartNum={likeCount}
             commentNum={commentCount}
             postDate={uploadDate}
+            value={postId}
+            onClick={postDelete}
           />
         </section>
         <ul className="postCommentWrap">
