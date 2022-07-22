@@ -95,6 +95,9 @@ function MyProfile() {
   return (
     <div className="MyProfileMobileScreen">
       <Topbar />
+      <div className="tabmenu">
+        <TabMenu />
+      </div>
       <BasicNav
         onClick={() => {
           setNavModal(true);
