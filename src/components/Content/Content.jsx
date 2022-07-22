@@ -35,6 +35,15 @@ export function Content(props) {
     });
   };
 
+  // 유저의 프로필 이미지 클릭하면 프로필 페이지로 이동
+  const moveProfile = () => {
+    if (userId === localStorage.getItem("accountname")){
+      navigate(`/myProfile`);
+    } else if (userId !== localStorage.getItem("accountname")) {
+      navigate(`/yourProfile?id=${userId}`)
+    }
+  }
+
   return (
     <section className="postContent">
       <h2 className="postUser">
@@ -42,6 +51,7 @@ export function Content(props) {
           className="postUserImg"
           src={userImg}
           alt="유저 기본 프로필 이미지"
+          onClick={moveProfile}
         />
         <div className="postUserInfo">
           <strong className="postUserName">{userName}</strong>
