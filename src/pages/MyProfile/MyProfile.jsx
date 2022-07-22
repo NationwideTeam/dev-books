@@ -123,61 +123,64 @@ function MyProfile() {
 
   return (
     <div className="MyProfileMobileScreen">
+      <Topbar />
       <div className="tabmenu">
         <TabMenu />
       </div>
-      <Topbar />
-      <BasicNav
-        onClick={() => {
-          setNavModal(true);
-        }}
-      />
-      <ProfileInfo accountName={accountName} />
-      <div className="MyProfileButtonWrapper">
-        <Button
-          className="button md active"
+      <nav>
+        <BasicNav
           onClick={() => {
-            navigate("/profileUpdate");
+            setNavModal(true);
           }}
-        >
-          프로필 수정
-        </Button>
-        <Button
-          className="button md active"
-          onClick={() => {
-            navigate("/productUpload");
-          }}
-        >
-          상품 등록
-        </Button>
-      </div>
-      <Products
-        onClick={prodDelete}
-        accountName={accountName}
-        className={products.length !== 0 ? "Products" : "Products hidden"}
-      />
+        />
+      </nav>
+      <main className="myProfileMain">
+        <ProfileInfo accountName={accountName} />
+        <div className="MyProfileButtonWrapper">
+          <Button
+            className="button md active"
+            onClick={() => {
+              navigate("/profileUpdate");
+            }}
+          >
+            프로필 수정
+          </Button>
+          <Button
+            className="button md active"
+            onClick={() => {
+              navigate("/productUpload");
+            }}
+          >
+            상품 등록
+          </Button>
+        </div>
+        <Products
+          onClick={prodDelete}
+          accountName={accountName}
+          className={products.length !== 0 ? "Products" : "Products hidden"}
+        />
 
-      <div className="postbar">
-        <button
-          className={postbarBtn ? "postAlbum" : "postAlbum on disabled"}
-          onClick={handleBtnClick}
-        >
-          <span className="a11yHidden">앨범</span>
-        </button>
+        <div className="postbar">
+          <button
+            className={postbarBtn ? "postAlbum" : "postAlbum on disabled"}
+            onClick={handleBtnClick}
+          >
+            <span className="a11yHidden">앨범</span>
+          </button>
 
-        <button
-          className={postbarBtn ? "postList on disabled" : "postList"}
-          onClick={handleBtnClick}
-        >
-          <span className="a11yHidden">리스트</span>
-        </button>
-      </div>
-      {postbarBtn ? (
-        <Contents accountName={accountName} onClick={postDelete} />
-      ) : (
-        <Album accountName={accountName} />
-      )}
-
+          <button
+            className={postbarBtn ? "postList on disabled" : "postList"}
+            onClick={handleBtnClick}
+          >
+            <span className="a11yHidden">리스트</span>
+          </button>
+        </div>
+        {postbarBtn ? (
+          <Contents accountName={accountName} onClick={postDelete} />
+        ) : (
+          <Album accountName={accountName} />
+        )}
+      </main>
       <div
         className={navModal ? "myProfileNavModal" : "disabledMyProfilePopup"}
         onClick={() => {

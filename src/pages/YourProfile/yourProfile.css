@@ -12,3 +12,8 @@
 .disabledYourProfilePopup {
   display: none;
 }
+
+.yourProfileMain {
+  height: 712px;
+  overflow-y: scroll;
+}
