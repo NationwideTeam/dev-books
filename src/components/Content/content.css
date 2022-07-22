@@ -15,6 +15,7 @@
   height: 42px;
   margin-right: 12px;
   border-radius: 100%;
+  cursor: pointer;
 }
 .postUserInfo {
   display: flex;
