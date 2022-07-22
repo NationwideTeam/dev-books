@@ -81,6 +81,27 @@ function MyProfile() {
     }
   };
 
+  // 게시글 삭제
+  const postDelete = async (e) => {
+    const url = "https://mandarin.api.weniv.co.kr";
+    const token = window.localStorage.getItem("token");
+    const postId = e.target.value;
+
+    try {
+      const res = await fetch(`${url}/post/${postId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      });
+      const json = await res.json();
+      window.location.href = "./myProfile";
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   // 로그아웃
   const handleLogout = () => {
     window.localStorage.removeItem("accountname");
@@ -130,7 +151,7 @@ function MyProfile() {
       />
 
       <Postbar />
-      <Contents accountName={accountName} />
+      <Contents accountName={accountName} onClick={postDelete} />
       <div
         className={navModal ? "myProfileNavModal" : "disabledMyProfilePopup"}
         onClick={() => {
