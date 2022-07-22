@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./login.css";
 import logoImage from "../../assets/logo.svg";
 import logoNameKorean from "../../assets/logoNameKorean.svg";
-import logoNameEnglish from "../../assets/logoNameEnglish.svg";
 import { useNavigate } from "react-router-dom";
 import Topbar from "../../components/Topbar/Topbar";
 import Splash from "../Splash/Splash";
@@ -29,8 +28,7 @@ function LoginPage() {
           <Topbar />
           <div className="loginLogo">
             <img className="loginLogoImage2" src={logoImage} alt="데브북스" />
-            <img src={logoNameKorean} alt="데브북스" />
-            <img src={logoNameEnglish} alt="데브북스" />
+            <img src={logoNameKorean} className="logoKo" alt="데브북스" />
           </div>
           <article className="loginLink">
             <div className="loginKakao">카카오톡 계정으로 로그인</div>
