@@ -9,13 +9,18 @@
   font-family: "Noto Sans KR", sans-serif;
 }
 
+.myProfileMain {
+  height: 712px;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
 .tabmenu {
   position: fixed;
   background-color: #fff;
   top: 815px;
-}
-::-webkit-scrollbar {
-  display: none;
 }
 
 .MyProfileButtonWrapper {
