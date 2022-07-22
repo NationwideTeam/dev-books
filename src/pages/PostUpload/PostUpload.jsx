@@ -69,9 +69,6 @@ export default function PostUpload() {
     }
   };
 
-  // 이미지 업로드 여부에 따라 버튼 활성화 하기 (곧 업데이트 예정)
-  
-
   // 이미지 서버로 보내기
   const uploadImg = async (file) => {
     const url = 'https://mandarin.api.weniv.co.kr';
@@ -100,6 +97,9 @@ export default function PostUpload() {
     let fileArray = [...files];
     fileArray.forEach(file => fileUrls.push(file));
 
+    // 이미지 업로드 시 버튼 활성화
+    setButtonActive('button ms uploadButton');
+    
     let previewUrl = [];
 
     if (files.length <= 3) {
@@ -133,7 +133,7 @@ export default function PostUpload() {
       for (const file of fileUrls) {
         imgUrls.push(url + '/' + (await uploadImg(file)));
       }
-      if (postContentText === '' || postImgUrl.length === 0) {
+      if (postContentText === '' && postImgUrl.length === 0) {
         alert('내용 또는 이미지를 입력해주세요.');
         return;
       } else {

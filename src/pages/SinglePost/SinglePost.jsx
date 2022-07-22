@@ -67,7 +67,11 @@ export default function SinglePost() {
       setUserName(json.post.author.username);
       setUserId(json.post.author.accountname);
       setContentText(json.post.content);
-      setContentImg(json.post.image.split(','));
+      if (json.post.image.split(',')[0] === '') {
+        setContentImg([]);
+      } else {
+        setContentImg(json.post.image.split(','));
+      }
       setLikeCount(json.post.heartCount);
       setCommentCount(json.post.commentCount);
       setUploadDate(
