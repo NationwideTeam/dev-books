@@ -68,6 +68,9 @@ const HomeFeed = () => {
     </section>
   ) : (
     <section className="homeFeed">
+      <div className="tabmenuHome">
+        <TabMenu />
+      </div>
       <Topbar />
       <nav className="homeFeedNav">
         <MainNav title={"데브북스 피드"} />

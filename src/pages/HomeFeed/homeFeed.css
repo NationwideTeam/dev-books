@@ -1,4 +1,4 @@
-.homeFeedData {
+.homeFeed {
   position: relative;
 }
 
@@ -33,11 +33,11 @@
 }
 
 /* HomeFeedData */
-
 .homeFeedData {
   width: 390px;
   margin: 0 auto;
   background-color: #ffffff;
+  position: relative;
 }
 
 .homeFeedDataMain {
