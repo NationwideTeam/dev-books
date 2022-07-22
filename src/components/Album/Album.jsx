@@ -1,24 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./album.css";
-import Postbar from "../Postbar/Postbar";
-import album1 from "../../assets/album1.png";
-import album2 from "../../assets/album2.png";
-import album3 from "../../assets/album3.png";
 
-function Album() {
+function Album(props) {
+  const [album, setAlbum] = useState([]);
+  const url = "https://mandarin.api.weniv.co.kr";
+  const token = window.localStorage.getItem("token");
+  const accountName = props.accountName;
+  const init = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-type": "application/json",
+    },
+  };
+
+  useEffect(() => {
+    const userpost = async () => {
+      const userpostPath = `/post/${accountName}/userpost`;
+
+      try {
+        const res = await fetch(url + userpostPath, init);
+        const json = await res.json();
+        setAlbum(json.post);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    userpost();
+  }, []);
+
   return (
     <div className="album">
-      <Postbar />
       <div className="postWrapper">
-        <img src={album1} alt="" />
-        <img src={album2} alt="" />
-        <img src={album3} alt="" />
-        <img src={album3} alt="" />
-        <img src={album1} alt="" />
-        <img src={album2} alt="" />
-        <img src={album3} alt="" />
-        <img src={album2} alt="" />
-        <img src={album1} alt="" />
+        {album.map((item, index) => {
+          return (
+            // 링크 추후 변경 
+            <Link to="/singlePost" key={index} >
+              <img src={item.image.split(',')[0]} alt="" />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

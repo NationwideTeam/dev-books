@@ -6,8 +6,8 @@
   margin: 15px;
 }
 
-.postWrapper > img {
+.postWrapper img {
   width: 114px;
   height: 114px;
-  object-fit: contain;
+  object-fit: cover;
 }
