@@ -11,7 +11,7 @@ import Followings from "./pages/Followings/Followings";
 import YourProfile from "./pages/YourProfile/YourProfile";
 import ChatFeed from "./pages/ChatFeed/ChatFeed";
 import ChatRoom from "./pages/ChatRoom/ChatRoom";
-import { HomeFeed, HomeFeedData } from "./pages/HomeFeed/HomeFeed";
+import HomeFeed  from "./pages/HomeFeed/HomeFeed";
 import JoinProfile from "./pages/JoinProfile/JoinProfile";
 import NotFound from "./pages/NotFound/NotFound";
 import PostUpload from "./pages/PostUpload/PostUpload";
@@ -32,7 +32,6 @@ function App() {
           <Link to={"/loginEmail"}>이메일로 로그인 / </Link>
           <Link to={"/JoinProfile"}>프로필 설정 /</Link>
           <Link to={"/HomeFeed"}>홈피드 /</Link>
-          <Link to={"/HomeFeedData"}>홈피드 데이터 /</Link>
           <Link to={"/SearchFeed"}>계정 검색 /</Link>
           <Link to={"/yourProfile"}>OO님의 프로필 /</Link>
           <Link to={"/myProfile"}> 마이 프로필 /</Link>
@@ -61,7 +60,6 @@ function App() {
           <Route path="/chatFeed" element={<ChatFeed />}></Route>
           <Route path="/chatRoom" element={<ChatRoom />}></Route>
           <Route path="/HomeFeed" element={<HomeFeed />}></Route>
-          <Route path="/HomeFeedData" element={<HomeFeedData />}></Route>
           <Route path="/JoinProfile" element={<JoinProfile />}></Route>
           <Route path="/NotFound" element={<NotFound />}></Route>
           <Route path="/PostUpload" element={<PostUpload />}></Route>
