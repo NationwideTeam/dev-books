@@ -48,9 +48,10 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+  margin-bottom: 16px;
 }
 .postMain .contentImg {
-  margin: 16px 0 12px;
+  margin: 0 0 12px;
   width: 304px;
   height: 228px;
   object-fit: cover;
