@@ -3,8 +3,6 @@ import { BasicNav } from '../../components/Navbar/Navbar';
 import Comment from '../../components/Comment/Comment';
 import { Content } from '../../components/Content/Content';
 import PostComment from '../../components/PostComment/PostComment';
-import commentImgFirst from '../../assets/comment-img1.png';
-import commentImgSecond from '../../assets/comment-img2.png';
 import Topbar from '../../components/Topbar/Topbar';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -39,6 +37,9 @@ export default function SinglePost() {
 
   // 댓글 작성 유저 프로필 이미지
   const [commentProfile, setCommentProfile] = useState('');
+
+  // 댓글 불러오기 정보 상태
+  const [content, setContent] = useState([]);
 
   // 포스트 고유 아이디
   const location = useLocation();
@@ -111,6 +112,30 @@ export default function SinglePost() {
     }
   };
 
+  // 댓글 불러오기
+  const getCommentList = async () => {
+    const commentListPath = `/post/${postUniqueId}/comments`;
+
+    try {
+      const res = await fetch(url + commentListPath, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
+      });
+      const json = await res.json();
+      const commentInfo = json.comments;
+      setContent(commentInfo);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCommentList();
+  }, []);
+
   return (
     <div className="singlePostWrap">
       <Topbar />
@@ -129,18 +154,7 @@ export default function SinglePost() {
           />
         </section>
         <ul className="postCommentWrap">
-          <PostComment
-            commentUserImg={commentImgFirst}
-            commentUserName="서귀포시 무슨 농장"
-            commentTimeNum="5분 전"
-            commenttext="게시글 답글 ~~ !! 최고최고"
-          />
-          <PostComment
-            commentUserImg={commentImgSecond}
-            commentUserName="감귤러버"
-            commentTimeNum="15분 전"
-            commenttext="안녕하세요. 사진이 너무 멋있어요. 한라봉 언제 먹을 수 있나요? 기다리기 지쳤어요 땡뻘땡뻘..."
-          />
+          <PostComment postUniqueId={postUniqueId} commentInfo={content} />
         </ul>
       </section>
       <Comment
