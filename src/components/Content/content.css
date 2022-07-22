@@ -83,6 +83,11 @@
 .postBtnWrap .heartIcon .heartBtn {
   background-image: url(../../assets/icon/icon-heart.svg);
 }
+
+.postBtnWrap .heartIcon .heartClickedBtn {
+  background-image: url(../../assets/icon/icon-heart.png);
+}
+
 .postBtnWrap .messageIcon .messageBtn {
   background-image: url(../../assets/icon/icon-message-circle.svg);
 }

@@ -12,7 +12,11 @@ export function Content(props) {
     commentNum,
     postDate,
   } = props;
-  
+
+  const [isLike, setIsLike] = useState(true);
+  const handleClick = () => {
+    setIsLike((isLike) => !isLike);
+  };
   return (
     <section className="postContent">
       <h2 className="postUser">
@@ -30,12 +34,16 @@ export function Content(props) {
       <div className="postMain">
         <p className="contenttxt">{posttext}</p>
         {postImg.map((file, index) => {
-          return <img className="contentImg" src={file} alt="" key={index}/>;
+          return <img className="contentImg" src={file} alt="" key={index} />;
         })}
       </div>
       <div className="postBtnWrap">
         <span className="heartIcon">
-          <button type="button" className="heartBtn"></button>
+          <button
+            type="button"
+            onClick={handleClick}
+            className={isLike ? "heartBtn" : "heartClickedBtn"}
+          ></button>
           <strong className="postHeartNum">{heartNum}</strong>
         </span>
         <span className="messageIcon">
@@ -84,7 +92,7 @@ export function Contents(props) {
         userName={item.author.username}
         userId={item.author.accountname}
         posttext={item.content}
-        postImg={item.image.split(',')}
+        postImg={item.image.split(",")}
         heartNum={item.heartCount}
         commentNum={item.commentCount}
         postDate={item.createdAt}
