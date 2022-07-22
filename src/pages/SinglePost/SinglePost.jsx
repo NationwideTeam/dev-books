@@ -1,42 +1,50 @@
-import './singlePost.css';
-import { BasicNav } from '../../components/Navbar/Navbar';
-import Comment from '../../components/Comment/Comment';
-import { Content } from '../../components/Content/Content';
-import PostComment from '../../components/PostComment/PostComment';
-import Topbar from '../../components/Topbar/Topbar';
-import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import "./singlePost.css";
+import { BasicNav } from "../../components/Navbar/Navbar";
+import Comment from "../../components/Comment/Comment";
+import { Content } from "../../components/Content/Content";
+import PostComment from "../../components/PostComment/PostComment";
+import Topbar from "../../components/Topbar/Topbar";
+import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
+import ModalContent from "../../components/ModalContent/ModalContent";
+import Alert from "../../components/Alert/Alert";
 
 export default function SinglePost() {
+  const [commentModal, setCommentModal] = useState(false);
+  const [commentAlert, setCommentAlert] = useState(false);
+
+  const [commentUserId, setCommentUserId] = useState([]);
+
   // 유저 프로필 상태
-  const [userProfileImg, setUserProfileImg] = useState('');
+  const [userProfileImg, setUserProfileImg] = useState("");
 
   // 유저 닉네임 상태
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState("");
 
   // 유저 id 상태
-  const [userId, setUserId] = useState('');
+  const [userId, setUserId] = useState("");
 
   // 게시글 내용 상태
-  const [contentText, setContentText] = useState('');
+  const [contentText, setContentText] = useState("");
 
   // 게시글 이미지 상태
   const [contentImg, setContentImg] = useState([]);
 
   // 좋아요 count 상태
-  const [likeCount, setLikeCount] = useState('');
+  const [likeCount, setLikeCount] = useState("");
 
   // 댓글 개수 상태
-  const [commentCount, setCommentCount] = useState('');
+  const [commentCount, setCommentCount] = useState("");
 
   // 포스트 업로드 날짜
-  const [uploadDate, setUploadDate] = useState('');
+  const [uploadDate, setUploadDate] = useState("");
 
   // 댓글 내용 상태 useRef
   const commentText = useRef();
 
   // 댓글 작성 유저 프로필 이미지
-  const [commentProfile, setCommentProfile] = useState('');
+  const [commentProfile, setCommentProfile] = useState("");
 
   // 댓글 불러오기 정보 상태
   const [content, setContent] = useState([]);
@@ -46,8 +54,8 @@ export default function SinglePost() {
   const postUniqueId = location.state.postId;
 
   // 사용할 url, token, accountname
-  const url = 'https://mandarin.api.weniv.co.kr';
-  const token = window.localStorage.getItem('token');
+  const url = "https://mandarin.api.weniv.co.kr";
+  const token = window.localStorage.getItem("token");
 
   // 게시글 정보
   const getPostInfo = async () => {
@@ -55,10 +63,10 @@ export default function SinglePost() {
 
     try {
       const res = await fetch(url + postInfoPath, {
-        method: 'GET',
+        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
       });
       const json = await res.json();
@@ -67,15 +75,15 @@ export default function SinglePost() {
       setUserName(json.post.author.username);
       setUserId(json.post.author.accountname);
       setContentText(json.post.content);
-      setContentImg(json.post.image.split(','));
+      setContentImg(json.post.image.split(","));
       setLikeCount(json.post.heartCount);
       setCommentCount(json.post.commentCount);
       setUploadDate(
         json.post.createdAt
           .slice(0, 11)
-          .replace('-', '년 ')
-          .replace('-', '월 ')
-          .replace('T', '일')
+          .replace("-", "년 ")
+          .replace("-", "월 ")
+          .replace("T", "일")
       );
     } catch (error) {}
   };
@@ -89,14 +97,14 @@ export default function SinglePost() {
     const commentReqPath = `/post/${postUniqueId}/comments`;
 
     try {
-      if (commentText.current.value === '') {
-        alert('댓글을 입력해주세요.');
+      if (commentText.current.value === "") {
+        alert("댓글을 입력해주세요.");
       } else {
         const res = await fetch(url + commentReqPath, {
-          method: 'POST',
+          method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
-            'Content-type': 'application/json',
+            "Content-type": "application/json",
           },
           body: JSON.stringify({
             comment: {
@@ -105,7 +113,7 @@ export default function SinglePost() {
           }),
         });
         const json = await res.json();
-        commentText.current.value = '';
+        commentText.current.value = "";
       }
     } catch (error) {
       console.log(error);
@@ -118,15 +126,23 @@ export default function SinglePost() {
 
     try {
       const res = await fetch(url + commentListPath, {
-        method: 'GET',
+        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
       });
       const json = await res.json();
       const commentInfo = json.comments;
       setContent(commentInfo);
+      // console.log(json);
+      console.log(commentInfo);
+      const commentAccountName = commentInfo.map(
+        (item) => item.author.accountname
+      ); // ['user1', 'user2', 'user2']
+      const commentID = commentInfo.map((item) => item.id);
+      console.log(commentAccountName);
+      setCommentUserId(commentAccountName);
     } catch (error) {
       console.log(error);
     }
@@ -135,6 +151,10 @@ export default function SinglePost() {
   useEffect(() => {
     getCommentList();
   }, []);
+
+  const commentId = (e) => {
+    setCommentUserId(e.target.value);
+  };
 
   return (
     <div className="singlePostWrap">
@@ -154,7 +174,14 @@ export default function SinglePost() {
           />
         </section>
         <ul className="postCommentWrap">
-          <PostComment postUniqueId={postUniqueId} commentInfo={content} />
+          <PostComment
+            postUniqueId={postUniqueId}
+            commentInfo={content}
+            onClick={(e) => {
+              setCommentModal(true);
+              commentId(e);
+            }}
+          />
         </ul>
       </section>
       <Comment
@@ -162,6 +189,66 @@ export default function SinglePost() {
         click={createComment}
         profile={commentProfile}
       />
+      {window.localStorage.getItem("accountname") === commentUserId ? (
+        <>
+          <div
+            className={commentModal ? "commentModal" : "disabledCommentPopup"}
+            onClick={() => {
+              setCommentModal(false);
+            }}
+          >
+            <Modal>
+              <ModalContent
+                txt="삭제"
+                onClick={() => {
+                  setCommentAlert(true);
+                  setCommentModal(false);
+                }}
+              />
+            </Modal>
+          </div>
+          <div
+            className={commentAlert ? "commentModal" : "disabledCommentPopup"}
+          >
+            <Alert
+              message="댓글을 삭제할까요?"
+              cancel="취소"
+              confirm="삭제"
+              onClickConfirm={() => setCommentAlert(false)}
+              onClickCancel={() => setCommentAlert(false)}
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <div
+            className={commentModal ? "commentModal" : "disabledCommentPopup"}
+            onClick={() => {
+              setCommentModal(false);
+            }}
+          >
+            <Modal>
+              <ModalContent
+                txt="신고"
+                onClick={() => {
+                  setCommentAlert(true);
+                  setCommentModal(false);
+                }}
+              />
+            </Modal>
+          </div>
+          <div
+            className={commentAlert ? "commentModal" : "disabledCommentPopup"}
+          >
+            <Alert
+              message="신고하시겠습니까?"
+              cancel="취소"
+              confirm="신고"
+              onClickCancel={() => setCommentAlert(false)}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

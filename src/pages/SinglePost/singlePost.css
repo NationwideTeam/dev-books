@@ -3,6 +3,7 @@
   height: 844px;
   margin: 0 auto;
   background-color: #fff;
+  position: relative;
 }
 
 .singlePostMain {
@@ -11,9 +12,20 @@
 }
 
 .singlePostContainer {
-  border-bottom: 1px solid #DBDBDB;
+  border-bottom: 1px solid #dbdbdb;
 }
 
 .postCommentWrap {
   padding: 4px 16px;
+}
+
+.commentModal {
+  position: absolute;
+  top: 0;
+  width: 390px;
+  height: 844px;
+}
+
+.disabledCommentPopup {
+  display: none;
 }
