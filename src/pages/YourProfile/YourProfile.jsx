@@ -11,12 +11,17 @@ import TabMenu from "../../components/TabMenu/TabMenu";
 import Button from "../../components/Buttons/Button";
 import message from "../../assets/icon/icon-message-circle.svg";
 import share from "../../assets/icon/icon-share.svg";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
+import ModalContent from "../../components/ModalContent/ModalContent";
+import Alert from "../../components/Alert/Alert";
 
 function MyProfile() {
   const location = useLocation();
   const [isFollow, setIsFollow] = useState(true);
   const [products, setProducts] = useState([]);
+  const [navModal, setNavModal] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   // accountName 체크 (사용자 프로필 or 마이 프로필 확인)
   const checkAccountName = () => {
@@ -68,10 +73,28 @@ function MyProfile() {
     getUserProduct();
   }, []);
 
+  let navigate = useNavigate();
+
+  // 로그아웃
+  const handleLogout = () => {
+    window.localStorage.removeItem("accountname");
+    window.localStorage.removeItem("token");
+    navigate("/login");
+  };
+
+  // 설정 및 개인정보 버튼 누르면 myProfile로 이동
+  const nextMyProfile = () => {
+    navigate("/myProfile");
+  };
+
   return (
     <div className="MyProfileMobileScreen">
       <Topbar />
-      <BasicNav />
+      <BasicNav
+        onClick={() => {
+          setNavModal(true);
+        }}
+      />
       <ProfileInfo accountName={accountName} />
       <div className="MyProfileButtonWrapper">
         <div id="circle">
@@ -92,10 +115,40 @@ function MyProfile() {
         className={products.length !== 0 ? "Products" : "Products hidden"}
       />
       {/* <Album /> */}
-      <Contents accountName={accountName}/>
+      <Contents accountName={accountName} />
 
       <div className="tabmenu">
         <TabMenu />
+      </div>
+      <div
+        className={
+          navModal ? "yourProfileNavModal" : "disabledYourProfilePopup"
+        }
+        onClick={() => {
+          setNavModal(false);
+        }}
+      >
+        <Modal>
+          <ModalContent txt="설정 및 개인정보" onClick={nextMyProfile} />
+          <ModalContent
+            txt="로그아웃"
+            onClick={() => {
+              setAlert(true);
+              setNavModal(false);
+            }}
+          />
+        </Modal>
+      </div>
+      <div className={alert ? "yourProfileAlert" : "disabledYourProfilePopup"}>
+        <Alert
+          message="로그아웃하시겠어요?"
+          cancel="취소"
+          confirm="로그아웃"
+          onClickCancel={() => {
+            setAlert(false);
+          }}
+          onClickConfirm={handleLogout}
+        />
       </div>
     </div>
   );
