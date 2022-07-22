@@ -47,10 +47,16 @@ export const SearchNav = () => {
 };
 
 export const MainNav = (props) => {
+  const navigate = useNavigate();
   return (
     <div className="nav">
       <p className="mainTitle">{props.title}</p>
-      <button className="searchButton">
+      <button
+        className="searchButton"
+        onClick={() => {
+          navigate("/SearchFeed");
+        }}
+      >
         <span className="a11yHidden">검색하기</span>
       </button>
     </div>
