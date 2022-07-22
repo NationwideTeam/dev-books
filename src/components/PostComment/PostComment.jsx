@@ -1,5 +1,5 @@
 // PostComment.jsx
-import './postComment.css';
+import "./postComment.css";
 
 export default function PostComment(props) {
   return props.commentInfo.map((file, index) => {
@@ -15,11 +15,16 @@ export default function PostComment(props) {
           <span className="commentTime">
             {file.createdAt
               .slice(0, 11)
-              .replace('-', '년')
-              .replace('-', '월')
-              .replace('T', '일')}
+              .replace("-", "년")
+              .replace("-", "월")
+              .replace("T", "일")}
           </span>
-          <button className="moreCommentBtn" type="button"></button>
+          <button
+            className="moreCommentBtn"
+            type="button"
+            onClick={props.onClick}
+            value={file.author.accountname}
+          ></button>
         </div>
         <p className="commenttxt">{file.content}</p>
       </li>
