@@ -8,7 +8,6 @@ import album3 from "../../assets/album3.png";
 function Album() {
   return (
     <div className="album">
-      <Postbar />
       <div className="postWrapper">
         <img src={album1} alt="" />
         <img src={album2} alt="" />

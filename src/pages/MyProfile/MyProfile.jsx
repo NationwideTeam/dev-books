@@ -6,6 +6,7 @@ import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import Products from "../../components/Products/Products";
 import Postbar from "../../components/Postbar/Postbar";
 import { Contents } from "../../components/Content/Content";
+import Album from "../../components/Album/Album";
 import TabMenu from "../../components/TabMenu/TabMenu";
 import Button from "../../components/Buttons/Button";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -17,6 +18,7 @@ function MyProfile() {
   const [navModal, setNavModal] = useState(false);
   const [alert, setAlert] = useState(false);
   const [products, setProducts] = useState([]);
+  const [postbarBtn, setPostbarBtn] = useState(true);
 
   let navigate = useNavigate();
   const location = useLocation();
@@ -58,6 +60,11 @@ function MyProfile() {
     };
     getUserProduct();
   }, []);
+
+  // 게시글 섹션 - 목록형 or 앨범형 버튼
+  const handleBtnClick = () => {
+    setPostbarBtn((postbarBtn) => !postbarBtn);
+  };
 
   // 상품 삭제
   const prodDelete = async (e) => {
@@ -150,8 +157,27 @@ function MyProfile() {
         className={products.length !== 0 ? "Products" : "Products hidden"}
       />
 
-      <Postbar />
-      <Contents accountName={accountName} onClick={postDelete} />
+      <div className="postbar">
+        <button
+          className={postbarBtn ? "postAlbum" : "postAlbum on disabled"}
+          onClick={handleBtnClick}
+        >
+          <span className="a11yHidden">앨범</span>
+        </button>
+
+        <button
+          className={postbarBtn ? "postList on disabled" : "postList"}
+          onClick={handleBtnClick}
+        >
+          <span className="a11yHidden">리스트</span>
+        </button>
+      </div>
+      {postbarBtn ? (
+        <Contents accountName={accountName} onClick={postDelete} />
+      ) : (
+        <Album accountName={accountName} />
+      )}
+
       <div
         className={navModal ? "myProfileNavModal" : "disabledMyProfilePopup"}
         onClick={() => {
