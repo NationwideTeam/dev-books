@@ -5,7 +5,7 @@ import { Content } from "../../components/Content/Content";
 import PostComment from "../../components/PostComment/PostComment";
 import Topbar from "../../components/Topbar/Topbar";
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import ModalContent from "../../components/ModalContent/ModalContent";
 import Alert from "../../components/Alert/Alert";
@@ -13,8 +13,10 @@ import Alert from "../../components/Alert/Alert";
 export default function SinglePost() {
   const [commentModal, setCommentModal] = useState(false);
   const [commentAlert, setCommentAlert] = useState(false);
+  const [navModal, setNavModal] = useState(false);
+  const [alert, setAlert] = useState(false);
 
-  const [commentUserId, setCommentUserId] = useState([]);
+  let navigate = useNavigate();
 
   // 유저 프로필 상태
   const [userProfileImg, setUserProfileImg] = useState("");
@@ -48,6 +50,9 @@ export default function SinglePost() {
 
   // 댓글 작성 유저 프로필 이미지
   const [commentProfile, setCommentProfile] = useState("");
+
+  // 댓글 작성 유저 아이디
+  const [commentUserId, setCommentUserId] = useState([]);
 
   // 댓글 불러오기 정보 상태
   const [content, setContent] = useState([]);
@@ -188,10 +193,26 @@ export default function SinglePost() {
     setCommentUserId(e.target.value);
   };
 
+  // 로그아웃
+  const handleLogout = () => {
+    window.localStorage.removeItem("accountname");
+    window.localStorage.removeItem("token");
+    navigate("/login");
+  };
+
+  // 설정 및 개인정보 버튼 누르면 myProfile로 이동
+  const nextMyProfile = () => {
+    navigate("/myProfile");
+  };
+
   return (
     <div className="singlePostWrap">
       <Topbar />
-      <BasicNav />
+      <BasicNav
+        onClick={() => {
+          setNavModal(true);
+        }}
+      />
       <section className="singlePostMain">
         <section className="singlePostContainer">
           <Content
@@ -283,6 +304,34 @@ export default function SinglePost() {
           </div>
         </>
       )}
+      <div
+        className={navModal ? "postNavModal" : "disabledPostPopup"}
+        onClick={() => {
+          setNavModal(false);
+        }}
+      >
+        <Modal>
+          <ModalContent txt="설정 및 개인정보" onClick={nextMyProfile} />
+          <ModalContent
+            txt="로그아웃"
+            onClick={() => {
+              setAlert(true);
+              setNavModal(false);
+            }}
+          />
+        </Modal>
+      </div>
+      <div className={alert ? "postAlert" : "disabledPostPopup"}>
+        <Alert
+          message="로그아웃하시겠어요?"
+          cancel="취소"
+          confirm="로그아웃"
+          onClickCancel={() => {
+            setAlert(false);
+          }}
+          onClickConfirm={handleLogout}
+        />
+      </div>
     </div>
   );
 }
