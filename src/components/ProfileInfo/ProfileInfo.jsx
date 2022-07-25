@@ -87,7 +87,14 @@ function ProfileInfo(props) {
         </div>
         <img src={userImg} className="profileImg" alt="" />
         <div className="followings">
-          <Link to="/followings">{following}</Link>
+          <Link
+            to={{
+              pathname: "/followings",
+              search: `?id=${accountName}`,
+            }}
+          >
+            {following}
+          </Link>
           <p className="followText">followings</p>
         </div>
       </div>
