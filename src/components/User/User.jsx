@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export const UserSearch = (props) => {
   return (
-    <li className="userSearchList">
+    <li className="userSearchList" onClick={props.click}>
       <img src={props.picture} alt="유저 프로필 이미지" />
       <div className="userInfo">
         <strong className="userName">{props.name}</strong>
