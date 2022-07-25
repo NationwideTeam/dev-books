@@ -1,12 +1,9 @@
 .homeFeed {
-  position: relative;
-}
-
-.homeFeed {
   width: 390px;
   margin: 0 auto;
   text-align: center;
   background-color: #ffffff;
+  position: relative;
 }
 
 .homeFeedMain {

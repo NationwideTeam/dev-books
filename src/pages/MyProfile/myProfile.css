@@ -18,9 +18,9 @@
 }
 
 .tabmenu {
-  position: fixed;
+  position: absolute;
   background-color: #fff;
-  top: 815px;
+  bottom: 0;
 }
 
 .MyProfileButtonWrapper {
