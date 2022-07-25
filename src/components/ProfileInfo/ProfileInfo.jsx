@@ -75,7 +75,14 @@ function ProfileInfo(props) {
     <div className="profileInfo">
       <div className="profileWrapper">
         <div className="follower">
-          <Link to="/followers">{follower}</Link>
+          <Link
+            to={{
+              pathname: "/followers",
+              search: `?id=${accountName}`,
+            }}
+          >
+            {follower}
+          </Link>
           <p className="followText">followers</p>
         </div>
         <img src={userImg} className="profileImg" alt="" />
