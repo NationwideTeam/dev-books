@@ -15,7 +15,6 @@ import HomeFeed  from "./pages/HomeFeed/HomeFeed";
 import JoinProfile from "./pages/JoinProfile/JoinProfile";
 import NotFound from "./pages/NotFound/NotFound";
 import PostUpload from "./pages/PostUpload/PostUpload";
-import PostUploadContent from "./pages/PostUploadContent/PostUploadContent";
 import SearchFeed from "./pages/SearchFeed/SearchFeed";
 import ProductEdit from "./pages/ProductEdit/ProductEdit";
 import PostEdit from "./pages/PostEdit/PostEdit";
@@ -41,7 +40,6 @@ function App() {
           <Link to={"/productUpload"}> 상품등록 /</Link>
           <Link to={"/singlePost"}> 포스트 /</Link>
           <Link to={"/PostUpload"}>포스트 업로드 /</Link>
-          <Link to={"/PostUploadContent"}>포스트 업로드_내용 /</Link>
           <Link to={"/chatFeed"}>채팅 피드 /</Link>
           <Link to={"/chatRoom"}>채팅방 /</Link>
           <Link to={"/NotFound"}>404페이지 /</Link>
@@ -63,11 +61,6 @@ function App() {
           <Route path="/JoinProfile" element={<JoinProfile />}></Route>
           <Route path="/NotFound" element={<NotFound />}></Route>
           <Route path="/PostUpload" element={<PostUpload />}></Route>
-
-          <Route
-            path="/PostUploadContent"
-            element={<PostUploadContent />}
-          ></Route>
           <Route path="/SearchFeed" element={<SearchFeed />}></Route>
           <Route path="/ProductEdit" element={<ProductEdit />}></Route>
           <Route path="/PostEdit" element={<PostEdit />}></Route>
