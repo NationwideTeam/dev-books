@@ -112,7 +112,7 @@ export default function PostUpload() {
         // console.log(reader);
         reader.onload = () => {
           previewUrl[i] = reader.result;
-          setPostImgUrl([...previewUrl, postImg]);
+          setPostImgUrl([...previewUrl, ...postImg]);
         };
         reader.readAsDataURL(file);
       }
