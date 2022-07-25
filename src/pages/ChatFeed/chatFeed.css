@@ -2,6 +2,7 @@
   width: 390px;
   margin: 0 auto;
   background-color: #ffffff;
+  position: relative;
 }
 
 .chatFeedMain {
@@ -30,4 +31,8 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.disabledChatPopup {
+  display: none;
 }
