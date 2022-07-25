@@ -52,8 +52,7 @@ export const Followers = () => {
               picture={item.image}
               name={item.username}
               id={item.accountname}
-              // follow="팔로우"
-              isFollow={false}
+              isFollow={true}
             />
           );
         })}
