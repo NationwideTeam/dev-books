@@ -1,20 +1,11 @@
 import './comment.css';
 import { forwardRef } from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default Comment = forwardRef((props, ref) => {
-  // 댓글 작성 내용 상태
-  const [writeComment, setWriteComment] = useState('');
   // 댓글 버튼 활성화 상태
   const [buttonActive, setButtonActive] = useState('uploadComment');
 
-  useEffect(() => {
-    if(writeComment !== '') {
-      setButtonActive('activeCommentButton')
-    } else {
-      setButtonActive('uploadComment')
-    }
-  }, [writeComment])
 
   return (
     <form className="commentForm">
@@ -29,9 +20,10 @@ export default Comment = forwardRef((props, ref) => {
         id="comment"
         ref={ref}
         autoComplete="off"
-        value={writeComment}
         onChange={(e) => {
-          setWriteComment(e.target.value);
+          if(e.target.value !== '') {
+            setButtonActive('activeCommentButton');
+          }
         }}
       />
       <button className={buttonActive} type="button" onClick={props.click}>
