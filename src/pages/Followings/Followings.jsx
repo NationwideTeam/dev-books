@@ -1,37 +1,60 @@
 import Topbar from "../../components/Topbar/Topbar";
-import { CommonNav } from "../../components/Navbar/Navbar"
-import { UserFollow } from "../../components/User/User"
+import { CommonNav } from "../../components/Navbar/Navbar";
+import { UserFollow } from "../../components/User/User";
 import TabMenu from "../../components/TabMenu/TabMenu";
-
-import UserImg1 from "../../assets/comment-img1.png";
-import UserImg2 from "../../assets/comment-img2.png";
-import UserImg3 from '../../assets/basic-profile.svg';
-import './followings.css';
+import "./followings.css";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export const Followings = () => {
+  const location = useLocation();
+  const [followings, setFollowings] = useState([]);
+
+  useEffect(() => {
+    followingList();
+  }, []);
+
+  // 내가 팔로잉한 사용자 목록 확인
+  const followingList = async () => {
+    const url = "https://mandarin.api.weniv.co.kr";
+    const accountName = location.search.split("=")[1];
+    const token = localStorage.getItem("token");
+
+    const init = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    };
+
+    try {
+      const resUserFollowing = await fetch(
+        `${url}/profile/${accountName}/following`,
+        init
+      );
+      const resUserFollowingJson = await resUserFollowing.json();
+      setFollowings(resUserFollowingJson);
+    } catch (err) {
+      console.error("error", err);
+    }
+  };
+
   return (
     <div className="following">
-      <Topbar/>
-      <CommonNav title="Followings"/>
+      <Topbar />
+      <CommonNav title="Followings" />
       <ul className="followingUser">
-        <UserFollow 
-          picture={UserImg1}
-          name="애월읍 한라봉 최고 맛집"
-          id="정성을 다해 농사짓는 한라봉"
-          follow="팔로우"
-        />
-        <UserFollow 
-          picture={UserImg2}
-          name="감귤의 품격 - 애월읍"
-          id="제주 노지귤, 하우스 한라봉 판매합니다."
-          follow="팔로우"
-        />
-        <UserFollow 
-          picture={UserImg3}
-          name="나 감귤 좋아하니"
-          id="감귤농장 컬렉터 i love mandarin"
-          follow="팔로우"
-        />
+        {followings.map((item, index) => {
+          return (
+            <UserFollow
+              key={index}
+              picture={item.image}
+              name={item.username}
+              id={item.accountname}
+            />
+          );
+        })}
       </ul>
       <div className="tabMenu">
         <TabMenu />
