@@ -16,7 +16,7 @@ export const UserSearch = (props) => {
 };
 
 export const UserFollow = (props) => {
-  const [isFollow, setIsFollow] = useState(true);
+  const [isFollow, setIsFollow] = useState(props.isFollow);
 
   const handleClick = () => {
     setIsFollow((isFollow) => !isFollow);
