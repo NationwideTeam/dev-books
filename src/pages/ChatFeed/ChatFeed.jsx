@@ -1,22 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { BasicNav } from "../../components/Navbar/Navbar";
 import { UserChatList } from "../../components/User/User";
 import Topbar from "../../components/Topbar/Topbar";
 import { useNavigate } from "react-router-dom";
-
 import BasicProfile from "../../assets/basic-profile.svg";
-
 import "./chatFeed.css";
 import TabMenu from "../../components/TabMenu/TabMenu";
+import Modal from "../../components/Modal/Modal";
+import ModalContent from "../../components/ModalContent/ModalContent";
+import Alert from "../../components/Alert/Alert";
 
 const ChatFeed = () => {
+  const [navModal, setNavModal] = useState(false);
+  const [alert, setAlert] = useState(false);
+
   let navigate = useNavigate();
+
+  // 로그아웃
+  const handleLogout = () => {
+    window.localStorage.removeItem("accountname");
+    window.localStorage.removeItem("token");
+    navigate("/login");
+  };
+
+  // 설정 및 개인정보 버튼 누르면 myProfile로 이동
+  const nextMyProfile = () => {
+    navigate("/myProfile");
+  };
 
   return (
     <section className="chatFeed">
       <Topbar />
       <nav className="chatFeedNav">
-        <BasicNav />
+        <BasicNav
+          onClick={() => {
+            setNavModal(true);
+          }}
+        />
       </nav>
       <main className="chatFeedMain">
         <ul className="chatFeedLists">
@@ -41,6 +61,34 @@ const ChatFeed = () => {
         </ul>
       </main>
       <TabMenu />
+      <div
+        className={navModal ? "chatNavModal" : "disabledChatPopup"}
+        onClick={() => {
+          setNavModal(false);
+        }}
+      >
+        <Modal>
+          <ModalContent txt="설정 및 개인정보" onClick={nextMyProfile} />
+          <ModalContent
+            txt="로그아웃"
+            onClick={() => {
+              setAlert(true);
+              setNavModal(false);
+            }}
+          />
+        </Modal>
+      </div>
+      <div className={alert ? "chatAlert" : "disabledChatPopup"}>
+        <Alert
+          message="로그아웃하시겠어요?"
+          cancel="취소"
+          confirm="로그아웃"
+          onClickCancel={() => {
+            setAlert(false);
+          }}
+          onClickConfirm={handleLogout}
+        />
+      </div>
     </section>
   );
 };
