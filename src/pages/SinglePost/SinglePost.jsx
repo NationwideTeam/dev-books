@@ -150,6 +150,7 @@ export default function SinglePost() {
           }),
         });
         const json = await res.json();
+        getCommentList();
         commentText.current.value = "";
       }
     } catch (error) {
@@ -172,13 +173,10 @@ export default function SinglePost() {
       const json = await res.json();
       const commentInfo = json.comments;
       setContent(commentInfo);
-      // console.log(json);
-      console.log(commentInfo);
       const commentAccountName = commentInfo.map(
         (item) => item.author.accountname
       ); // ['user1', 'user2', 'user2']
       const commentID = commentInfo.map((item) => item.id);
-      console.log(commentAccountName);
       setCommentUserId(commentAccountName);
     } catch (error) {
       console.log(error);
