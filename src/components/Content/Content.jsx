@@ -22,6 +22,11 @@ export function Content(props) {
   const [postModal, setPostModal] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
 
+  const [isLike, setIsLike] = useState(true);
+  const handleClick = () => {
+    setIsLike((isLike) => !isLike);
+  };
+
   let navigate = useNavigate();
 
   const postUpdate = () => {
@@ -37,12 +42,12 @@ export function Content(props) {
 
   // 유저의 프로필 이미지 클릭하면 프로필 페이지로 이동
   const moveProfile = () => {
-    if (userId === localStorage.getItem("accountname")){
+    if (userId === localStorage.getItem("accountname")) {
       navigate(`/myProfile`);
     } else if (userId !== localStorage.getItem("accountname")) {
-      navigate(`/yourProfile?id=${userId}`)
+      navigate(`/yourProfile?id=${userId}`);
     }
-  }
+  };
 
   return (
     <section className="postContent">
@@ -73,7 +78,11 @@ export function Content(props) {
       </div>
       <div className="postBtnWrap">
         <span className="heartIcon">
-          <button type="button" className="heartBtn"></button>
+          <button
+            type="button"
+            onClick={handleClick}
+            className={isLike ? "heartBtn" : "heartClickedBtn"}
+          ></button>
           <strong className="postHeartNum">{heartNum}</strong>
         </span>
         <span className="messageIcon">
