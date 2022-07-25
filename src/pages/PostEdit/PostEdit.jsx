@@ -22,7 +22,7 @@ export default function PostUpload() {
   const [profileImg, setProfileImg] = useState(userImg);
 
   // 업로드한 포스트 프리뷰 이미지 상태
-  const [postImgUrl, setPostImgUrl] = useState([postImg]);
+  const [postImgUrl, setPostImgUrl] = useState(postImg);
 
   // 포스트 텍스트 상태
   const [contentText, setContentText] = useState(postTxt);
@@ -66,9 +66,9 @@ export default function PostUpload() {
   // 게시글 작성 여부에 따라 버튼 활성화 하기
   const changeButtonColor = (e) => {
     setContentText(e.target.value);
-    if (contentText.length >= 0) {
+    if (contentText !== "") {
       setButtonActive("button ms uploadButton");
-    } else if (contentText === " ") {
+    } else if (contentText === "") {
       setButtonActive("button ms uploadButton disabled");
     }
   };
@@ -100,6 +100,7 @@ export default function PostUpload() {
   const viewPostImg = (e) => {
     let files = e.target.files;
     let fileArray = [...files];
+    console.log(fileArray);
     fileArray.forEach((file) => fileUrls.push(file));
 
     let previewUrl = [];
@@ -108,9 +109,10 @@ export default function PostUpload() {
       for (let i = 0; i < files.length; i++) {
         let file = files[i];
         let reader = new FileReader();
+        // console.log(reader);
         reader.onload = () => {
           previewUrl[i] = reader.result;
-          setPostImgUrl([...previewUrl]);
+          setPostImgUrl([...previewUrl, postImg]);
         };
         reader.readAsDataURL(file);
       }
@@ -124,17 +126,15 @@ export default function PostUpload() {
   // 게시글 & 이미지 작성 후 서버에 업로드
   const createPost = async () => {
     const url = "https://mandarin.api.weniv.co.kr";
-    const createPostReaPath = "/post";
     const token = localStorage.getItem("token");
     const postContentText = contentText;
-    // const files = postImgUrl;
-    // const imgUrls = postImgUrl === [] ? [] : postImgUrl;
-    const imgUrls = [];
+    const imgUrls = postImg;
+
+    for (const file of fileUrls) {
+      imgUrls.push(url + "/" + (await uploadImg(file)));
+    }
 
     try {
-      for (const file of fileUrls) {
-        imgUrls.push(url + "/" + (await uploadImg(file)));
-      }
       if (postContentText === "" || postImgUrl.length === 0) {
         alert("내용 또는 이미지를 입력해주세요.");
         return;
@@ -179,6 +179,7 @@ export default function PostUpload() {
           placeholder="게시글 입력하기..."
           value={contentText}
           onChange={changeButtonColor}
+          // onChange={(e) => setContentText(e.target.value)}
         ></textarea>
         <label htmlFor="uploadInput" className="postUploadBtn"></label>
         <input
