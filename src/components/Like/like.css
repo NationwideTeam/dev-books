@@ -1,0 +1,23 @@
+.likeBtnWrapper {
+  width: 50px;
+}
+
+.likeBtnWrapper button {
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  background-size: 20px;
+  margin-right: 6px;
+  line-height: 10px;
+}
+
+.likeBtnWrapper .likeBtnNum {
+  margin-left: 16px;
+}
+
+.clicked {
+  background-image: url(../../assets/icon/icon-heart.png);
+}
+.unclicked {
+  background-image: url(../../assets/icon/icon-heart.svg);
+}

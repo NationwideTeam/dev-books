@@ -4,6 +4,7 @@ import Modal from "../Modal/Modal";
 import ModalContent from "../ModalContent/ModalContent";
 import Alert from "../Alert/Alert";
 import { useNavigate } from "react-router-dom";
+import Like from "../Like/Like";
 
 export function Content(props) {
   const {
@@ -12,20 +13,15 @@ export function Content(props) {
     userId,
     posttext,
     postImg,
-    heartNum,
     commentNum,
     postDate,
     onClick,
     value,
+    heartCount,
+    hearted,
   } = props;
-
   const [postModal, setPostModal] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
-
-  const [isLike, setIsLike] = useState(true);
-  const handleClick = () => {
-    setIsLike((isLike) => !isLike);
-  };
 
   let navigate = useNavigate();
 
@@ -77,14 +73,7 @@ export function Content(props) {
         })}
       </div>
       <div className="postBtnWrap">
-        <span className="heartIcon">
-          <button
-            type="button"
-            onClick={handleClick}
-            className={isLike ? "heartBtn" : "heartClickedBtn"}
-          ></button>
-          <strong className="postHeartNum">{heartNum}</strong>
-        </span>
+        <Like heartCount={heartCount} hearted={hearted} postid={value} />
         <span className="messageIcon">
           <button type="button" className="messageBtn"></button>
           <strong className="postMessageNum">{commentNum}</strong>
@@ -198,7 +187,8 @@ export function Contents(props) {
         userId={item.author.accountname}
         posttext={item.content}
         postImg={item.image.split(",")}
-        heartNum={item.heartCount}
+        heartCount={item.heartCount}
+        hearted={item.hearted}
         commentNum={item.commentCount}
         postDate={item.createdAt}
         onClick={props.onClick}
