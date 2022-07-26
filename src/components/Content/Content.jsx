@@ -90,7 +90,13 @@ export function Content(props) {
           <strong className="postMessageNum">{commentNum}</strong>
         </span>
       </div>
-      <div className="postDate">{postDate.split("T")[0]}</div>
+      <div className="postDate">
+        {postDate
+          .slice(0, 11)
+          .replace("-", "년 ")
+          .replace("-", "월 ")
+          .replace("T", "일")}
+      </div>
       {window.localStorage.accountname === userId ? (
         <>
           <div
