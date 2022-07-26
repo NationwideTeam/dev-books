@@ -2,6 +2,7 @@ import React from "react";
 import "./user.css";
 import Button from "../Buttons/Button";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export const UserSearch = (props) => {
   return (
@@ -17,6 +18,10 @@ export const UserSearch = (props) => {
 
 export const UserFollow = (props) => {
   const [isFollow, setIsFollow] = useState(false);
+
+  useEffect(() => {
+    getFollowStatus();
+  }, []);
 
   // 팔로우 한 사용자 -> 취소, 팔로우 하지 않은 사용자 -> 팔로우 버튼 표시
   const getFollowStatus = async () => {
@@ -41,7 +46,6 @@ export const UserFollow = (props) => {
       console.error("err", err);
     }
   };
-  getFollowStatus();
 
   const handleClick = () => {
     setIsFollow((isFollow) => !isFollow);
