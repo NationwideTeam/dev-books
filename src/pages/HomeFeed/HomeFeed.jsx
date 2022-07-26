@@ -57,7 +57,7 @@ const HomeFeed = () => {
               userName={file.author.username}
               userId={file.author.accountname}
               posttext={file.content}
-              postImg={[file.image]}
+              postImg={file.image.split(',')}
               heartNum={file.heartCount}
               commentNum={file.commentCount}
               postDate={file.createdAt}
