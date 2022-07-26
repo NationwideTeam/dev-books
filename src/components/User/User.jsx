@@ -17,6 +17,7 @@ export const UserSearch = (props) => {
 
 export const UserFollow = (props) => {
   const [isFollow, setIsFollow] = useState(false);
+  const [myAccount, setMyAccount] = useState(false);
 
   useEffect(() => {
     getFollowStatus();
@@ -27,6 +28,7 @@ export const UserFollow = (props) => {
     const url = "https://mandarin.api.weniv.co.kr";
     const token = localStorage.getItem("token");
     const accountName = props.id;
+    const myAccountName = localStorage.getItem("accountname");
     const init = {
       method: "GET",
       headers: {
@@ -40,6 +42,10 @@ export const UserFollow = (props) => {
       const resUserFollowJson = await resUserFollow.json();
       if (resUserFollowJson.profile.isfollow === false) {
         setIsFollow(true);
+      }
+      // 나의 계정일 경우 버튼 표시 X
+      if (resUserFollowJson.profile.accountname === myAccountName) {
+        setMyAccount(true);
       }
     } catch (err) {
       console.error("err", err);
@@ -57,7 +63,7 @@ export const UserFollow = (props) => {
         <strong className="userName">{props.name}</strong>
         <strong className="userId">{props.id}</strong>
       </div>
-      <div className="userFollowButton">
+      <div className={myAccount ? "hidden" : "userFollowButton"}>
         <Button
           className={isFollow ? "button sm" : "button sm active"}
           onClick={handleClick}
