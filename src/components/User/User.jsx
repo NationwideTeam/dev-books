@@ -16,11 +16,37 @@ export const UserSearch = (props) => {
 };
 
 export const UserFollow = (props) => {
-  const [isFollow, setIsFollow] = useState(props.isFollow);
+  const [isFollow, setIsFollow] = useState(false);
+
+  // 팔로우 한 사용자 -> 취소, 팔로우 하지 않은 사용자 -> 팔로우 버튼 표시
+  const getFollowStatus = async () => {
+    const url = "https://mandarin.api.weniv.co.kr";
+    const token = localStorage.getItem("token");
+    const accountName = props.id;
+    const init = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    };
+
+    try {
+      const resUserFollow = await fetch(`${url}/profile/${accountName}`, init);
+      const resUserFollowJson = await resUserFollow.json();
+      if (resUserFollowJson.profile.isfollow === false) {
+        setIsFollow(true);
+      }
+    } catch (err) {
+      console.error("err", err);
+    }
+  };
+  getFollowStatus();
 
   const handleClick = () => {
     setIsFollow((isFollow) => !isFollow);
   };
+
   return (
     <li className="userSearchList">
       <img src={props.picture} alt="유저 프로필 이미지" />

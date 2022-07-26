@@ -174,7 +174,7 @@ export function Contents(props) {
         const res = await fetch(url + userpostPath, init);
         const json = await res.json();
         setContent(json.post);
-        console.log(json.post);
+        // console.log(json.post);
       } catch (err) {
         console.error(err);
       }
