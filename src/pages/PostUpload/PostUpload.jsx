@@ -32,10 +32,10 @@ export default function PostUpload() {
   const next = () => {
     navigate('/singlePost', {
       state: {
-        postId: postUniqueId
-      }
-    })
-  }
+        postId: postUniqueId,
+      },
+    });
+  };
 
   // 유저 프로필 이미지 동적으로 받아오기
   const getUserProfile = async () => {
@@ -90,30 +90,33 @@ export default function PostUpload() {
     }
   };
 
+  // 프리뷰 이미지 주소 담는 전역변수
+  let previewUrl = [];
 
   // 이미지 프리뷰 보기
   const viewPostImg = (e) => {
     let files = e.target.files;
     let fileArray = [...files];
-    fileArray.forEach(file => fileUrls.push(file));
+    fileArray.forEach((file) => fileUrls.push(file));
 
     // 이미지 업로드 시 버튼 활성화
     setButtonActive('button ms uploadButton');
-    
-    let previewUrl = [];
 
-    if (files.length <= 3) {
+    // let previewUrl = [];
+
+    if (fileUrls.length <= 3) {
       for (let i = 0; i < files.length; i++) {
         let file = files[i];
         let reader = new FileReader();
         reader.onload = () => {
-          previewUrl[i] = reader.result;
+          previewUrl.push(reader.result);
           setPostImgUrl([...previewUrl]);
         };
         reader.readAsDataURL(file);
       }
     } else {
       alert('이미지는 3개까지 올릴 수 있습니다.');
+      fileUrls.pop();
     }
   };
 
