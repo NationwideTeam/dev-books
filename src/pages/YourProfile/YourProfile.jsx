@@ -17,11 +17,19 @@ import Alert from "../../components/Alert/Alert";
 
 function MyProfile() {
   const location = useLocation();
-  const [isFollow, setIsFollow] = useState(true);
+  const [isFollow, setIsFollow] = useState(false);
   const [products, setProducts] = useState([]);
   const [navModal, setNavModal] = useState(false);
   const [alert, setAlert] = useState(false);
   const [postbarBtn, setPostbarBtn] = useState(true);
+
+  const url = "https://mandarin.api.weniv.co.kr";
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    getUserProduct();
+    getFollowStatus();
+  }, []);
 
   // accountName 체크 (사용자 프로필 or 마이 프로필 확인)
   const checkAccountName = () => {
@@ -40,38 +48,51 @@ function MyProfile() {
   };
   checkUserOther();
 
+  // 팔로우 한 사용자 -> 언팔로우, 팔로우 하지 않은 사용자 -> 팔로우 버튼 표시
+  const getFollowStatus = async () => {
+    const init = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    };
+
+    try {
+      const resUserFollow = await fetch(`${url}/profile/${accountName}`, init);
+      const resUserFollowJson = await resUserFollow.json();
+      if (resUserFollowJson.profile.isfollow === false) {
+        setIsFollow(true);
+      }
+    } catch (err) {
+      console.error("err", err);
+    }
+  };
+
   // 팔로우 or 언팔로우
   const handleClick = () => {
     setIsFollow((isFollow) => !isFollow);
   };
 
   // 유저 데이터에 등록한 상품이 있는지 체크
-  useEffect(() => {
-    const getUserProduct = async () => {
-      const url = "https://mandarin.api.weniv.co.kr";
-      const token = localStorage.getItem("token");
-      const init = {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-type": "application/json",
-        },
-      };
-
-      try {
-        const resUserProduct = await fetch(
-          `${url}/product/${accountName}`,
-          init
-        );
-        const resUserProductJson = await resUserProduct.json();
-        const userProduct = resUserProductJson.product;
-        setProducts(userProduct);
-      } catch (err) {
-        console.error("err", err);
-      }
+  const getUserProduct = async () => {
+    const init = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
     };
-    getUserProduct();
-  }, []);
+
+    try {
+      const resUserProduct = await fetch(`${url}/product/${accountName}`, init);
+      const resUserProductJson = await resUserProduct.json();
+      const userProduct = resUserProductJson.product;
+      setProducts(userProduct);
+    } catch (err) {
+      console.error("err", err);
+    }
+  };
 
   // 게시글 섹션 - 목록형 or 앨범형 버튼
   const handleBtnClick = () => {
