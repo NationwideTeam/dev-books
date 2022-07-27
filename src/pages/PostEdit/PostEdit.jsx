@@ -7,7 +7,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 // 업로드 할 이미지가 담기는 배열 전역변수로 선언
 let fileUrls = [];
-let fileUrlsEdit = [];
 
 // 포스트 고유 아이디 담는 전역변수 선언
 let postUniqueId = "";
@@ -19,6 +18,9 @@ export default function PostUpload() {
   const postTxt = location.state.postTxt;
   const postImg = location.state.postImg;
   const userImg = location.state.userImg;
+
+  // 최종 업로드할 이미지 상태
+  const [fileUrlsEdit, setFileUrlsEdit] = useState(postImg);
 
   // 유저 프로필 이미지 상태
   const [profileImg, setProfileImg] = useState(userImg);
@@ -124,16 +126,11 @@ export default function PostUpload() {
 
   // 이미지 프리뷰 삭제
   const onDeleteImg = (e) => {
-    // e.preventDefault();
     const targetImg = e.currentTarget.value;
-    console.log("target" + targetImg);
 
     setPostImgUrl(postImgUrl.filter((e) => e !== targetImg));
-
-    fileUrlsEdit = postImgUrl.filter((e) => e !== targetImg);
+    setFileUrlsEdit(fileUrlsEdit.filter((e) => e !== targetImg));
     fileUrls = [];
-    console.log("postImgUrl" + postImgUrl);
-    console.log("fileUrls" + fileUrls);
   };
 
   // 게시글 & 이미지 작성 후 서버에 업로드
@@ -142,13 +139,14 @@ export default function PostUpload() {
     const token = localStorage.getItem("token");
     const postContentText = contentText;
     // const imgUrls = postImg;
-    const imgUrls = [];
+    // const imgUrls = [];
+
+    // console.log(fileUrlsEdit);
+
+    const imgUrls = fileUrlsEdit;
 
     for (const file of fileUrls) {
       imgUrls.push(url + "/" + (await uploadImg(file)));
-    }
-    for (const file of fileUrlsEdit) {
-      imgUrls.push(file);
     }
 
     try {
@@ -197,7 +195,6 @@ export default function PostUpload() {
           placeholder="게시글 입력하기..."
           value={contentText}
           onChange={changeButtonColor}
-          // onChange={(e) => setContentText(e.target.value)}
         ></textarea>
         <label htmlFor="uploadInput" className="postUploadBtn"></label>
         <input
@@ -207,7 +204,6 @@ export default function PostUpload() {
           multiple
           accept="*.jpg, *.gif, *.png, *.jpeg, *.bmp, *.tif, *.heic"
           onChange={viewPostImg}
-          // onChange={onSelectFile}
         ></input>
       </form>
       <div className="postImgLists">
