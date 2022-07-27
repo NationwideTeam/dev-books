@@ -1,7 +1,21 @@
 // PostComment.jsx
-import "./postComment.css";
+import './postComment.css';
 
 export default function PostComment(props) {
+  
+  // 댓글 등록 시간 계산
+  function timeForComment(time) {
+    const postingDate = time.substring(0, time.length - 1);
+    const ms = Date.parse(postingDate);
+    const now = Date.now();
+    const gap = (now - ms) / 1000;
+    if (gap < 60) return '방금전';
+    else if (gap < 3600) return `${parseInt(gap / 60)}분 전`;
+    else if (gap < 86400) return `${parseInt(gap / 3600)}시간 전`;
+    else if (gap < 2592000) return `${parseInt(gap / 86400)}일 전`;
+    else return `${parseInt(gap / 2592000)}달 전`;
+  }
+
   return props.commentInfo.map((file, index) => {
     return (
       <li className="postComment" key={index}>
@@ -13,11 +27,7 @@ export default function PostComment(props) {
           />
           <strong className="commentUserName">{file.author.username}</strong>
           <span className="commentTime">
-            {file.createdAt
-              .slice(0, 11)
-              .replace("-", "년")
-              .replace("-", "월")
-              .replace("T", "일")}
+            {timeForComment(file.createdAt)}
           </span>
           <button
             className="moreCommentBtn"
