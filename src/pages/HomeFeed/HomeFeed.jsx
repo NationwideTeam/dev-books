@@ -53,6 +53,7 @@ const HomeFeed = () => {
           return (
             <Content
               key={index}
+              postId={file.id}
               userImg={file.author.image}
               userName={file.author.username}
               userId={file.author.accountname}

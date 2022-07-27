@@ -43,6 +43,7 @@
 .postMain {
   width: 304px;
   margin-left: auto;
+  cursor: pointer;
 }
 .postMain .contenttxt {
   font-weight: 400;
