@@ -1,7 +1,7 @@
 import React from "react";
 import "./user.css";
 import Button from "../Buttons/Button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const UserSearch = (props) => {
@@ -21,31 +21,6 @@ export const UserFollow = (props) => {
   const myAccountName = localStorage.getItem("accountname");
   const [isFollow, setIsFollow] = useState(button);
   let navigate = useNavigate();
-
-  useEffect(() => {
-    getFollowStatus();
-  }, []);
-
-  // 팔로우 한 사용자 -> 취소, 팔로우 하지 않은 사용자 -> 팔로우 버튼 표시
-  const getFollowStatus = async () => {
-    const url = "https://mandarin.api.weniv.co.kr";
-    const token = localStorage.getItem("token");
-    const init = {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-type": "application/json",
-      },
-    };
-
-    try {
-      const resUserFollow = await fetch(`${url}/profile/${id}`, init);
-      const resUserFollowJson = await resUserFollow.json();
-      // console.log(resUserFollowJson);
-    } catch (err) {
-      console.error("err", err);
-    }
-  };
 
   // 유저 클릭 시 해당 유저의 프로필 페이지로 이동
   const moveUserProfile = () => {
