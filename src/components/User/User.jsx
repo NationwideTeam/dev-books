@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import "./user.css";
 import Button from "../Buttons/Button";
