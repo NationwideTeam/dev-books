@@ -1,5 +1,5 @@
-import React from 'react';
-import deleteButton from '../../assets/icon/icon-delete.svg';
+import React from "react";
+import deleteButton from "../../assets/icon/icon-delete.svg";
 
 const ImgPreview = (props) => {
   const postUrl = props.postUrl;
@@ -9,7 +9,7 @@ const ImgPreview = (props) => {
       {postUrl.map((file, index) => {
         return (
           <div className="postImgList" key={index}>
-            <button type="button">
+            <button type="button" value={file} onClick={props.onClick}>
               <img className="deleteButton" src={deleteButton} alt="" />
             </button>
             <img className="postImg" src={file} alt="포스트 이미지 프리뷰" />
