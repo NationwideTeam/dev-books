@@ -17,10 +17,9 @@ export const UserSearch = (props) => {
 };
 
 export const UserFollow = (props) => {
-  const accountName = props.id;
+  const { picture, name, id, button } = props;
   const myAccountName = localStorage.getItem("accountname");
-  const [isFollow, setIsFollow] = useState(false);
-  const [myAccount, setMyAccount] = useState(false);
+  const [isFollow, setIsFollow] = useState(button);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -40,15 +39,9 @@ export const UserFollow = (props) => {
     };
 
     try {
-      const resUserFollow = await fetch(`${url}/profile/${accountName}`, init);
+      const resUserFollow = await fetch(`${url}/profile/${id}`, init);
       const resUserFollowJson = await resUserFollow.json();
-      if (resUserFollowJson.profile.isfollow === false) {
-        setIsFollow(true);
-      }
-      // 나의 계정일 경우 팔로우 or 취소 버튼 표시 X
-      if (resUserFollowJson.profile.accountname === myAccountName) {
-        setMyAccount(true);
-      }
+      // console.log(resUserFollowJson);
     } catch (err) {
       console.error("err", err);
     }
@@ -56,10 +49,10 @@ export const UserFollow = (props) => {
 
   // 유저 클릭 시 해당 유저의 프로필 페이지로 이동
   const moveUserProfile = () => {
-    if (accountName === myAccountName) {
+    if (id === myAccountName) {
       navigate(`/myProfile`);
-    } else if (accountName !== myAccountName) {
-      navigate(`/yourProfile?id=${accountName}`);
+    } else if (id !== myAccountName) {
+      navigate(`/yourProfile?id=${id}`);
     }
   };
 
@@ -69,17 +62,17 @@ export const UserFollow = (props) => {
 
   return (
     <li className="userSearchList" onClick={moveUserProfile}>
-      <img src={props.picture} alt="유저 프로필 이미지" />
+      <img src={picture} alt="유저 프로필 이미지" />
       <div className="userInfo">
-        <strong className="userName">{props.name}</strong>
-        <strong className="userId">{props.id}</strong>
+        <strong className="userName">{name}</strong>
+        <strong className="userId">{id}</strong>
       </div>
-      <div className={myAccount ? "hidden" : "userFollowButton"}>
+      <div className={id === myAccountName ? "hidden" : "userFollowButton"}>
         <Button
-          className={isFollow ? "button sm" : "button sm active"}
+          className={isFollow ? "button sm active" : "button sm"}
           onClick={handleClick}
         >
-          {isFollow ? "팔로우" : "취소"}
+          {isFollow ? "취소" : "팔로우"}
         </Button>
       </div>
     </li>
