@@ -17,7 +17,7 @@ export function Content(props) {
     postDate,
     onClick,
     value,
-    postId
+    postId,
     heartCount,
     hearted,
   } = props;
@@ -82,14 +82,6 @@ export function Content(props) {
         })}
       </div>
       <div className="postBtnWrap">
-        <span className="heartIcon">
-          <button
-            type="button"
-            onClick={handleClick}
-            className={isLike ? 'heartBtn' : 'heartClickedBtn'}
-          ></button>
-          <strong className="postHeartNum">{heartNum}</strong>
-        </span>
         <Like heartCount={heartCount} hearted={hearted} postid={value} />
         <span className="messageIcon">
           <button type="button" className="messageBtn" onClick={next}></button>
@@ -186,7 +178,6 @@ export function Contents(props) {
         const res = await fetch(url + userpostPath, init);
         const json = await res.json();
         setContent(json.post);
-        // console.log(json.post);
       } catch (err) {
         console.error(err);
       }
