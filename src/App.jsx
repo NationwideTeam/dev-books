@@ -11,7 +11,7 @@ import Followings from "./pages/Followings/Followings";
 import YourProfile from "./pages/YourProfile/YourProfile";
 import ChatFeed from "./pages/ChatFeed/ChatFeed";
 import ChatRoom from "./pages/ChatRoom/ChatRoom";
-import HomeFeed  from "./pages/HomeFeed/HomeFeed";
+import HomeFeed from "./pages/HomeFeed/HomeFeed";
 import JoinProfile from "./pages/JoinProfile/JoinProfile";
 import NotFound from "./pages/NotFound/NotFound";
 import PostUpload from "./pages/PostUpload/PostUpload";
@@ -26,7 +26,7 @@ function App() {
     <>
       <BrowserRouter>
         <nav>
-          <Link to={"/login"}>로그인 / </Link>
+          <Link to={"/"}>로그인 / </Link>
           <Link to={"/joinMembership"}>회원가입 /</Link>
           <Link to={"/loginEmail"}>이메일로 로그인 / </Link>
           <Link to={"/JoinProfile"}>프로필 설정 /</Link>
@@ -45,7 +45,7 @@ function App() {
           <Link to={"/NotFound"}>404페이지 /</Link>
         </nav>
         <Routes>
-          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/" element={<LoginPage />}></Route>
           <Route path="/loginEmail" element={<LoginEmail />}></Route>
           <Route path="/joinMembership" element={<JoinMembership />}></Route>
           <Route path="/productUpload" element={<ProductUpload />}></Route>

@@ -1,9 +1,10 @@
-import './content.css';
-import React, { useState, useEffect } from 'react';
-import Modal from '../Modal/Modal';
-import ModalContent from '../ModalContent/ModalContent';
-import Alert from '../Alert/Alert';
-import { useNavigate } from 'react-router-dom';
+import "./content.css";
+import React, { useState, useEffect } from "react";
+import Modal from "../Modal/Modal";
+import ModalContent from "../ModalContent/ModalContent";
+import Alert from "../Alert/Alert";
+import { useNavigate } from "react-router-dom";
+import Like from "../Like/Like";
 
 export function Content(props) {
   const {
@@ -12,21 +13,16 @@ export function Content(props) {
     userId,
     posttext,
     postImg,
-    heartNum,
     commentNum,
     postDate,
     onClick,
     value,
     postId
+    heartCount,
+    hearted,
   } = props;
-
   const [postModal, setPostModal] = useState(false);
   const [postAlert, setPostAlert] = useState(false);
-
-  const [isLike, setIsLike] = useState(true);
-  const handleClick = () => {
-    setIsLike((isLike) => !isLike);
-  };
 
   let navigate = useNavigate();
 
@@ -94,6 +90,7 @@ export function Content(props) {
           ></button>
           <strong className="postHeartNum">{heartNum}</strong>
         </span>
+        <Like heartCount={heartCount} hearted={hearted} postid={value} />
         <span className="messageIcon">
           <button type="button" className="messageBtn" onClick={next}></button>
           <strong className="postMessageNum">{commentNum}</strong>
@@ -207,8 +204,9 @@ export function Contents(props) {
         userName={item.author.username}
         userId={item.author.accountname}
         posttext={item.content}
-        postImg={item.image.split(',')}
-        heartNum={item.heartCount}
+        postImg={item.image.split(",")}
+        heartCount={item.heartCount}
+        hearted={item.hearted}
         commentNum={item.commentCount}
         postDate={item.createdAt}
         onClick={props.onClick}
