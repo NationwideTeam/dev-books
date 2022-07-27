@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./album.css";
 
 function Album(props) {
+  let navigate = useNavigate();
   const [album, setAlbum] = useState([]);
   const url = "https://mandarin.api.weniv.co.kr";
   const token = window.localStorage.getItem("token");
@@ -35,10 +36,18 @@ function Album(props) {
       <div className="postWrapper">
         {album.map((item, index) => {
           return (
-            // 링크 추후 변경 
-            <Link to="/singlePost" key={index} >
-              <img src={item.image.split(',')[0]} alt="" />
-            </Link>
+            <img
+              key={index}
+              src={item.image.split(",")[0]}
+              alt=""
+              onClick={() => {
+                navigate("/singlePost", {
+                  state: {
+                    postId: item.id,
+                  },
+                });
+              }}
+            />
           );
         })}
       </div>
