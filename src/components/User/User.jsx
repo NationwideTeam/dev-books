@@ -61,11 +61,13 @@ export const UserFollow = (props) => {
   };
 
   return (
-    <li className="userSearchList" onClick={moveUserProfile}>
-      <img src={picture} alt="유저 프로필 이미지" />
-      <div className="userInfo">
-        <strong className="userName">{name}</strong>
-        <strong className="userId">{id}</strong>
+    <li className="userSearchList">
+      <div className="userSearchInfo" onClick={moveUserProfile}>
+        <img src={picture} alt="유저 프로필 이미지" />
+        <div className="userInfo">
+          <strong className="userName">{name}</strong>
+          <strong className="userId">{id}</strong>
+        </div>
       </div>
       <div className={id === myAccountName ? "hidden" : "userFollowButton"}>
         <Button
