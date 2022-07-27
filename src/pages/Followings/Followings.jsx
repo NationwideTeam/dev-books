@@ -52,6 +52,7 @@ export const Followings = () => {
               picture={item.image}
               name={item.username}
               id={item.accountname}
+              button={item.isfollow}
             />
           );
         })}
