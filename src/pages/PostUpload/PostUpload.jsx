@@ -62,11 +62,6 @@ export default function PostUpload() {
   // 게시글 작성 여부에 따라 버튼 활성화 하기
   const changeButtonColor = (e) => {
     setContentText(e.target.value);
-    if (contentText.length >= 0) {
-      setButtonActive('button ms uploadButton');
-    } else if (contentText === ' ') {
-      setButtonActive('button ms uploadButton disabled');
-    }
   };
 
   // 이미지 서버로 보내기
@@ -166,8 +161,13 @@ export default function PostUpload() {
   return (
     <div className="postUploadWrap">
       <Topbar />
-      <UploadNav title="업로드" onClick={createPost} className={buttonActive} />
-      <form className="postUploadContent" method="post">
+      <UploadNav 
+      title="업로드" 
+      onClick={createPost} 
+      className={contentText === '' && fileUrls.length === 0
+      ? 'button ms disabled uploadButton' 
+      : 'button ms uploadButton'} />
+      <form className="postUploadContent" method="post"> 
         <img
           className="postUploadUserImg"
           src={profileImg}
