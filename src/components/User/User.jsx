@@ -2,6 +2,7 @@ import React from "react";
 import "./user.css";
 import Button from "../Buttons/Button";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const UserSearch = (props) => {
   return (
@@ -16,8 +17,11 @@ export const UserSearch = (props) => {
 };
 
 export const UserFollow = (props) => {
+  const accountName = props.id;
+  const myAccountName = localStorage.getItem("accountname");
   const [isFollow, setIsFollow] = useState(false);
   const [myAccount, setMyAccount] = useState(false);
+  let navigate = useNavigate();
 
   useEffect(() => {
     getFollowStatus();
@@ -27,8 +31,6 @@ export const UserFollow = (props) => {
   const getFollowStatus = async () => {
     const url = "https://mandarin.api.weniv.co.kr";
     const token = localStorage.getItem("token");
-    const accountName = props.id;
-    const myAccountName = localStorage.getItem("accountname");
     const init = {
       method: "GET",
       headers: {
@@ -43,7 +45,7 @@ export const UserFollow = (props) => {
       if (resUserFollowJson.profile.isfollow === false) {
         setIsFollow(true);
       }
-      // 나의 계정일 경우 버튼 표시 X
+      // 나의 계정일 경우 팔로우 or 취소 버튼 표시 X
       if (resUserFollowJson.profile.accountname === myAccountName) {
         setMyAccount(true);
       }
@@ -52,12 +54,21 @@ export const UserFollow = (props) => {
     }
   };
 
+  // 유저 클릭 시 해당 유저의 프로필 페이지로 이동
+  const moveUserProfile = () => {
+    if (accountName === myAccountName) {
+      navigate(`/myProfile`);
+    } else if (accountName !== myAccountName) {
+      navigate(`/yourProfile?id=${accountName}`);
+    }
+  };
+
   const handleClick = () => {
     setIsFollow((isFollow) => !isFollow);
   };
 
   return (
-    <li className="userSearchList">
+    <li className="userSearchList" onClick={moveUserProfile}>
       <img src={props.picture} alt="유저 프로필 이미지" />
       <div className="userInfo">
         <strong className="userName">{props.name}</strong>
