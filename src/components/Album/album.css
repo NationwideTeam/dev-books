@@ -10,4 +10,5 @@
   width: 114px;
   height: 114px;
   object-fit: cover;
+  cursor: pointer;
 }
