@@ -46,7 +46,6 @@ export const JoinProfile = () => {
     try {
       const resIdNameValid = await fetch(url + IdPath, init);
       const resIdNameValidJson = await resIdNameValid.json();
-      console.log("resIdNameValidJson : ", resIdNameValidJson);
 
       // 영문, 숫자, 밑줄, 마침표 유효성 검사 정규표현식
       const regExp = /^[_A-Za-z0-9+.]*$/;
@@ -96,8 +95,6 @@ export const JoinProfile = () => {
     try {
       const res = await fetch(url + userPath, init);
       const json = await res.json();
-      console.log(json);
-      console.log(joinData);
       next();
     } catch (err) {
       console.error(err);
@@ -126,7 +123,6 @@ export const JoinProfile = () => {
   };
 
   const handleGetImg = async (e) => {
-    console.log(e.target.files);
     const file = e.target.files[0];
     const imgSize = e.target.files[0].size;
     const maxSize = 1024 * 1024; // 1MB
@@ -192,7 +188,7 @@ export const JoinProfile = () => {
         />
       </div>
       <div onClick={checkIdValid} className="joinButton">
-      <Button
+        <Button
           className={
             !userNameError && !userIdError && userName !== "" && userId !== ""
               ? "button lg"

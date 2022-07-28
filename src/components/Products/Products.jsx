@@ -90,7 +90,6 @@ function Products(props) {
 
       try {
         // userProduct
-        // console.log(accountName);
         const resUserProduct = await fetch(
           `${url}/product/${accountName}`,
           init
@@ -98,7 +97,6 @@ function Products(props) {
         const resUserProductJson = await resUserProduct.json();
         const userProduct = resUserProductJson.product;
         setProducts(userProduct);
-        // console.log(userProduct);
       } catch (err) {
         console.error("err", err);
       }

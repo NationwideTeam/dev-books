@@ -44,7 +44,6 @@ function LoginEmail() {
     try {
       const resLogin = await fetch(url + loginPath, init);
       const resLoginJson = await resLogin.json();
-      console.log(resLoginJson);
       if (userEmail === "" && userPw === "") {
         setEmailError("이메일을 입력해주세요.");
         setPwError("비밀번호를 입력해주세요.");

@@ -57,7 +57,6 @@ function JoinMembership() {
         }),
       });
       const json = await res.json();
-      console.log(json);
 
       if (userEmail === "") {
         setEmailError("이메일을 입력해주세요.");
@@ -69,7 +68,7 @@ function JoinMembership() {
         setEmailError("");
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -109,7 +108,7 @@ function JoinMembership() {
         />
         <span className="errorMessage">{pwError}</span>
         <div className="loginButton" onClick={handleCheckEmail}>
-        <Button
+          <Button
             className={
               !emailError && !pwError && userEmail !== "" && userPw !== ""
                 ? "button lg"

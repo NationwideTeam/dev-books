@@ -32,7 +32,6 @@ function Like({ heartCount, postid, hearted }) {
               },
             }
           );
-          console.log(res);
           setLikeNum(res.data.post.heartCount);
           setLike(res.data.post.hearted);
         } catch (error) {
@@ -53,7 +52,6 @@ function Like({ heartCount, postid, hearted }) {
               },
             }
           );
-          console.log(res);
           setLikeNum(res.data.post.heartCount);
           setLike(res.data.post.hearted);
         } catch (err) {

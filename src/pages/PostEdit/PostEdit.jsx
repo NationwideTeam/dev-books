@@ -63,7 +63,7 @@ export default function PostUpload() {
       const json = await res.json();
       setProfileImg(json.profile.image);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   getUserProfile();
@@ -92,11 +92,10 @@ export default function PostUpload() {
         body: formData,
       });
       const data = await res.json();
-      console.log("data" + data);
       const postImgName = data[0].filename;
       return postImgName;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -112,7 +111,6 @@ export default function PostUpload() {
       for (let i = 0; i < files.length; i++) {
         let file = files[i];
         let reader = new FileReader();
-        // console.log(reader);
         reader.onload = () => {
           previewUrl[i] = reader.result;
           setPostImgUrl([...previewUrl, ...postImg]);
@@ -141,8 +139,6 @@ export default function PostUpload() {
     // const imgUrls = postImg;
     // const imgUrls = [];
 
-    // console.log(fileUrlsEdit);
-
     const imgUrls = fileUrlsEdit;
 
     for (const file of fileUrls) {
@@ -168,13 +164,12 @@ export default function PostUpload() {
           }),
         });
         const json = await res.json();
-        console.log(json);
         postUniqueId = json.post.id;
         fileUrls = [];
         next();
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

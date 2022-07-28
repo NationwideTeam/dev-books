@@ -1,5 +1,6 @@
 .chatFeed {
   width: 390px;
+  height: 844px;
   margin: 0 auto;
   background-color: #ffffff;
   position: relative;
@@ -35,4 +36,10 @@
 
 .disabledChatPopup {
   display: none;
+}
+
+.tabmenuHome {
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
 }

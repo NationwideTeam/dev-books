@@ -81,7 +81,6 @@ function MyProfile() {
         },
       });
       const json = await res.json();
-      console.log("삭제성공");
       window.location.href = "./myProfile";
     } catch (error) {
       console.error(error);

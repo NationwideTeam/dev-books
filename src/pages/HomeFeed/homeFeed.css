@@ -1,5 +1,6 @@
 .homeFeed {
   width: 390px;
+  height: 844px;
   margin: 0 auto;
   text-align: center;
   background-color: #ffffff;
@@ -32,6 +33,7 @@
 /* HomeFeedData */
 .homeFeedData {
   width: 390px;
+  height: 844px;
   margin: 0 auto;
   background-color: #ffffff;
   position: relative;
