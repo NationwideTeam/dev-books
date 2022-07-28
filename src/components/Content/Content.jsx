@@ -195,7 +195,7 @@ export function Contents(props) {
         userName={item.author.username}
         userId={item.author.accountname}
         posttext={item.content}
-        postImg={item.image.split(",")}
+        postImg={item.image ? item.image.split(',') : [] }
         heartCount={item.heartCount}
         hearted={item.hearted}
         commentNum={item.commentCount}
