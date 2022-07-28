@@ -25,25 +25,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <nav>
-          <Link to={"/"}>로그인 / </Link>
-          <Link to={"/joinMembership"}>회원가입 /</Link>
-          <Link to={"/loginEmail"}>이메일로 로그인 / </Link>
-          <Link to={"/JoinProfile"}>프로필 설정 /</Link>
-          <Link to={"/HomeFeed"}>홈피드 /</Link>
-          <Link to={"/SearchFeed"}>계정 검색 /</Link>
-          <Link to={"/yourProfile"}>OO님의 프로필 /</Link>
-          <Link to={"/myProfile"}> 마이 프로필 /</Link>
-          <Link to={"/followers"}> 팔로워 /</Link>
-          <Link to={"/followings"}> 팔로잉 /</Link>
-          <Link to={"/profileUpdate"}> 프로필 수정 /</Link>
-          <Link to={"/productUpload"}> 상품등록 /</Link>
-          <Link to={"/singlePost"}> 포스트 /</Link>
-          <Link to={"/PostUpload"}>포스트 업로드 /</Link>
-          <Link to={"/chatFeed"}>채팅 피드 /</Link>
-          <Link to={"/chatRoom"}>채팅방 /</Link>
-          <Link to={"/NotFound"}>404페이지 /</Link>
-        </nav>
         <Routes>
           <Route path="/" element={<LoginPage />}></Route>
           <Route path="/loginEmail" element={<LoginEmail />}></Route>
@@ -59,11 +40,11 @@ function App() {
           <Route path="/chatRoom" element={<ChatRoom />}></Route>
           <Route path="/HomeFeed" element={<HomeFeed />}></Route>
           <Route path="/JoinProfile" element={<JoinProfile />}></Route>
-          <Route path="/NotFound" element={<NotFound />}></Route>
           <Route path="/PostUpload" element={<PostUpload />}></Route>
           <Route path="/SearchFeed" element={<SearchFeed />}></Route>
           <Route path="/ProductEdit" element={<ProductEdit />}></Route>
           <Route path="/PostEdit" element={<PostEdit />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
     </>

@@ -1,5 +1,6 @@
 .searchFeed {
   width: 390px;
+  height: 844px;
   margin: 0 auto;
   background-color: #ffffff;
 }
@@ -17,6 +18,6 @@
   margin-right: auto;
 }
 
-.searchLists li+li {
+.searchLists li + li {
   margin-top: 16px;
 }

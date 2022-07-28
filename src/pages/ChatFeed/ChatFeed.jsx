@@ -59,8 +59,10 @@ const ChatFeed = () => {
             chat={"내 차는 내가 평가한다. 오픈 이벤트에 참여 하..."}
           />
         </ul>
+        <div className="tabmenuHome">
+          <TabMenu />
+        </div>
       </main>
-      <TabMenu />
       <div
         className={navModal ? "chatNavModal" : "disabledChatPopup"}
         onClick={() => {

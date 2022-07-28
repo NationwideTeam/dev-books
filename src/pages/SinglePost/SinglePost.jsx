@@ -64,7 +64,7 @@ export default function SinglePost() {
   // 사용할 url, token, accountname
   const url = "https://mandarin.api.weniv.co.kr";
   const token = window.localStorage.getItem("token");
-  const accountname = window.localStorage.getItem('accountname');
+  const accountname = window.localStorage.getItem("accountname");
 
   // 게시글 정보
   const getPostInfo = async () => {
@@ -135,16 +135,16 @@ export default function SinglePost() {
 
     try {
       const res = await fetch(url + commentUserReqPath, {
-        method: 'GET',
+        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
       });
       const json = await res.json();
       setCommentProfile(json.profile.image);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -177,7 +177,7 @@ export default function SinglePost() {
         commentText.current.value = "";
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -202,7 +202,7 @@ export default function SinglePost() {
       const commentID = commentInfo.map((item) => item.id);
       setCommentUserId(commentAccountName);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
