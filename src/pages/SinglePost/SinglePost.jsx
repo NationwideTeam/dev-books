@@ -1,14 +1,14 @@
-import "./singlePost.css";
-import { BasicNav } from "../../components/Navbar/Navbar";
-import Comment from "../../components/Comment/Comment";
-import { Content } from "../../components/Content/Content";
-import PostComment from "../../components/PostComment/PostComment";
-import Topbar from "../../components/Topbar/Topbar";
-import { useState, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import Modal from "../../components/Modal/Modal";
-import ModalContent from "../../components/ModalContent/ModalContent";
-import Alert from "../../components/Alert/Alert";
+import './singlePost.css';
+import { BasicNav } from '../../components/Navbar/Navbar';
+import Comment from '../../components/Comment/Comment';
+import { Content } from '../../components/Content/Content';
+import PostComment from '../../components/PostComment/PostComment';
+import Topbar from '../../components/Topbar/Topbar';
+import { useState, useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Modal from '../../components/Modal/Modal';
+import ModalContent from '../../components/ModalContent/ModalContent';
+import Alert from '../../components/Alert/Alert';
 
 export default function SinglePost() {
   const [commentModal, setCommentModal] = useState(false);
@@ -19,37 +19,37 @@ export default function SinglePost() {
   let navigate = useNavigate();
 
   // 유저 프로필 상태
-  const [userProfileImg, setUserProfileImg] = useState("");
+  const [userProfileImg, setUserProfileImg] = useState('');
 
   // 유저 닉네임 상태
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState('');
 
   // 유저 id 상태
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState('');
 
   // 게시글 id
-  const [postId, setPostId] = useState("");
+  const [postId, setPostId] = useState('');
 
   // 게시글 내용 상태
-  const [contentText, setContentText] = useState("");
+  const [contentText, setContentText] = useState('');
 
   // 게시글 이미지 상태
   const [contentImg, setContentImg] = useState([]);
 
   // 좋아요 count 상태
-  const [likeCount, setLikeCount] = useState("");
+  const [likeCount, setLikeCount] = useState('');
 
   // 댓글 개수 상태
-  const [commentCount, setCommentCount] = useState("");
+  const [commentCount, setCommentCount] = useState('');
 
   // 포스트 업로드 날짜
-  const [uploadDate, setUploadDate] = useState("");
+  const [uploadDate, setUploadDate] = useState('');
 
   // 댓글 내용 상태 useRef
   const commentText = useRef();
 
   // 댓글 작성 유저 프로필 이미지
-  const [commentProfile, setCommentProfile] = useState("");
+  const [commentProfile, setCommentProfile] = useState('');
 
   // 댓글 작성 유저 아이디
   const [commentUserId, setCommentUserId] = useState([]);
@@ -62,9 +62,9 @@ export default function SinglePost() {
   const postUniqueId = location.state.postId;
 
   // 사용할 url, token, accountname
-  const url = "https://mandarin.api.weniv.co.kr";
-  const token = window.localStorage.getItem("token");
-  const accountname = window.localStorage.getItem("accountname");
+  const url = 'https://mandarin.api.weniv.co.kr';
+  const token = window.localStorage.getItem('token');
+  const accountname = window.localStorage.getItem('accountname');
 
   // 게시글 정보
   const getPostInfo = async () => {
@@ -72,10 +72,10 @@ export default function SinglePost() {
 
     try {
       const res = await fetch(url + postInfoPath, {
-        method: "GET",
+        method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
       });
       const json = await res.json();
@@ -86,22 +86,18 @@ export default function SinglePost() {
       setUserId(json.post.author.accountname);
       setContentText(json.post.content);
 
-      if (json.post.image.split(",")[0] === "") {
+      if (json.post.image.split(',')[0] === '') {
         setContentImg([]);
       } else {
-        setContentImg(json.post.image.split(","));
+        setContentImg(json.post.image.split(','));
       }
 
       setLikeCount(json.post.heartCount);
       setCommentCount(json.post.commentCount);
-      setUploadDate(
-        json.post.createdAt
-          .slice(0, 11)
-          .replace("-", "년 ")
-          .replace("-", "월 ")
-          .replace("T", "일")
-      );
-    } catch (error) {}
+      setUploadDate(json.post.createdAt);
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   useEffect(() => {
@@ -110,20 +106,20 @@ export default function SinglePost() {
 
   // 게시글 삭제
   const postDelete = async (e) => {
-    const url = "https://mandarin.api.weniv.co.kr";
-    const token = window.localStorage.getItem("token");
+    const url = 'https://mandarin.api.weniv.co.kr';
+    const token = window.localStorage.getItem('token');
     const postId = e.target.value;
 
     try {
       const res = await fetch(`${url}/post/${postId}`, {
-        method: "DELETE",
+        method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
       });
       const json = await res.json();
-      window.location.href = "./myProfile";
+      window.location.href = './myProfile';
     } catch (error) {
       console.error(error);
     }
@@ -135,10 +131,10 @@ export default function SinglePost() {
 
     try {
       const res = await fetch(url + commentUserReqPath, {
-        method: "GET",
+        method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
       });
       const json = await res.json();
@@ -157,14 +153,14 @@ export default function SinglePost() {
     const commentReqPath = `/post/${postUniqueId}/comments`;
 
     try {
-      if (commentText.current.value === "") {
-        alert("댓글을 입력해주세요.");
+      if (commentText.current.value === '') {
+        alert('댓글을 입력해주세요.');
       } else {
         const res = await fetch(url + commentReqPath, {
-          method: "POST",
+          method: 'POST',
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-type": "application/json",
+            'Content-type': 'application/json',
           },
           body: JSON.stringify({
             comment: {
@@ -174,7 +170,7 @@ export default function SinglePost() {
         });
         const json = await res.json();
         getCommentList();
-        commentText.current.value = "";
+        commentText.current.value = '';
       }
     } catch (error) {
       console.error(error);
@@ -187,10 +183,10 @@ export default function SinglePost() {
 
     try {
       const res = await fetch(url + commentListPath, {
-        method: "GET",
+        method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
       });
       const json = await res.json();
@@ -216,14 +212,14 @@ export default function SinglePost() {
 
   // 로그아웃
   const handleLogout = () => {
-    window.localStorage.removeItem("accountname");
-    window.localStorage.removeItem("token");
-    navigate("/");
+    window.localStorage.removeItem('accountname');
+    window.localStorage.removeItem('token');
+    navigate('/');
   };
 
   // 설정 및 개인정보 버튼 누르면 myProfile로 이동
   const nextMyProfile = () => {
-    navigate("/myProfile");
+    navigate('/myProfile');
   };
 
   return (
@@ -265,10 +261,10 @@ export default function SinglePost() {
         click={createComment}
         profile={commentProfile}
       />
-      {window.localStorage.getItem("accountname") === commentUserId ? (
+      {window.localStorage.getItem('accountname') === commentUserId ? (
         <>
           <div
-            className={commentModal ? "commentModal" : "disabledCommentPopup"}
+            className={commentModal ? 'commentModal' : 'disabledCommentPopup'}
             onClick={() => {
               setCommentModal(false);
             }}
@@ -284,7 +280,7 @@ export default function SinglePost() {
             </Modal>
           </div>
           <div
-            className={commentAlert ? "commentModal" : "disabledCommentPopup"}
+            className={commentAlert ? 'commentModal' : 'disabledCommentPopup'}
           >
             <Alert
               message="댓글을 삭제할까요?"
@@ -298,7 +294,7 @@ export default function SinglePost() {
       ) : (
         <>
           <div
-            className={commentModal ? "commentModal" : "disabledCommentPopup"}
+            className={commentModal ? 'commentModal' : 'disabledCommentPopup'}
             onClick={() => {
               setCommentModal(false);
             }}
@@ -314,7 +310,7 @@ export default function SinglePost() {
             </Modal>
           </div>
           <div
-            className={commentAlert ? "commentModal" : "disabledCommentPopup"}
+            className={commentAlert ? 'commentModal' : 'disabledCommentPopup'}
           >
             <Alert
               message="신고하시겠습니까?"
@@ -326,7 +322,7 @@ export default function SinglePost() {
         </>
       )}
       <div
-        className={navModal ? "postNavModal" : "disabledPostPopup"}
+        className={navModal ? 'postNavModal' : 'disabledPostPopup'}
         onClick={() => {
           setNavModal(false);
         }}
@@ -342,7 +338,7 @@ export default function SinglePost() {
           />
         </Modal>
       </div>
-      <div className={alert ? "postAlert" : "disabledPostPopup"}>
+      <div className={alert ? 'postAlert' : 'disabledPostPopup'}>
         <Alert
           message="로그아웃하시겠어요?"
           cancel="취소"
