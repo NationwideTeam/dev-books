@@ -20,7 +20,7 @@ const ChatFeed = () => {
   const handleLogout = () => {
     window.localStorage.removeItem("accountname");
     window.localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
 
   // 설정 및 개인정보 버튼 누르면 myProfile로 이동
