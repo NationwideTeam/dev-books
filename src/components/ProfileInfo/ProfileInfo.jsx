@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function ProfileInfo(props) {
-  const [username, setUsername] = useState("");
-  const [accountname, setAccountname] = useState("");
-  const [intro, setIntro] = useState("");
-  const [userImg, setUserImg] = useState("");
-  const [following, setFollowing] = useState("");
-  const [follower, setFollower] = useState("");
+  const [username, setUsername] = useState(null);
+  const [accountname, setAccountname] = useState(null);
+  const [intro, setIntro] = useState(null);
+  const [userImg, setUserImg] = useState(null);
+  const [following, setFollowing] = useState(null);
+  const [follower, setFollower] = useState(null);
 
   const url = "https://mandarin.api.weniv.co.kr";
   const token = window.localStorage.getItem("token");
