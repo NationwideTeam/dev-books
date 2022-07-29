@@ -27,10 +27,10 @@ export function Content(props) {
   let navigate = useNavigate();
 
   const next = () => {
-    navigate('/singlePost', {
+    navigate("/singlePost", {
       state: {
         postId: postId,
-      }
+      },
     });
   };
 
@@ -47,9 +47,9 @@ export function Content(props) {
 
   // 유저의 프로필 이미지 클릭하면 프로필 페이지로 이동
   const moveProfile = () => {
-    if (userId === localStorage.getItem('accountname')) {
+    if (userId === localStorage.getItem("accountname")) {
       navigate(`/myProfile`);
-    } else if (userId !== localStorage.getItem('accountname')) {
+    } else if (userId !== localStorage.getItem("accountname")) {
       navigate(`/yourProfile?id=${userId}`);
     }
   };
@@ -91,14 +91,14 @@ export function Content(props) {
       <div className="postDate">
         {postDate
           .slice(0, 11)
-          .replace('-', '년 ')
-          .replace('-', '월 ')
-          .replace('T', '일')}
+          .replace("-", "년 ")
+          .replace("-", "월 ")
+          .replace("T", "일")}
       </div>
       {window.localStorage.accountname === userId ? (
         <>
           <div
-            className={postModal ? 'postModal' : 'disabledPostPopup'}
+            className={postModal ? "postModal" : "disabledPostPopup"}
             onClick={() => {
               setPostModal(false);
             }}
@@ -114,7 +114,7 @@ export function Content(props) {
               <ModalContent txt="수정" onClick={postUpdate} />
             </Modal>
           </div>
-          <div className={postAlert ? 'postModal' : 'disabledPostPopup'}>
+          <div className={postAlert ? "postModal" : "disabledPostPopup"}>
             <Alert
               message="게시글을 삭제할까요?"
               cancel="취소"
@@ -128,7 +128,7 @@ export function Content(props) {
       ) : (
         <>
           <div
-            className={postModal ? 'postModal' : 'disabledPostPopup'}
+            className={postModal ? "postModal" : "disabledPostPopup"}
             onClick={() => {
               setPostModal(false);
             }}
@@ -143,12 +143,13 @@ export function Content(props) {
               />
             </Modal>
           </div>
-          <div className={postAlert ? 'postModal' : 'disabledPostPopup'}>
+          <div className={postAlert ? "postModal" : "disabledPostPopup"}>
             <Alert
               message="신고하시겠습니까?"
               cancel="취소"
               confirm="신고"
               onClickCancel={() => setPostAlert(false)}
+              onClickConfirm={() => setPostAlert(false)}
             />
           </div>
         </>
@@ -159,14 +160,14 @@ export function Content(props) {
 
 export function Contents(props) {
   const [content, setContent] = useState([]);
-  const url = 'https://mandarin.api.weniv.co.kr';
-  const token = window.localStorage.getItem('token');
+  const url = "https://mandarin.api.weniv.co.kr";
+  const token = window.localStorage.getItem("token");
   const accountName = props.accountName;
   const init = {
-    method: 'GET',
+    method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-type': 'application/json',
+      "Content-type": "application/json",
     },
   };
 
@@ -195,7 +196,7 @@ export function Contents(props) {
         userName={item.author.username}
         userId={item.author.accountname}
         posttext={item.content}
-        postImg={item.image ? item.image.split(',') : [] }
+        postImg={item.image ? item.image.split(",") : []}
         heartCount={item.heartCount}
         hearted={item.hearted}
         commentNum={item.commentCount}
