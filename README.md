@@ -70,7 +70,7 @@
 
 |Splash|회원가입|
 |---|---|
-| <img src="https://i.imgur.com/Mo7fHRF.gif" width="300"/> | <img src="https://i.imgur.com/rKrC3SX.giff" width="300"/> |
+| <img src="https://i.imgur.com/Mo7fHRF.gif" width="300"/> | <img src="https://i.imgur.com/rKrC3SX.gif" width="300"/> |
 
 |로그인|홈화면|
 |---|---|
