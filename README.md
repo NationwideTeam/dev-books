@@ -64,6 +64,48 @@
 
 <br>
 
+
+## 💻 구현기능
+---
+
+|Splash|회원가입|
+|---|---|
+| <img src="https://i.imgur.com/Mo7fHRF.gif" width="300"/> | <img src="https://i.imgur.com/rKrC3SX.giff" width="300"/> |
+
+|로그인|홈화면|
+|---|---|
+| <img src="https://i.imgur.com/pZBtdnW.gif" width="300"/> | <img src="준비중 ..." width="300"/> |
+
+|계정검색|채팅|
+|---|---|
+| <img src="https://i.imgur.com/x5Rzlja.gif" width="300"/> | <img src="https://i.imgur.com/Dc7ailg.gif" width="300"/> |
+
+|마이프로필|마이프로필 수정|
+|---|---|
+| <img src="https://i.imgur.com/aysok7z.gif" width="300"/> | <img src="https://i.imgur.com/F3DkPat.gif" width="300"/> |
+
+|상품등록|상품등록 수정|
+|---|---|
+| <img src="https://i.imgur.com/Mm8Cgxn.gif" width="300"/> | <img src="https://i.imgur.com/Nrppd6I.gif" width="300"/> |
+
+|게시글 등록|게시글 등록 수정|
+|---|---|
+| <img src="https://i.imgur.com/4ysTN86.gif" width="300"/> | <img src="https://i.imgur.com/BJ5rFZ8.gif" width="300"/> |
+
+|팔로우, 팔로워|유저 프로필|
+|---|---|
+| <img src="https://i.imgur.com/ABfPXW5.gif" width="300"/> | <img src="https://i.imgur.com/dpPCdPE.gif" width="300"/> |
+
+|게시글 댓글, 삭제|게시글 신고|
+|---|---|
+| <img src="준비중 ..." width="300"/> | <img src="준비중 ..." width="300"/> |
+
+|상품 삭제|상품 신고|
+|---|---|
+| <img src="https://i.imgur.com/l4qQv6C.gif" width="300"/> | <img src="준비중 ..." width="300"/> |
+
+<br>
+
 ## 📍 프로젝트 구조
 ```
 ├── node_modules
