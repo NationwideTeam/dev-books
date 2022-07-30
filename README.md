@@ -103,7 +103,7 @@
 
 |게시글 수정|게시글 댓글|
 |---|---|
-| <img src="https://user-images.githubusercontent.com/92916958/181715983-2b578cb0-ef4a-481b-a8ff-8c0fa06b8424.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/92916958/181877241-c61b4e7a-9da9-4d87-b469-dea38b7de273.gif" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/92916958/181715983-2b578cb0-ef4a-481b-a8ff-8c0fa06b8424.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/92916958/181905317-d42c5978-5bbe-4498-9cf2-0afbefc26e08.gif" width="300"/> |
 
 |게시글 신고|게시글 댓글 신고|
 |---|---|
