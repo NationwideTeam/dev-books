@@ -69,6 +69,48 @@
 
 <br>
 
+
+## 💻 구현기능
+---
+
+|Splash|회원가입|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/92916958/181716171-b0fe70a3-ce35-498e-9cdb-215762a940c1.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/92916958/181716184-3543131d-855a-42d9-b777-0a251b0f8cc4.gif" width="300"/> |
+
+|로그인|홈화면|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/92916958/181716143-616a6915-671a-40ca-b380-580620125c91.gif" width="300"/> | <img src="준비중 ..." width="300"/> |
+
+|계정검색|채팅|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/92916958/181716137-91266280-8567-43c0-934e-0c16a0b3d90b.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/92916958/181716179-5293e85e-3473-4988-ad1f-eb78970be15c.gif" width="300"/> |
+
+|마이프로필|마이프로필 수정|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/92916958/181716146-ea5e7d37-f96d-481a-add3-843803e7625d.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/92916958/181716151-2e05df4a-f11b-4d25-9910-03c930e6945a.gif" width="300"/> |
+
+|상품등록|상품 수정|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/92916958/181716163-b68f0190-ad65-4178-b297-3e695fcb6f2e.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/92916958/181716158-36addfd5-e967-421d-9293-7f4b23ebec64.gif" width="300"/> |
+
+|게시글 등록|게시글 수정|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/92916958/181716108-61b3bc70-fbef-4ade-aa23-14cef9d7e7a9.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/92916958/181715983-2b578cb0-ef4a-481b-a8ff-8c0fa06b8424.gif" width="300"/> |
+
+|팔로우, 팔로워|유저 프로필|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/92916958/181716181-d52f8a7e-4ad3-4469-8f23-8e4b09270152.gif" width="300"/> | <img src="https://user-images.githubusercontent.com/92916958/181716174-97330776-e72f-4185-9b1d-aebeedeba199.gif" width="300"/> |
+
+|게시글 댓글, 삭제|게시글 신고|
+|---|---|
+| <img src="준비중 ..." width="300"/> | <img src="준비중 ..." width="300"/> |
+
+|상품 삭제|상품 신고|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/92916958/181716154-f05a5270-bcdc-44eb-8fd2-252a662a7a47.gif" width="300"/> | <img src="준비중 ..." width="300"/> |
+
+<br>
+
 ## 📍 프로젝트 구조
 ```
 ├── node_modules
