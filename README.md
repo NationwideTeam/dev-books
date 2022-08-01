@@ -1,4 +1,6 @@
 # 📚 데브북스
+![image](https://user-images.githubusercontent.com/87704703/182052011-0678ee06-f49a-4888-92d6-d76d95a7b644.png)
+
 
 **데브북스(dev-books)는 IT 개발자들을 위한 중고책 거래 마켓입니다.** <br>
 자신의 스토어에 판매하고 있는 상품을 등록하여 홍보할 수 있는 SNS입니다. <br>
@@ -18,10 +20,11 @@
 - Design : [Figma](https://www.figma.com/file/maNC6XnmZaSJ8Ep2y0EtDj/Dev-Books?node-id=0%3A1)
   <br>
 
-- 배포 URL :
+- 배포 URL : https://dev-books-wannabecm.vercel.app/
 - 계정 <br>
-  `ID`: <br>
-  `Password`:
+  `ID`: devbooks@mail.com
+  <br> 
+  `Password`:devbooks
 
 <br>
 
@@ -182,3 +185,4 @@
     ├── index.js
     └── reset.css
 ```
+
