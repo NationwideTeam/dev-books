@@ -15,9 +15,9 @@
 ## ⚙️ 개발 환경 및 배포 URL
 
 - Front: React
-- Back: 제공된 API 사용
+- Back: 제공된 REST API 사용
 - 버전 관리 및 이슈 : [GitHub](https://github.com/NationwideTeam/dev-books), [GitHub Issues](https://github.com/NationwideTeam/dev-books/issues?q=is%3Aissue+is%3Aclosed)
-- WorkPlace: [Notion]()
+- WorkPlace: [Notion](https://triangular-pear-007.notion.site/64d88cefb54e4d90b3ca212b642406ef)
 - Design : [Figma](https://www.figma.com/file/maNC6XnmZaSJ8Ep2y0EtDj/Dev-Books?node-id=0%3A1)
   <br>
 
