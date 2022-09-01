@@ -1,7 +1,16 @@
 import React from "react";
-import "./profileInfo.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import {
+  ProfileInfoContainer,
+  ProfileWrapper,
+  Follow,
+  FollowText,
+  ProfileImg,
+  ProfileName,
+  ProfileId,
+  ProfileDecript,
+} from "./profileInfo.style";
 
 function ProfileInfo(props) {
   const [username, setUsername] = useState(null);
@@ -72,9 +81,9 @@ function ProfileInfo(props) {
   };
 
   return (
-    <div className="profileInfo">
-      <div className="profileWrapper">
-        <div className="follower">
+    <ProfileInfoContainer>
+      <ProfileWrapper>
+        <Follow>
           <Link
             to={{
               pathname: "/followers",
@@ -83,10 +92,10 @@ function ProfileInfo(props) {
           >
             {follower}
           </Link>
-          <p className="followText">followers</p>
-        </div>
-        <img src={userImg} className="profileImg" alt="" />
-        <div className="followings">
+          <FollowText>followers</FollowText>
+        </Follow>
+        <ProfileImg src={userImg} alt=""></ProfileImg>
+        <Follow>
           <Link
             to={{
               pathname: "/followings",
@@ -95,13 +104,13 @@ function ProfileInfo(props) {
           >
             {following}
           </Link>
-          <p className="followText">followings</p>
-        </div>
-      </div>
-      <p className="profileName">{username}</p>
-      <p className="profileId">{`@` + accountname}</p>
-      <p className="profileDecript">{intro}</p>
-    </div>
+          <FollowText>followings</FollowText>
+        </Follow>
+      </ProfileWrapper>
+      <ProfileName>{username}</ProfileName>
+      <ProfileId>{`@` + accountname}</ProfileId>
+      <ProfileDecript>{intro}</ProfileDecript>
+    </ProfileInfoContainer>
   );
 }
 
