@@ -1,13 +1,13 @@
 import React from "react";
-import "./modal.css";
+import { ModalWrap, ModalBody, ModalBar } from "./modal.style";
 
 export default function Modal(props) {
   return (
-    <div className="modalWrap">
-      <ul className="modalBody">
-        <span className="modalBar"></span>
+    <ModalWrap>
+      <ModalBody>
+        <ModalBar></ModalBar>
         {props.children}
-      </ul>
-    </div>
+      </ModalBody>
+    </ModalWrap>
   );
 }
