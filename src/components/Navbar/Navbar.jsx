@@ -1,87 +1,94 @@
 import React from "react";
 import Button from "../Buttons/Button";
-import "./navbar.css";
 import { useNavigate } from "react-router-dom";
+
+import {
+  Nav,
+  ArrowBtn,
+  MoreBtn,
+  SearchBtn,
+  SearchInput,
+  MainTitle,
+  Title,
+} from "./navbar.style";
 
 export const ArrowButton = () => {
   const navigate = useNavigate();
   return (
-    <button
+    <ArrowBtn
       onClick={() => {
         navigate(-1);
       }}
-      className="arrowButton"
     >
       <span className="a11yHidden">뒤로가기</span>
-    </button>
+    </ArrowBtn>
   );
 };
 
 export const CommonNav = (props) => {
   return (
-    <div className="nav">
+    <Nav>
       <ArrowButton />
-      <p className="commonTitle">{props.title}</p>
-    </div>
+      <Title>{props.title}</Title>
+    </Nav>
   );
 };
 
 export const BasicNav = (props) => {
   return (
-    <div className="nav">
+    <Nav>
       <ArrowButton />
-      <button className="moreButton" onClick={props.onClick}>
+      <MoreBtn onClick={props.onClick}>
         <span className="a11yHidden">더보기</span>
-      </button>
-    </div>
+      </MoreBtn>
+    </Nav>
   );
 };
 
 export const SearchNav = () => {
   return (
-    <div className="nav">
+    <Nav>
       <ArrowButton />
-      <input className="searchInput" type="text" placeholder="계정 검색" />
-    </div>
+      <SearchInput type="text" placeholder="계정 검색" />
+    </Nav>
   );
 };
 
 export const MainNav = (props) => {
   const navigate = useNavigate();
   return (
-    <div className="nav">
-      <p className="mainTitle">{props.title}</p>
-      <button
-        className="searchButton"
+    <Nav>
+      <MainTitle>{props.title}</MainTitle>
+      <SearchBtn
         onClick={() => {
           navigate("/SearchFeed");
         }}
       >
         <span className="a11yHidden">검색하기</span>
-      </button>
-    </div>
+      </SearchBtn>
+    </Nav>
   );
 };
 
 export const UploadNav = (props) => {
   return (
-    <div className="nav">
+    <Nav>
       <ArrowButton />
       <Button className={props.className} onClick={props.onClick}>
         {props.title}
       </Button>
-    </div>
+    </Nav>
   );
 };
 
 export const ChatNav = (props) => {
   return (
-    <div className="nav">
+    <Nav>
       <ArrowButton />
-      <p className="chatTitle">{props.title}</p>
-      <button className="moreButton" onClick={props.onClickBtn}>
+      <Title>{props.title}</Title>
+      <MoreBtn onClick={props.onClickBtn}>
         <span className="a11yHidden">더보기</span>
-      </button>
-    </div>
+      </MoreBtn>
+    </Nav>
   );
 };
