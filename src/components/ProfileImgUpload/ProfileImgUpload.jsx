@@ -1,11 +1,11 @@
-import "./profileImgUpload.css";
+import { ProfileImageUpload } from "./profileImgUpload.style";
 
 export const ProfileImgUpload = (props) => {
   return (
     <div>
-      <label htmlFor="profileImg" className="profileImgUpload">
+      <ProfileImageUpload htmlFor="profileImg">
         <img src={props.src} alt="" />
-      </label>
+      </ProfileImageUpload>
       <input
         type="file"
         id="profileImg"
