@@ -1,10 +1,14 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { UploadNav } from "../../components/Navbar/Navbar";
 import { TextInput } from "../../components/TextInput/TextInput";
 import ProfileImgUpload from "../../components/ProfileImgUpload/ProfileImgUpload";
 import Topbar from "../../components/Topbar/Topbar";
-import "./profileUpdate.css";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {
+  ProfileUpdateContainer,
+  TextInputWrap,
+  ErrorMessage,
+} from "./profileUpdate.style";
 
 export const ProfileUpdate = () => {
   let navigate = useNavigate();
@@ -160,22 +164,26 @@ export const ProfileUpdate = () => {
   };
 
   return (
-    <div className="profileUpdate">
+    <ProfileUpdateContainer>
       <Topbar />
       <UploadNav
         title="저장"
         onClick={profileSave}
         className={
-          !userNameError && !userIdError && !userImgErr && userName !== "" && userId !== ""
+          !userNameError &&
+          !userIdError &&
+          !userImgErr &&
+          userName !== "" &&
+          userId !== ""
             ? "button ms uploadButton"
             : "button ms disabled uploadButton"
         }
       />
       <ProfileImgUpload src={userImg} onChange={handleGetImg} />
-      <div className="imgErrorMsg errorMessage">
+      <ErrorMessage>
         <span>{userImgErr}</span>
-      </div>
-      <div className="textInput">
+      </ErrorMessage>
+      <TextInputWrap>
         <TextInput
           label="사용자 이름"
           type="text"
@@ -189,9 +197,9 @@ export const ProfileUpdate = () => {
           }}
           onBlur={handleCheckUserName}
         />
-        <span className="errorMessage">{userNameError}</span>
-      </div>
-      <div className="textInput">
+        <ErrorMessage>{userNameError}</ErrorMessage>
+      </TextInputWrap>
+      <TextInputWrap>
         <TextInput
           label="계정 ID"
           type="text"
@@ -205,9 +213,9 @@ export const ProfileUpdate = () => {
           }}
           onBlur={handleCheckUserId}
         />
-        <span className="errorMessage">{userIdError}</span>
-      </div>
-      <div className="textInput">
+        <ErrorMessage>{userIdError}</ErrorMessage>
+      </TextInputWrap>
+      <TextInputWrap>
         <TextInput
           label="소개"
           type="text"
@@ -219,8 +227,8 @@ export const ProfileUpdate = () => {
             setIntro(e.target.value);
           }}
         />
-      </div>
-    </div>
+      </TextInputWrap>
+    </ProfileUpdateContainer>
   );
 };
 
