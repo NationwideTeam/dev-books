@@ -1,9 +1,18 @@
-import "./postUpload.css";
+// import "./postUpload.css";
 import { UploadNav } from "../../components/Navbar/Navbar";
 import Topbar from "../../components/Topbar/Topbar";
 import { useEffect, useState } from "react";
 import ImgPreview from "../../components/ImgPreview/ImgPreveiw";
 import { useNavigate } from "react-router-dom";
+import {
+  PostUploadWrap,
+  PostUploadContent,
+  PostUploadUserImg,
+  PostUploadTxt,
+  PostUploadBtn,
+  PostUploadInput,
+  PostImgLists,
+} from "./postUpload.style";
 
 // 업로드 할 이미지가 담기는 배열 전역변수로 선언
 let fileUrls = [];
@@ -159,7 +168,7 @@ export default function PostUpload() {
     }
   };
   return (
-    <div className="postUploadWrap">
+    <PostUploadWrap>
       <Topbar />
       <UploadNav
         title="업로드"
@@ -170,33 +179,21 @@ export default function PostUpload() {
             : "button ms uploadButton"
         }
       />
-      <form className="postUploadContent" method="post">
-        <img
-          className="postUploadUserImg"
-          src={profileImg}
-          alt="유저 프로필 이미지"
-        />
-        <textarea
-          className="postUploadTxt"
-          cols="30"
-          rows="10"
-          placeholder="게시글 입력하기..."
+      <PostUploadContent>
+        <PostUploadUserImg src={profileImg} />
+        <PostUploadTxt
           value={contentText}
           onChange={changeButtonColor}
-        ></textarea>
-        <label htmlFor="uploadInput" className="postUploadBtn"></label>
-        <input
-          className="postUploadInput"
+        ></PostUploadTxt>
+        <PostUploadBtn htmlFor="uploadInput"></PostUploadBtn>
+        <PostUploadInput
           id="uploadInput"
-          type="file"
-          multiple
-          accept="*.jpg, *.gif, *.png, *.jpeg, *.bmp, *.tif, *.heic"
           onChange={viewPostImg}
-        ></input>
-      </form>
-      <div className="postImgLists">
+        ></PostUploadInput>
+      </PostUploadContent>
+      <PostImgLists>
         <ImgPreview postUrl={postImgUrl} />
-      </div>
-    </div>
+      </PostImgLists>
+    </PostUploadWrap>
   );
 }
