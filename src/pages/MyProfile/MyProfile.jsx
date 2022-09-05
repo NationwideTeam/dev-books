@@ -4,7 +4,6 @@ import Topbar from "../../components/Topbar/Topbar";
 import { BasicNav } from "../../components/Navbar/Navbar";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import Products from "../../components/Products/Products";
-import Postbar from "../../components/Postbar/Postbar";
 import { Contents } from "../../components/Content/Content";
 import Album from "../../components/Album/Album";
 import TabMenu from "../../components/TabMenu/TabMenu";
@@ -17,6 +16,9 @@ import {
   ProfileMain,
   ProfileButtonWrapper,
   Tabmenu,
+  Postbar,
+  PostListBtn,
+  PostAlbumBtn,
 } from "./profile.style";
 
 function MyProfile() {
@@ -164,21 +166,21 @@ function MyProfile() {
           className={products.length !== 0 ? "Products" : "Products hidden"}
         />
 
-        <div className="postbar">
-          <button
-            className={postbarBtn ? "postAlbum" : "postAlbum on disabled"}
+        <Postbar>
+          <PostAlbumBtn
+            className={postbarBtn ? null : "on disabled"}
             onClick={handleBtnClick}
           >
             <span className="a11yHidden">앨범</span>
-          </button>
+          </PostAlbumBtn>
 
-          <button
-            className={postbarBtn ? "postList on disabled" : "postList"}
+          <PostListBtn
+            className={postbarBtn ? "on disabled" : null}
             onClick={handleBtnClick}
           >
             <span className="a11yHidden">리스트</span>
-          </button>
-        </div>
+          </PostListBtn>
+        </Postbar>
         {postbarBtn ? (
           <Contents accountName={accountName} onClick={postDelete} />
         ) : (

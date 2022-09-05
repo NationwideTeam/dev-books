@@ -17,6 +17,9 @@ import {
   ProfileButtonWrapper,
   Tabmenu,
   Circle,
+  Postbar,
+  PostListBtn,
+  PostAlbumBtn,
 } from "../MyProfile/profile.style";
 
 function MyProfile() {
@@ -146,21 +149,22 @@ function MyProfile() {
           accountName={accountName}
           className={products.length !== 0 ? "Products" : "Products hidden"}
         />
-        <div className="postbar">
-          <button
-            className={postbarBtn ? "postAlbum" : "postAlbum on disabled"}
+
+        <Postbar>
+          <PostAlbumBtn
+            className={postbarBtn ? null : "on disabled"}
             onClick={handleBtnClick}
           >
             <span className="a11yHidden">앨범</span>
-          </button>
+          </PostAlbumBtn>
 
-          <button
-            className={postbarBtn ? "postList on disabled" : "postList"}
+          <PostListBtn
+            className={postbarBtn ? "on disabled" : null}
             onClick={handleBtnClick}
           >
             <span className="a11yHidden">리스트</span>
-          </button>
-        </div>
+          </PostListBtn>
+        </Postbar>
         {postbarBtn ? (
           <Contents accountName={accountName} />
         ) : (
