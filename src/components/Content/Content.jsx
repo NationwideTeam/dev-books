@@ -1,10 +1,26 @@
-import "./content.css";
 import React, { useState, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import ModalContent from "../ModalContent/ModalContent";
 import Alert from "../Alert/Alert";
 import { useNavigate } from "react-router-dom";
 import Like from "../Like/Like";
+import {
+  PostContent,
+  PostUser,
+  PostUserImg,
+  PostUserInfo,
+  PostUserName,
+  PostUserId,
+  MoreBtn,
+  PostMain,
+  ContentTxt,
+  ContentImg,
+  PostBtnWrap,
+  MsgIcon,
+  MsgBtn,
+  PostDate,
+  PostPopupWrap,
+} from "./content.style";
 
 export function Content(props) {
   const {
@@ -55,50 +71,43 @@ export function Content(props) {
   };
 
   return (
-    <section className="postContent">
-      <h2 className="postUser">
-        <img
-          className="postUserImg"
-          src={userImg}
-          alt="유저 기본 프로필 이미지"
-          onClick={moveProfile}
-        />
-        <div className="postUserInfo">
-          <strong className="postUserName">{userName}</strong>
-          <strong className="postUserId">{userId}</strong>
-        </div>
-        <button
-          className="moreBtn"
-          type="button"
+    <PostContent>
+      <PostUser>
+        <PostUserImg src={userImg} onClick={moveProfile} />
+        <PostUserInfo>
+          <PostUserName>{userName}</PostUserName>
+          <PostUserId>{userId}</PostUserId>
+        </PostUserInfo>
+        <MoreBtn
           onClick={() => {
             setPostModal(true);
           }}
-        ></button>
-      </h2>
-      <div className="postMain" onClick={next}>
-        <p className="contenttxt">{posttext}</p>
+        ></MoreBtn>
+      </PostUser>
+      <PostMain onClick={next}>
+        <ContentTxt>{posttext}</ContentTxt>
         {postImg.map((file, index) => {
-          return <img className="contentImg" src={file} alt="" key={index} />;
+          return <ContentImg src={file} key={index} />;
         })}
-      </div>
-      <div className="postBtnWrap">
+      </PostMain>
+      <PostBtnWrap>
         <Like heartCount={heartCount} hearted={hearted} postid={value} />
-        <span className="messageIcon">
-          <button type="button" className="messageBtn" onClick={next}></button>
+        <MsgIcon>
+          <MsgBtn onClick={next}></MsgBtn>
           <strong className="postMessageNum">{commentNum}</strong>
-        </span>
-      </div>
-      <div className="postDate">
+        </MsgIcon>
+      </PostBtnWrap>
+      <PostDate>
         {postDate
           .slice(0, 11)
           .replace("-", "년 ")
           .replace("-", "월 ")
           .replace("T", "일")}
-      </div>
+      </PostDate>
       {window.localStorage.accountname === userId ? (
         <>
-          <div
-            className={postModal ? "postModal" : "disabledPostPopup"}
+          <PostPopupWrap
+            className={postModal}
             onClick={() => {
               setPostModal(false);
             }}
@@ -113,8 +122,8 @@ export function Content(props) {
               />
               <ModalContent txt="수정" onClick={postUpdate} />
             </Modal>
-          </div>
-          <div className={postAlert ? "postModal" : "disabledPostPopup"}>
+          </PostPopupWrap>
+          <PostPopupWrap className={postAlert}>
             <Alert
               message="게시글을 삭제할까요?"
               cancel="취소"
@@ -123,12 +132,12 @@ export function Content(props) {
               onClickConfirm={onClick}
               onClickCancel={() => setPostAlert(false)}
             />
-          </div>
+          </PostPopupWrap>
         </>
       ) : (
         <>
-          <div
-            className={postModal ? "postModal" : "disabledPostPopup"}
+          <PostPopupWrap
+            className={postModal}
             onClick={() => {
               setPostModal(false);
             }}
@@ -142,8 +151,8 @@ export function Content(props) {
                 }}
               />
             </Modal>
-          </div>
-          <div className={postAlert ? "postModal" : "disabledPostPopup"}>
+          </PostPopupWrap>
+          <PostPopupWrap className={postAlert}>
             <Alert
               message="신고하시겠습니까?"
               cancel="취소"
@@ -151,10 +160,10 @@ export function Content(props) {
               onClickCancel={() => setPostAlert(false)}
               onClickConfirm={() => setPostAlert(false)}
             />
-          </div>
+          </PostPopupWrap>
         </>
       )}
-    </section>
+    </PostContent>
   );
 }
 
