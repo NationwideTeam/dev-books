@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UploadNav } from "../../components/Navbar/Navbar";
 import { TextInput } from "../../components/TextInput/TextInput";
 import Topbar from "../../components/Topbar/Topbar";
-import Button from "../../components/Buttons/Button";
-import { ArrowButton } from "../../components/Navbar/Navbar";
 import {
   ProductUploadWrap,
   ProductImgUploadWrap,
@@ -11,7 +10,6 @@ import {
   ProductImg,
   TextInputWrap,
   ErrorMessage,
-  UploadNavbar,
 } from "./productUpload.style";
 
 // 1. 상품등록 이미지 컴포넌트
@@ -154,24 +152,20 @@ const ProductUpload = () => {
   return (
     <ProductUploadWrap>
       <Topbar />
-      <UploadNavbar>
-        <ArrowButton />
-        <Button
-          onClick={upload}
-          className={
-            !productNameErr &&
-            !productPriceErr &&
-            !productImgErr &&
-            !productUrlErr &&
-            productName !== "" &&
-            productPrice !== ""
-              ? "button ms"
-              : "button ms disabled"
-          }
-        >
-          업로드
-        </Button>
-      </UploadNavbar>
+      <UploadNav
+        title="업로드"
+        onClick={upload}
+        className={
+          !productNameErr &&
+          !productPriceErr &&
+          !productImgErr &&
+          !productUrlErr &&
+          productName !== "" &&
+          productPrice !== ""
+            ? "button uploadButton ms"
+            : "button uploadButton ms disabled"
+        }
+      />
 
       <ProductImgUpload src={productImg} onChange={handleGetImg} />
       <ErrorMessage>
