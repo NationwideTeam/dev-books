@@ -70,17 +70,3 @@ export const ErrorMessage = styled.span`
     display: block;
   }
 `;
-
-export const UploadNavbar = styled.div`
-  width: 390px;
-  height: 48px;
-  border-bottom: 0.5px solid #dbdbdb;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
-  button {
-    margin-right: 16px;
-  }
-`;
