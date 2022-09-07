@@ -1,24 +1,37 @@
-import React from "react";
-import "./user.css";
-import Button from "../Buttons/Button";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '../Buttons/Button';
+import {
+  UserSearchList,
+  UserSearchInfo,
+  UserImage,
+  UserInfoContainer,
+  UserName,
+  UserId,
+  UserChatItem,
+  UserChatInfo,
+  UserChatImg,
+  UserChatName,
+  UserChatContent,
+  UserChatDate,
+} from './user.style';
 
 export const UserSearch = (props) => {
   return (
-    <li className="userSearchList" onClick={props.click}>
-      <img src={props.picture} alt="유저 프로필 이미지" />
-      <div className="userInfo">
-        <strong className="userName">{props.name}</strong>
-        <strong className="userId">{props.id}</strong>
-      </div>
-    </li>
+    <UserSearchList className="userSearchList" onClick={props.click}>
+      <UserImage src={props.picture} alt="유저 프로필 이미지" />
+      <UserInfoContainer className="userInfo">
+        <UserName className="userName">{props.name}</UserName>
+        <UserId className="userId">{props.id}</UserId>
+      </UserInfoContainer>
+    </UserSearchList>
   );
 };
 
 export const UserFollow = (props) => {
   const { picture, name, id, button } = props;
-  const myAccountName = localStorage.getItem("accountname");
+  const myAccountName = localStorage.getItem('accountname');
   const [isFollow, setIsFollow] = useState(button);
   let navigate = useNavigate();
 
@@ -36,35 +49,37 @@ export const UserFollow = (props) => {
   };
 
   return (
-    <li className="userSearchList">
-      <div className="userSearchInfo" onClick={moveUserProfile}>
-        <img src={picture} alt="유저 프로필 이미지" />
-        <div className="userInfo">
-          <strong className="userName">{name}</strong>
-          <strong className="userId">{id}</strong>
-        </div>
-      </div>
-      <div className={id === myAccountName ? "hidden" : "userFollowButton"}>
+    <UserSearchList className="userSearchList">
+      <UserSearchInfo className="userSearchInfo" onClick={moveUserProfile}>
+        <UserImage src={picture} alt="유저 프로필 이미지" />
+        <UserInfoContainer className="userInfo">
+          <UserName className="userName">{name}</UserName>
+          <UserId className="userId">{id}</UserId>
+        </UserInfoContainer>
+      </UserSearchInfo>
+      <div className={id === myAccountName ? 'hidden' : 'userFollowButton'}>
         <Button
-          className={isFollow ? "button sm active" : "button sm"}
+          className={isFollow ? 'button sm active' : 'button sm'}
           onClick={handleClick}
         >
-          {isFollow ? "취소" : "팔로우"}
+          {isFollow ? '취소' : '팔로우'}
         </Button>
       </div>
-    </li>
+    </UserSearchList>
   );
 };
 
 export const UserChatList = (props) => {
   return (
-    <li className="userChatList" onClick={props.onClick}>
-      <img src={props.picture} alt="유저 프로필 이미지" />
-      <div className="userChatInfo">
-        <strong className="userChatName">{props.name}</strong>
-        <p className="userChatContent">{props.chat}</p>
-      </div>
-      <span className="userChatDate">2020.10.25</span>
-    </li>
+    <UserChatItem className="userChatList" onClick={props.onClick}>
+      <UserChatImg src={props.picture} alt="유저 프로필 이미지" />
+      <UserChatInfo className="userChatInfo">
+        <UserChatName className="userChatName">{props.name}</UserChatName>
+        <UserChatContent className="userChatContent">
+          {props.chat}
+        </UserChatContent>
+      </UserChatInfo>
+      <UserChatDate className="userChatDate">2020.10.25</UserChatDate>
+    </UserChatItem>
   );
 };

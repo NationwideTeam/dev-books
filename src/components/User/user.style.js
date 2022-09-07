@@ -1,103 +1,77 @@
-.userSearchList {
+import styled from 'styled-components';
+
+export const UserSearchList = styled.li`
   display: flex;
   align-items: center;
   width: 358px;
   height: 50px;
   cursor: pointer;
-}
+`;
 
-.userSearchInfo {
+export const UserSearchInfo = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-}
+`;
 
-.userSearchList img {
+export const UserImage = styled.img`
   width: 50px;
   height: 50px;
   margin-right: 12px;
   border-radius: 100%;
-}
+`;
 
-.userInfo {
+export const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-}
+`;
 
-.userInfo .userName {
+export const UserName = styled.strong`
   font-size: 14px;
   margin-bottom: 6px;
   font-weight: 500;
-}
+`;
 
-.userInfo .userName span {
-  color: #3e7c17;
-}
-
-.userInfo .userId {
+export const UserId = styled.strong`
   font-size: 12px;
   color: #767676;
-}
+`;
 
-.userFollowButton {
-  margin-left: auto;
-}
-
-.userFollowButton.unfollow {
-  background-color: #ffffff;
-  outline: 1px solid #dbdbdb;
-  color: #767676;
-}
-
-/* userChat */
-
-.userChatList {
+export const UserChatItem = styled.li`
   display: flex;
   align-items: center;
   width: 358px;
   height: 42px;
   margin: 0 auto;
-}
+`;
 
-.userChatList img {
+export const UserChatInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const UserChatImg = styled.img`
   position: relative;
   width: 42px;
   height: 42px;
   margin-right: 12px;
-}
+`;
 
-.userChatInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-.newChat::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  top: 0;
-  border-radius: 50%;
-  background-color: #3e7c17;
-  z-index: 10;
-}
-
-.userChatName {
+export const UserChatName = styled.strong`
   font-size: 14px;
   margin-bottom: 8px;
-}
+`;
 
-.userChatContent {
+export const UserChatContent = styled.p`
   font-size: 12px;
   color: #767676;
-}
+`;
 
-.userChatDate {
+export const UserChatDate = styled.span`
   display: inline-block;
   margin-top: auto;
   margin-bottom: 3px;
   margin-left: auto;
   font-size: 10px;
   color: #dbdbdb;
-}
+`;
