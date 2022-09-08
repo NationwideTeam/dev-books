@@ -1,10 +1,17 @@
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { TextInput } from "../../components/TextInput/TextInput";
 import ProfileImgUpload from "../../components/ProfileImgUpload/ProfileImgUpload";
 import Topbar from "../../components/Topbar/Topbar";
 import Button from "../../components/Buttons/Button";
-import "./joinProfile.css";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import {
+  JoinProfileWrap,
+  JoinProfileTitle,
+  JoinProfileText,
+  TextInputWrap,
+  JoinButtonWrap,
+  ErrorMessage,
+} from "./joinProfile.style";
 
 export const JoinProfile = () => {
   const [userName, setUserName] = useState("");
@@ -136,15 +143,15 @@ export const JoinProfile = () => {
   };
 
   return (
-    <div className="joinProfile">
+    <JoinProfileWrap>
       <Topbar />
-      <h1 className="joinProfileTitle">프로필 설정</h1>
-      <p className="joinProfileText">나중에 언제든지 변경할 수 있습니다.</p>
+      <JoinProfileTitle>프로필 설정</JoinProfileTitle>
+      <JoinProfileText>나중에 언제든지 변경할 수 있습니다.</JoinProfileText>
       <ProfileImgUpload src={userImg} onChange={handleGetImg} />
-      <div className="imgErrorMsg errorMessage">
+      <ErrorMessage>
         <span>{userImgErr}</span>
-      </div>
-      <div className="textInput">
+      </ErrorMessage>
+      <TextInputWrap>
         <TextInput
           label="사용자 이름"
           type="text"
@@ -157,9 +164,9 @@ export const JoinProfile = () => {
             setUserNameError("");
           }}
         />
-        <span className="errorMessage">{userNameError}</span>
-      </div>
-      <div className="textInput">
+        <ErrorMessage>{userNameError}</ErrorMessage>
+      </TextInputWrap>
+      <TextInputWrap>
         <TextInput
           label="계정 ID"
           type="text"
@@ -172,9 +179,9 @@ export const JoinProfile = () => {
             setUserIdError("");
           }}
         />
-        <span className="errorMessage">{userIdError}</span>
-      </div>
-      <div className="textInput">
+        <ErrorMessage>{userIdError}</ErrorMessage>
+      </TextInputWrap>
+      <TextInputWrap>
         <TextInput
           label="소개"
           type="text"
@@ -186,8 +193,8 @@ export const JoinProfile = () => {
             setUserIntro(e.target.value);
           }}
         />
-      </div>
-      <div onClick={checkIdValid} className="joinButton">
+      </TextInputWrap>
+      <JoinButtonWrap onClick={checkIdValid}>
         <Button
           className={
             !userNameError && !userIdError && userName !== "" && userId !== ""
@@ -197,8 +204,8 @@ export const JoinProfile = () => {
         >
           데브북스 시작하기
         </Button>
-      </div>
-    </div>
+      </JoinButtonWrap>
+    </JoinProfileWrap>
   );
 };
 
