@@ -1,4 +1,3 @@
-import "./singlePost.css";
 import { BasicNav } from "../../components/Navbar/Navbar";
 import Comment from "../../components/Comment/Comment";
 import { Content } from "../../components/Content/Content";
@@ -9,6 +8,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import ModalContent from "../../components/ModalContent/ModalContent";
 import Alert from "../../components/Alert/Alert";
+import {
+  SinglePostWrap,
+  SinglePostMain,
+  SinglePostContainer,
+  PostCommentWrap,
+  CommentModal,
+  CommentAlert,
+  NavModal,
+  NavAlert,
+} from "./singlePost.style";
 
 export default function SinglePost() {
   const [commentModal, setCommentModal] = useState(false);
@@ -223,15 +232,15 @@ export default function SinglePost() {
   };
 
   return (
-    <div className="singlePostWrap">
+    <SinglePostWrap>
       <Topbar />
       <BasicNav
         onClick={() => {
           setNavModal(true);
         }}
       />
-      <section className="singlePostMain">
-        <section className="singlePostContainer">
+      <SinglePostMain>
+        <SinglePostContainer>
           <Content
             userImg={userProfileImg}
             userName={userName}
@@ -244,8 +253,8 @@ export default function SinglePost() {
             value={postId}
             onClick={postDelete}
           />
-        </section>
-        <ul className="postCommentWrap">
+        </SinglePostContainer>
+        <PostCommentWrap>
           <PostComment
             postUniqueId={postUniqueId}
             commentInfo={content}
@@ -254,8 +263,8 @@ export default function SinglePost() {
               commentId(e);
             }}
           />
-        </ul>
-      </section>
+        </PostCommentWrap>
+      </SinglePostMain>
       <Comment
         ref={commentText}
         click={createComment}
@@ -263,8 +272,8 @@ export default function SinglePost() {
       />
       {window.localStorage.getItem("accountname") === commentUserId ? (
         <>
-          <div
-            className={commentModal ? "commentModal" : "disabledCommentPopup"}
+          <CommentModal
+            className={commentModal}
             onClick={() => {
               setCommentModal(false);
             }}
@@ -278,10 +287,8 @@ export default function SinglePost() {
                 }}
               />
             </Modal>
-          </div>
-          <div
-            className={commentAlert ? "commentModal" : "disabledCommentPopup"}
-          >
+          </CommentModal>
+          <CommentAlert className={commentAlert}>
             <Alert
               message="댓글을 삭제할까요?"
               cancel="취소"
@@ -289,12 +296,12 @@ export default function SinglePost() {
               onClickConfirm={() => setCommentAlert(false)}
               onClickCancel={() => setCommentAlert(false)}
             />
-          </div>
+          </CommentAlert>
         </>
       ) : (
         <>
-          <div
-            className={commentModal ? "commentModal" : "disabledCommentPopup"}
+          <CommentModal
+            className={commentModal}
             onClick={() => {
               setCommentModal(false);
             }}
@@ -308,10 +315,8 @@ export default function SinglePost() {
                 }}
               />
             </Modal>
-          </div>
-          <div
-            className={commentAlert ? "commentModal" : "disabledCommentPopup"}
-          >
+          </CommentModal>
+          <CommentAlert className={commentAlert}>
             <Alert
               message="신고하시겠습니까?"
               cancel="취소"
@@ -319,11 +324,11 @@ export default function SinglePost() {
               onClickCancel={() => setCommentAlert(false)}
               onClickConfirm={() => setCommentAlert(false)}
             />
-          </div>
+          </CommentAlert>
         </>
       )}
-      <div
-        className={navModal ? "postNavModal" : "disabledPostPopup"}
+      <NavModal
+        className={navModal}
         onClick={() => {
           setNavModal(false);
         }}
@@ -338,8 +343,8 @@ export default function SinglePost() {
             }}
           />
         </Modal>
-      </div>
-      <div className={alert ? "postAlert" : "disabledPostPopup"}>
+      </NavModal>
+      <NavAlert className={alert}>
         <Alert
           message="로그아웃하시겠어요?"
           cancel="취소"
@@ -349,7 +354,7 @@ export default function SinglePost() {
           }}
           onClickConfirm={handleLogout}
         />
-      </div>
-    </div>
+      </NavAlert>
+    </SinglePostWrap>
   );
 }
