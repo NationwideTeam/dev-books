@@ -1,4 +1,6 @@
-.alertBackground {
+import styled from "styled-components";
+
+export const AlertBackground = styled.div`
   display: block;
   position: absolute;
   top: 0;
@@ -7,9 +9,9 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 50;
-}
+`;
 
-.alertWrap {
+export const AlertWrapper = styled.div`
   width: 252px;
   height: 110px;
   position: absolute;
@@ -19,34 +21,37 @@
   background-color: #fff;
   border-radius: 10px;
   box-sizing: border-box;
-}
+`;
 
-.alertTxt {
+export const AlertTxt = styled.strong`
   display: block;
   text-align: center;
   padding: 22px 0px;
   font-weight: 500;
   font-size: 16px;
-}
+`;
 
-.alertBtnWrap {
+export const AlertBtnWrap = styled.div`
   width: 100%;
   border-top: 0.5px solid #dbdbdb;
-}
+`;
 
-.alertBtnWrap button {
+export const AlertBtn = styled.button`
   background-color: transparent;
   padding: 14px 0;
   font-weight: 400;
   font-size: 14px;
   width: 50%;
-}
 
-.alertBtnWrap .cancelBtn {
-  border-right: 0.5px solid #dbdbdb;
-}
-
-.alertBtnWrap .deleteBtn {
-  font-weight: 500;
-  color: #3e7c17;
-}
+  ${(props) => {
+    if (props.className === "cancelBtn") {
+      return `border-right: 0.5px solid #dbdbdb;`;
+    }
+    if (props.className === "deleteBtn") {
+      return `
+      font-weight: 500;
+      color: #3e7c17;
+      `;
+    }
+  }}
+`;
