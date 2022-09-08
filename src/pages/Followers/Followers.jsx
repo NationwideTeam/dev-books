@@ -1,10 +1,10 @@
-import Topbar from "../../components/Topbar/Topbar";
-import { CommonNav } from "../../components/Navbar/Navbar";
-import { UserFollow } from "../../components/User/User";
-import TabMenu from "../../components/TabMenu/TabMenu";
-import "./followers.css";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Topbar from "../../components/Topbar/Topbar";
+import TabMenu from "../../components/TabMenu/TabMenu";
+import { CommonNav } from "../../components/Navbar/Navbar";
+import { UserFollow } from "../../components/User/User";
+import { Follow, FollowUser, Tabmenu } from "./followers.style";
 
 export const Followers = () => {
   const location = useLocation();
@@ -41,10 +41,10 @@ export const Followers = () => {
   };
 
   return (
-    <div className="followers">
+    <Follow>
       <Topbar />
       <CommonNav title="Followers" />
-      <ul className="followerUser">
+      <FollowUser>
         {followers.map((item, index) => {
           return (
             <UserFollow
@@ -56,11 +56,11 @@ export const Followers = () => {
             />
           );
         })}
-      </ul>
-      <div className="tabMenu">
+      </FollowUser>
+      <Tabmenu>
         <TabMenu />
-      </div>
-    </div>
+      </Tabmenu>
+    </Follow>
   );
 };
 
