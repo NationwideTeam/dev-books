@@ -1,32 +1,31 @@
 import React from "react";
-import "./tabMenu.css";
-import { NavLink } from "react-router-dom";
+import { Wrapper, Menu, NavStyle } from "./tabMenu.style";
 
 export default function TabMenu() {
   return (
     <>
-      <ul className="tabMenuWrapper">
-        <li className="tabMenuHome">
-          <NavLink to="/HomeFeed" className="tabLink homeFeed">
+      <Wrapper>
+        <Menu>
+          <NavStyle to="/HomeFeed" homefeed>
             홈
-          </NavLink>
-        </li>
-        <li className="tabMenuChat">
-          <NavLink to="/chatFeed" className="tabLink chatFeed">
+          </NavStyle>
+        </Menu>
+        <Menu>
+          <NavStyle to="/chatFeed" chatFeed>
             채팅
-          </NavLink>
-        </li>
-        <li className="tabMenuEdit">
-          <NavLink to="/PostUpload" className="tabLink postUpload">
+          </NavStyle>
+        </Menu>
+        <Menu>
+          <NavStyle to="/PostUpload" postUpload>
             게시물 작성
-          </NavLink>
-        </li>
-        <li className="tabMenuProfile">
-          <NavLink to="/myProfile" className="tabLink myProfile">
+          </NavStyle>
+        </Menu>
+        <Menu>
+          <NavStyle to="/myProfile" myProfile>
             프로필
-          </NavLink>
-        </li>
-      </ul>
+          </NavStyle>
+        </Menu>
+      </Wrapper>
     </>
   );
 }
