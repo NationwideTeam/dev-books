@@ -1,34 +1,36 @@
-import './comment.css';
-import { forwardRef } from 'react';
-import { useState } from 'react';
+import { forwardRef } from "react";
+import { useState } from "react";
+import {
+  CommentForm,
+  ProfileImg,
+  CommentInput,
+  CommentUploadBtn,
+} from "./comment.style";
 
 export default Comment = forwardRef((props, ref) => {
   // 댓글 버튼 활성화 상태
-  const [buttonActive, setButtonActive] = useState('uploadComment');
-
+  const [buttonActive, setButtonActive] = useState(false);
 
   return (
-    <form className="commentForm">
-      <img className="basicProfile" src={props.profile} alt="" />
+    <CommentForm>
+      <ProfileImg src={props.profile} />
       <label htmlFor="comment" className="a11yHidden">
         댓글창 입니다.
       </label>
-      <input
-        type="text"
-        placeholder="댓글 입력하기..."
-        className="inputComment"
+      <CommentInput
         id="comment"
         ref={ref}
-        autoComplete="off"
         onChange={(e) => {
-          if(e.target.value !== '') {
-            setButtonActive('activeCommentButton');
+          if (e.target.value !== "") {
+            setButtonActive(true);
+          } else if (e.target.value === "") {
+            setButtonActive(false);
           }
         }}
       />
-      <button className={buttonActive} type="button" onClick={props.click}>
+      <CommentUploadBtn className={buttonActive} onClick={props.click}>
         게시
-      </button>
-    </form>
+      </CommentUploadBtn>
+    </CommentForm>
   );
 });
