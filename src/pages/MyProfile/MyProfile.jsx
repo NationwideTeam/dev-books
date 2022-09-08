@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
-import "./myProfile.css";
+import { useNavigate, useLocation } from "react-router-dom";
 import Topbar from "../../components/Topbar/Topbar";
 import { BasicNav } from "../../components/Navbar/Navbar";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import Products from "../../components/Products/Products";
-import Postbar from "../../components/Postbar/Postbar";
 import { Contents } from "../../components/Content/Content";
 import Album from "../../components/Album/Album";
 import TabMenu from "../../components/TabMenu/TabMenu";
 import Button from "../../components/Buttons/Button";
-import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import ModalContent from "../../components/ModalContent/ModalContent";
 import Alert from "../../components/Alert/Alert";
+import {
+  ProfileMobileScreen,
+  ProfileMain,
+  ProfileButtonWrapper,
+  Tabmenu,
+  Postbar,
+  PostListBtn,
+  PostAlbumBtn,
+} from "./profile.style";
 
 function MyProfile() {
   const [navModal, setNavModal] = useState(false);
@@ -121,11 +128,11 @@ function MyProfile() {
   };
 
   return (
-    <div className="MyProfileMobileScreen">
+    <ProfileMobileScreen>
       <Topbar />
-      <div className="tabmenu">
+      <Tabmenu>
         <TabMenu />
-      </div>
+      </Tabmenu>
       <nav>
         <BasicNav
           onClick={() => {
@@ -133,9 +140,9 @@ function MyProfile() {
           }}
         />
       </nav>
-      <main className="myProfileMain">
+      <ProfileMain>
         <ProfileInfo accountName={accountName} />
-        <div className="MyProfileButtonWrapper">
+        <ProfileButtonWrapper>
           <Button
             className="button md active"
             onClick={() => {
@@ -152,36 +159,36 @@ function MyProfile() {
           >
             상품 등록
           </Button>
-        </div>
+        </ProfileButtonWrapper>
         <Products
           onClick={prodDelete}
           accountName={accountName}
           className={products.length !== 0 ? "Products" : "Products hidden"}
         />
 
-        <div className="postbar">
-          <button
-            className={postbarBtn ? "postAlbum" : "postAlbum on disabled"}
+        <Postbar>
+          <PostAlbumBtn
+            className={postbarBtn ? null : "on disabled"}
             onClick={handleBtnClick}
           >
             <span className="a11yHidden">앨범</span>
-          </button>
+          </PostAlbumBtn>
 
-          <button
-            className={postbarBtn ? "postList on disabled" : "postList"}
+          <PostListBtn
+            className={postbarBtn ? "on disabled" : null}
             onClick={handleBtnClick}
           >
             <span className="a11yHidden">리스트</span>
-          </button>
-        </div>
+          </PostListBtn>
+        </Postbar>
         {postbarBtn ? (
           <Contents accountName={accountName} onClick={postDelete} />
         ) : (
           <Album accountName={accountName} />
         )}
-      </main>
+      </ProfileMain>
       <div
-        className={navModal ? "myProfileNavModal" : "disabledMyProfilePopup"}
+        className={navModal ? "myProfileNavModal" : "disabledProfilePopup"}
         onClick={() => {
           setNavModal(false);
         }}
@@ -197,7 +204,7 @@ function MyProfile() {
           />
         </Modal>
       </div>
-      <div className={alert ? "yourProfileAlert" : "disabledMyProfilePopup"}>
+      <div className={alert ? "yourProfileAlert" : "disabledProfilePopup"}>
         <Alert
           message="로그아웃하시겠어요?"
           cancel="취소"
@@ -208,7 +215,7 @@ function MyProfile() {
           onClickConfirm={handleLogout}
         />
       </div>
-    </div>
+    </ProfileMobileScreen>
   );
 }
 

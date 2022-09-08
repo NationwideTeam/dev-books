@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./yourProfile.css";
+import { useNavigate, useLocation } from "react-router-dom";
 import Topbar from "../../components/Topbar/Topbar";
 import { BasicNav } from "../../components/Navbar/Navbar";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
@@ -8,12 +8,19 @@ import { Contents } from "../../components/Content/Content";
 import Album from "../../components/Album/Album";
 import TabMenu from "../../components/TabMenu/TabMenu";
 import Button from "../../components/Buttons/Button";
-import message from "../../assets/icon/icon-message-circle.svg";
-import share from "../../assets/icon/icon-share.svg";
-import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import ModalContent from "../../components/ModalContent/ModalContent";
 import Alert from "../../components/Alert/Alert";
+import {
+  ProfileMobileScreen,
+  ProfileMain,
+  ProfileButtonWrapper,
+  Tabmenu,
+  Circle,
+  Postbar,
+  PostListBtn,
+  PostAlbumBtn,
+} from "../MyProfile/profile.style";
 
 function MyProfile() {
   const location = useLocation();
@@ -114,11 +121,11 @@ function MyProfile() {
   };
 
   return (
-    <div className="MyProfileMobileScreen">
+    <ProfileMobileScreen>
       <Topbar />
-      <div className="tabmenu">
+      <Tabmenu>
         <TabMenu />
-      </div>
+      </Tabmenu>
       <nav>
         <BasicNav
           onClick={() => {
@@ -126,52 +133,47 @@ function MyProfile() {
           }}
         />
       </nav>
-      <main className="yourProfileMain">
+      <ProfileMain>
         <ProfileInfo accountName={accountName} />
-        <div className="MyProfileButtonWrapper">
-          <div id="circle">
-            <img src={message} alt="" />
-          </div>
+        <ProfileButtonWrapper>
+          <Circle message />
           <Button
             className={isFollow ? "button md" : "button md active"}
             onClick={handleClick}
           >
             {isFollow ? "팔로우" : "언팔로우"}
           </Button>
-          <div id="circle">
-            <img src={share} alt="" />
-          </div>
-        </div>
+          <Circle share />
+        </ProfileButtonWrapper>
         <Products
           accountName={accountName}
           className={products.length !== 0 ? "Products" : "Products hidden"}
         />
-        <div className="postbar">
-          <button
-            className={postbarBtn ? "postAlbum" : "postAlbum on disabled"}
+
+        <Postbar>
+          <PostAlbumBtn
+            className={postbarBtn ? null : "on disabled"}
             onClick={handleBtnClick}
           >
             <span className="a11yHidden">앨범</span>
-          </button>
+          </PostAlbumBtn>
 
-          <button
-            className={postbarBtn ? "postList on disabled" : "postList"}
+          <PostListBtn
+            className={postbarBtn ? "on disabled" : null}
             onClick={handleBtnClick}
           >
             <span className="a11yHidden">리스트</span>
-          </button>
-        </div>
+          </PostListBtn>
+        </Postbar>
         {postbarBtn ? (
           <Contents accountName={accountName} />
         ) : (
           <Album accountName={accountName} />
         )}
-      </main>
+      </ProfileMain>
 
       <div
-        className={
-          navModal ? "yourProfileNavModal" : "disabledYourProfilePopup"
-        }
+        className={navModal ? "yourProfileNavModal" : "disabledProfilePopup"}
         onClick={() => {
           setNavModal(false);
         }}
@@ -187,7 +189,7 @@ function MyProfile() {
           />
         </Modal>
       </div>
-      <div className={alert ? "yourProfileAlert" : "disabledYourProfilePopup"}>
+      <div className={alert ? "yourProfileAlert" : "disabledProfilePopup"}>
         <Alert
           message="로그아웃하시겠어요?"
           cancel="취소"
@@ -198,7 +200,7 @@ function MyProfile() {
           onClickConfirm={handleLogout}
         />
       </div>
-    </div>
+    </ProfileMobileScreen>
   );
 }
 
