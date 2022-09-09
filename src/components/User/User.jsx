@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../Buttons/Button';
 import {
@@ -19,11 +18,11 @@ import {
 
 export const UserSearch = (props) => {
   return (
-    <UserSearchList className="userSearchList" onClick={props.click}>
+    <UserSearchList onClick={props.click}>
       <UserImage src={props.picture} alt="유저 프로필 이미지" />
-      <UserInfoContainer className="userInfo">
-        <UserName className="userName">{props.name}</UserName>
-        <UserId className="userId">{props.id}</UserId>
+      <UserInfoContainer>
+        <UserName>{props.name}</UserName>
+        <UserId>{props.id}</UserId>
       </UserInfoContainer>
     </UserSearchList>
   );
@@ -49,15 +48,15 @@ export const UserFollow = (props) => {
   };
 
   return (
-    <UserSearchList className="userSearchList">
-      <UserSearchInfo className="userSearchInfo" onClick={moveUserProfile}>
-        <UserImage src={picture} alt="유저 프로필 이미지" />
+    <UserSearchList>
+      <UserSearchInfo onClick={moveUserProfile}>
+        <UserImage src={picture} />
         <UserInfoContainer className="userInfo">
           <UserName className="userName">{name}</UserName>
           <UserId className="userId">{id}</UserId>
         </UserInfoContainer>
       </UserSearchInfo>
-      <div className={id === myAccountName ? 'hidden' : 'userFollowButton'}>
+      <div>
         <Button
           className={isFollow ? 'button sm active' : 'button sm'}
           onClick={handleClick}
@@ -71,15 +70,13 @@ export const UserFollow = (props) => {
 
 export const UserChatList = (props) => {
   return (
-    <UserChatItem className="userChatList" onClick={props.onClick}>
-      <UserChatImg src={props.picture} alt="유저 프로필 이미지" />
-      <UserChatInfo className="userChatInfo">
-        <UserChatName className="userChatName">{props.name}</UserChatName>
-        <UserChatContent className="userChatContent">
-          {props.chat}
-        </UserChatContent>
+    <UserChatItem onClick={props.onClick}>
+      <UserChatImg src={props.picture} />
+      <UserChatInfo>
+        <UserChatName>{props.name}</UserChatName>
+        <UserChatContent>{props.chat}</UserChatContent>
       </UserChatInfo>
-      <UserChatDate className="userChatDate">2020.10.25</UserChatDate>
+      <UserChatDate>2020.10.25</UserChatDate>
     </UserChatItem>
   );
 };

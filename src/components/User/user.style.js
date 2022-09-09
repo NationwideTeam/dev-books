@@ -50,7 +50,9 @@ export const UserChatInfo = styled.div`
   flex-direction: column;
 `;
 
-export const UserChatImg = styled.img`
+export const UserChatImg = styled.img.attrs({
+  alt: '유저 프로필 이미지',
+})`
   position: relative;
   width: 42px;
   height: 42px;
