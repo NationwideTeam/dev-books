@@ -1,19 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UploadNav } from "../../components/Navbar/Navbar";
 import { TextInput } from "../../components/TextInput/TextInput";
 import Topbar from "../../components/Topbar/Topbar";
-import "./productUpload.css";
-import Button from "../../components/Buttons/Button";
-import { ArrowButton } from "../../components/Navbar/Navbar";
+import {
+  ProductUploadWrap,
+  ProductImgUploadWrap,
+  ImgUploadText,
+  ProductImg,
+  TextInputWrap,
+  ErrorMessage,
+} from "./productUpload.style";
 
 // 1. 상품등록 이미지 컴포넌트
 export const ProductImgUpload = (props) => {
   return (
-    <div className="productImgUpload">
-      <span className="imgUploadText">이미지 등록</span>
-      <label htmlFor="productImg" className="productImg">
+    <ProductImgUploadWrap>
+      <ImgUploadText>이미지 등록</ImgUploadText>
+      <ProductImg htmlFor="productImg">
         <img src={props.src} alt="" />
-      </label>
+      </ProductImg>
       <input
         type="file"
         id="productImg"
@@ -22,7 +28,7 @@ export const ProductImgUpload = (props) => {
         className="a11yHidden"
         onChange={props.onChange}
       />
-    </div>
+    </ProductImgUploadWrap>
   );
 };
 
@@ -144,34 +150,28 @@ const ProductUpload = () => {
   };
 
   return (
-    <div className="productUpload">
+    <ProductUploadWrap>
       <Topbar />
-      <div className="uploadNavbar">
-        <ArrowButton />
-        <div className="uploadButton">
-          <Button
-            onClick={upload}
-            className={
-              !productNameErr &&
-              !productPriceErr &&
-              !productImgErr &&
-              !productUrlErr &&
-              productName !== "" &&
-              productPrice !== ""
-                ? "button ms"
-                : "button ms disabled"
-            }
-          >
-            업로드
-          </Button>
-        </div>
-      </div>
+      <UploadNav
+        title="업로드"
+        onClick={upload}
+        className={
+          !productNameErr &&
+          !productPriceErr &&
+          !productImgErr &&
+          !productUrlErr &&
+          productName !== "" &&
+          productPrice !== ""
+            ? "button uploadButton ms"
+            : "button uploadButton ms disabled"
+        }
+      />
 
       <ProductImgUpload src={productImg} onChange={handleGetImg} />
-      <div className="imgErrorMsg errorMessage">
-        <span className="errorMessage">{productImgErr}</span>
-      </div>
-      <div className="textInput">
+      <ErrorMessage>
+        <span>{productImgErr}</span>
+      </ErrorMessage>
+      <TextInputWrap>
         <TextInput
           label="상품명"
           type="text"
@@ -185,9 +185,9 @@ const ProductUpload = () => {
           }}
           onBlur={checkUploadError}
         />
-        <span className="errorMessage">{productNameErr}</span>
-      </div>
-      <div className="textInput">
+        <ErrorMessage>{productNameErr}</ErrorMessage>
+      </TextInputWrap>
+      <TextInputWrap>
         <TextInput
           label="가격"
           type="number"
@@ -201,9 +201,9 @@ const ProductUpload = () => {
           }}
           onBlur={checkUploadError}
         />
-        <span className="errorMessage">{productPriceErr}</span>
-      </div>
-      <div className="textInput">
+        <ErrorMessage>{productPriceErr}</ErrorMessage>
+      </TextInputWrap>
+      <TextInputWrap>
         <TextInput
           label="판매 링크"
           type="text"
@@ -217,9 +217,9 @@ const ProductUpload = () => {
           }}
           onBlur={checkUploadError}
         />
-        <span className="errorMessage">{productUrlErr}</span>
-      </div>
-    </div>
+        <ErrorMessage>{productUrlErr}</ErrorMessage>
+      </TextInputWrap>
+    </ProductUploadWrap>
   );
 };
 
