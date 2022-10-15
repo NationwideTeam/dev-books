@@ -1,30 +1,34 @@
-import React from "react";
-import Topbar from "../../components/Topbar/Topbar";
-import Logo404 from "../../assets/logo-404.svg";
-import Button from "../../components/Buttons/Button";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Topbar from '../../components/Topbar/Topbar';
+import Button from '../../components/Buttons/Button';
 
-import "./notFound.css";
+import {
+  NotFoundFeed,
+  NotFoundMain,
+  NotFoundLogo,
+  NotFoundDescription,
+} from './notFound.style';
 
 const NotFound = () => {
   const navigate = useNavigate();
   return (
-    <section className="NotFoundFeed">
+    <NotFoundFeed>
       <Topbar />
-      <main className="NotFoundMain">
-        <img className="NotFoundLogo" src={Logo404} alt="데브북스 404 logo" />
-        <strong className="NotFoundDescription">
+      <NotFoundMain>
+        <NotFoundLogo />
+        <NotFoundDescription>
           이미지를 찾을 수 없습니다. :&#40;
-        </strong>
+        </NotFoundDescription>
         <div
           onClick={() => {
             navigate(-1);
           }}
         >
-          <Button className={"lg button"} children={"이전 페이지"} />
+          <Button className={'lg button'} children={'이전 페이지'} />
         </div>
-      </main>
-    </section>
+      </NotFoundMain>
+    </NotFoundFeed>
   );
 };
 
